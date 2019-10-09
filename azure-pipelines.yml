@@ -19,9 +19,12 @@ steps:
 
 - script: |
     npm install
-    # npm run build
   displayName: 'npm install'
 
 - script: |
-    # npm run test
+    npm run test
   displayName: 'Unit test'
+
+- script: |
+    npm run build
+  displayName: 'Build Dist'
