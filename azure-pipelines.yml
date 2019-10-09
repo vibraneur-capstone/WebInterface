@@ -22,7 +22,7 @@ steps:
   displayName: 'npm install'
 
 - script: |
-    npm run test
+    CI=true npm test --coverage
   displayName: 'Unit test'
 
 - script: |
