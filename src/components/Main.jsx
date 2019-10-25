@@ -16,10 +16,7 @@ export default class Main extends React.Component {
         return (
             <div className='main'>
                 <UserContainer></UserContainer>  
-            </div>
-            
-              
-            
+            </div>  
         )
     }
 

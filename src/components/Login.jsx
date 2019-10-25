@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import "./styles/Login.scss";
 
+
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,9 +34,9 @@ function login(e) {
             type="password"
           />
         </FormGroup>
-        <Button block bsSize="large" type="submit" onClick = {login}>
+        <button block bsSize="large" type="submit" onClick = {login}>
           Login
-        </Button>
+        </button>
       </form>
     </div>
   );
