@@ -13,13 +13,13 @@ export default class Main extends React.Component {
     }
 
     render () {
-
-        let login = <Login></Login>
-        login = undefined;
         return (
             <div className='main'>
-                <UserContainer></UserContainer>
+                <UserContainer></UserContainer>  
             </div>
+            
+              
+            
         )
     }
 

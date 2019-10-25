@@ -1,6 +1,7 @@
 import React from 'react';
 import Toolbar from './Toolbar';
 
+
 export default class UserContainer extends React.Component {
     constructor (props) {
         super (props);
@@ -8,9 +9,9 @@ export default class UserContainer extends React.Component {
 
     render () {
         return (<div>
-            <Toolbar
-            
-            ></Toolbar>
+            <Toolbar>
+
+            </Toolbar>
         </div>)
     }
 }
