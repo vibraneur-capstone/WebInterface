@@ -8,6 +8,7 @@ import './App.scss';
 
 function App(props) {
   return (
+
   <div className="App">
     <Main></Main>
     <h1>THIS IS THE APP PAGE</h1>

@@ -1,0 +1,13 @@
+f2096bb7fa842c2769ddc9d42e7e6027
+"use strict";
+
+var _interopRequireDefault = require("/opt/WebInterface/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _enzyme = require("enzyme");
+
+test('testing jest', () => {
+  expect(0).toBe(0);
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkxvZ2luLnRlc3QuanN4Il0sIm5hbWVzIjpbInRlc3QiLCJleHBlY3QiLCJ0b0JlIl0sIm1hcHBpbmdzIjoiOzs7O0FBQUE7O0FBQ0E7O0FBRUFBLElBQUksQ0FBQyxjQUFELEVBQWlCLE1BQU07QUFDdkJDLEVBQUFBLE1BQU0sQ0FBQyxDQUFELENBQU4sQ0FBVUMsSUFBVixDQUFlLENBQWY7QUFDSCxDQUZHLENBQUoiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgc2hhbGxvdyB9IGZyb20gJ2VuenltZSc7XG5cbnRlc3QoJ3Rlc3RpbmcgamVzdCcsICgpID0+IHtcbiAgICBleHBlY3QoMCkudG9CZSgwKTtcbn0pIl19

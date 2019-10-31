@@ -1,0 +1,39 @@
+e844ef489c1ad9021944271fbacc79f3
+"use strict";
+
+var _interopRequireDefault = require("/opt/WebInterface/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _jsxFileName = "/opt/WebInterface/src/components/Toolbar.jsx";
+
+class Toolbar extends _react.default.Component {
+  constuctor(props) {}
+
+  render() {
+    return _react.default.createElement("div", {
+      className: "toolbar",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10
+      },
+      __self: this
+    }, _react.default.createElement("div", {
+      className: "user_name",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      },
+      __self: this
+    }, "Noah Gallant"));
+  }
+
+}
+
+exports.default = Toolbar;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlRvb2xiYXIuanN4Il0sIm5hbWVzIjpbIlRvb2xiYXIiLCJSZWFjdCIsIkNvbXBvbmVudCIsImNvbnN0dWN0b3IiLCJwcm9wcyIsInJlbmRlciJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQUE7Ozs7QUFFZSxNQUFNQSxPQUFOLFNBQXNCQyxlQUFNQyxTQUE1QixDQUFzQztBQUNqREMsRUFBQUEsVUFBVSxDQUFFQyxLQUFGLEVBQVMsQ0FFbEI7O0FBRURDLEVBQUFBLE1BQU0sR0FBSTtBQUNOLFdBQ0E7QUFBSyxNQUFBLFNBQVMsRUFBQyxTQUFmO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE9BQ0k7QUFBSyxNQUFBLFNBQVMsRUFBQyxXQUFmO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLHNCQURKLENBREE7QUFLSDs7QUFYZ0QiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBUb29sYmFyIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgICBjb25zdHVjdG9yIChwcm9wcykge1xuICAgICAgICBcbiAgICB9XG5cbiAgICByZW5kZXIgKCkge1xuICAgICAgICByZXR1cm4gKFxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ndG9vbGJhcic+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInVzZXJfbmFtZVwiPk5vYWggR2FsbGFudDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgKVxuICAgIH1cbn0iXX0=
