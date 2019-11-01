@@ -1,19 +1,48 @@
 import React, { useState } from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import "./styles/Login.scss";
+import { Redirect } from 'react-router-dom';
 
 
-export default function Login(props) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default class Login extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      redirect_user: false
+    }
+
+    this.setEmail = this.setEmail.bind(this);
+    this.setPassword = this.setPassword.bind(this);
+    this.login = this.login.bind(this);
+  }
+
+  setEmail(email) {
+    this.setState({
+      email: email
+    })
+  }
+
+  setPassword(password) {
+    this.setState({
+      password: password
+    })
+  }
   
-function login(e) {
+login(e) {
     e.preventDefault();
     alert('You are logged in');
+    this.setState({
+      redirect_user: true
+    })
 }
 
 
-
+render() {
+  let redirect = undefined;
+  if (this.state.redirect_user) {
+    redirect = <Redirect to='/user'></Redirect>
+  }
   return (
     <div className="Login">
       <form >
@@ -22,22 +51,25 @@ function login(e) {
           <FormControl
             autoFocus
             type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            value={this.state.email}
+            onChange={e => this.setEmail(e.target.value)}
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
           <FormLabel>Password</FormLabel>
           <FormControl
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            value={this.state.password}
+            onChange={e => this.setPassword(e.target.value)}
             type="password"
           />
         </FormGroup>
-        <button block bsSize="large" type="submit" onClick = {login}>
+        <button block bsSize="large" type="submit" onClick = {this.login}>
           Login
         </button>
+        {redirect}
       </form>
     </div>
   );
+}
+  
 }
