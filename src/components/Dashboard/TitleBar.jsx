@@ -13,19 +13,17 @@ export default class TitleBar extends React.Component {
     render () {
 
         let containerStyle = {
-            width: this.props.width,
+            width: '100%',
             height: '30px',
-            bottom: '1px solid black',
         }
 
         let buttonStyle = {
             border: '1px solid gray',
             radius: '50%',
-            position: 'relative',
+            position: 'absolute',
             right: '0px',
-            backgroundColor: 'white',
             width: '10px',
-            height: '10px',
+            height: '30px',
         }
 
         return (
