@@ -25,7 +25,7 @@ export default class Panel extends React.Component {
     render() {
 
         let draggableStyle = {
-            border: '1px solid black'
+            border: '4px solid f8f9fa'
         }
 
         draggableStyle = {
@@ -33,13 +33,13 @@ export default class Panel extends React.Component {
         }
 
         let titleStyle = {
-            border: '1px solid black',
+            border: '1px solid f8f9fa',
             width: '100%',
         }
 
         if (this.props.focus === this.props.id) {
             let newStyle = {
-                backgroundColor: 'red'
+                backgroundColor: '#f8f9fa'
             }
             draggableStyle = { ...draggableStyle, ...newStyle }
         }
