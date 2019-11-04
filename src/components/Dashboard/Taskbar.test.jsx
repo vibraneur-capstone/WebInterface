@@ -5,11 +5,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import Taskbar from './Taskbar';
 
 
-
-test('testing jest', () => {
-    expect(0).toBe(0);
-})
-
 configure({adapter: new Adapter() });
 
 

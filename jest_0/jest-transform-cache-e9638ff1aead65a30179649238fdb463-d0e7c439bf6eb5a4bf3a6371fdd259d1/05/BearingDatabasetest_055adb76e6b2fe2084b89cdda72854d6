@@ -1,0 +1,30 @@
+8491d017e78328270abf43122b4d3b4f
+"use strict";
+
+var _interopRequireDefault = require("/home/noahgallant/WebInterface/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _enzyme = require("enzyme");
+
+var _enzymeAdapterReact = _interopRequireDefault(require("enzyme-adapter-react-16"));
+
+var _BearingDatabase = _interopRequireDefault(require("./BearingDatabase"));
+
+var _jsxFileName = "/home/noahgallant/WebInterface/src/components/Dashboard/DashBoardPanels/BearingDatabase.test.jsx";
+(0, _enzyme.configure)({
+  adapter: new _enzymeAdapterReact.default()
+});
+describe('Testing Login', () => {
+  it('should render correctly', () => {
+    const component = (0, _enzyme.shallow)(_react.default.createElement(_BearingDatabase.default, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13
+      },
+      __self: void 0
+    }));
+    expect(component).toMatchSnapshot();
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkJlYXJpbmdEYXRhYmFzZS50ZXN0LmpzeCJdLCJuYW1lcyI6WyJhZGFwdGVyIiwiQWRhcHRlciIsImRlc2NyaWJlIiwiaXQiLCJjb21wb25lbnQiLCJleHBlY3QiLCJ0b01hdGNoU25hcHNob3QiXSwibWFwcGluZ3MiOiI7Ozs7QUFDQTs7QUFDQTs7QUFDQTs7QUFFQTs7O0FBR0EsdUJBQVU7QUFBQ0EsRUFBQUEsT0FBTyxFQUFFLElBQUlDLDJCQUFKO0FBQVYsQ0FBVjtBQUVBQyxRQUFRLENBQUMsZUFBRCxFQUFrQixNQUFNO0FBQzVCQyxFQUFBQSxFQUFFLENBQUUseUJBQUYsRUFBNkIsTUFBTTtBQUNqQyxVQUFNQyxTQUFTLEdBQUcscUJBQVEsNkJBQUMsd0JBQUQ7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFBUixDQUFsQjtBQUNBQyxJQUFBQSxNQUFNLENBQUNELFNBQUQsQ0FBTixDQUFrQkUsZUFBbEI7QUFDSCxHQUhDLENBQUY7QUFJSCxDQUxPLENBQVIiLCJzb3VyY2VzQ29udGVudCI6WyJcbmltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBzaGFsbG93LCBjb25maWd1cmUgfSBmcm9tICdlbnp5bWUnO1xuaW1wb3J0IEFkYXB0ZXIgZnJvbSAnZW56eW1lLWFkYXB0ZXItcmVhY3QtMTYnO1xuXG5pbXBvcnQgQmVhcmluZ0RhdGFiYXNlIGZyb20gJy4vQmVhcmluZ0RhdGFiYXNlJztcblxuXG5jb25maWd1cmUoe2FkYXB0ZXI6IG5ldyBBZGFwdGVyKCkgfSk7XG5cbmRlc2NyaWJlKCdUZXN0aW5nIExvZ2luJywgKCkgPT4ge1xuICAgIGl0ICgnc2hvdWxkIHJlbmRlciBjb3JyZWN0bHknLCAoKSA9PiB7XG4gICAgICAgIGNvbnN0IGNvbXBvbmVudCA9IHNoYWxsb3coPEJlYXJpbmdEYXRhYmFzZS8+KTtcbiAgICAgICAgZXhwZWN0KGNvbXBvbmVudCkudG9NYXRjaFNuYXBzaG90KCk7XG4gICAgfSlcbn0pIl19

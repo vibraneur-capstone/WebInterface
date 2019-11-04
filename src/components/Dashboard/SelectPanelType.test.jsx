@@ -6,11 +6,6 @@ import Taskbar from './Taskbar';
 import SelectPanelType from './SelectPanelType';
 
 
-
-test('testing jest', () => {
-    expect(0).toBe(0);
-})
-
 configure({adapter: new Adapter() });
 
 

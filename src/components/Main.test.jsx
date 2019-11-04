@@ -4,9 +4,6 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import Main from './Main.jsx';
 
-test('testing jest', () => {
-    expect(0).toBe(0);
-})
 
 configure({adapter: new Adapter() });
 

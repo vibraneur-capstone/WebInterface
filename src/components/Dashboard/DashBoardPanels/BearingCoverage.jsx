@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default class SingleBearing extends React.Component {
+export default class BearingCoverage extends React.Component {
     constructor (props) {
         super(props);
 

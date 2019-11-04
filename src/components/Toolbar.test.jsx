@@ -4,9 +4,6 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import Toolbar from './Toolbar.jsx';
 
-test('testing jest', () => {
-    expect(0).toBe(0);
-})
 
 configure({adapter: new Adapter() });
 
