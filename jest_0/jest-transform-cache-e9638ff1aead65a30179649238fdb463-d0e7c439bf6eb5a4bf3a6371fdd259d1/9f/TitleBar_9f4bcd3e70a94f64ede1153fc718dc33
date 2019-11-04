@@ -1,0 +1,65 @@
+f18ce904cdbb057025d9d6550df2ef67
+"use strict";
+
+var _interopRequireDefault = require("/home/noahgallant/WebInterface/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactBootstrap = require("react-bootstrap");
+
+var _jsxFileName = "/home/noahgallant/WebInterface/src/components/Dashboard/TitleBar.jsx";
+
+class TitleBar extends _react.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    let containerStyle = {
+      width: '100%',
+      height: '30px'
+    };
+    let buttonStyle = {
+      border: '1px solid gray',
+      radius: '50%',
+      position: 'absolute',
+      right: '0px',
+      width: '10px',
+      height: '30px'
+    };
+    return _react.default.createElement("div", {
+      style: containerStyle,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30
+      },
+      __self: this
+    }, _react.default.createElement(_reactBootstrap.Button, {
+      style: buttonStyle,
+      onClick: this.removePanel,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31
+      },
+      __self: this
+    }, "x"), _react.default.createElement(_reactBootstrap.Button, {
+      style: buttonStyle,
+      onClick: this.somethingElse,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 34
+      },
+      __self: this
+    }, "o"));
+  }
+
+}
+
+exports.default = TitleBar;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlRpdGxlQmFyLmpzeCJdLCJuYW1lcyI6WyJUaXRsZUJhciIsIlJlYWN0IiwiQ29tcG9uZW50IiwiY29uc3RydWN0b3IiLCJwcm9wcyIsInN0YXRlIiwicmVuZGVyIiwiY29udGFpbmVyU3R5bGUiLCJ3aWR0aCIsImhlaWdodCIsImJ1dHRvblN0eWxlIiwiYm9yZGVyIiwicmFkaXVzIiwicG9zaXRpb24iLCJyaWdodCIsInJlbW92ZVBhbmVsIiwic29tZXRoaW5nRWxzZSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQUE7O0FBQ0E7Ozs7QUFFZSxNQUFNQSxRQUFOLFNBQXVCQyxlQUFNQyxTQUE3QixDQUF1QztBQUNsREMsRUFBQUEsV0FBVyxDQUFFQyxLQUFGLEVBQVM7QUFDaEIsVUFBT0EsS0FBUDtBQUVBLFNBQUtDLEtBQUwsR0FBYSxFQUFiO0FBR0g7O0FBRURDLEVBQUFBLE1BQU0sR0FBSTtBQUVOLFFBQUlDLGNBQWMsR0FBRztBQUNqQkMsTUFBQUEsS0FBSyxFQUFFLE1BRFU7QUFFakJDLE1BQUFBLE1BQU0sRUFBRTtBQUZTLEtBQXJCO0FBS0EsUUFBSUMsV0FBVyxHQUFHO0FBQ2RDLE1BQUFBLE1BQU0sRUFBRSxnQkFETTtBQUVkQyxNQUFBQSxNQUFNLEVBQUUsS0FGTTtBQUdkQyxNQUFBQSxRQUFRLEVBQUUsVUFISTtBQUlkQyxNQUFBQSxLQUFLLEVBQUUsS0FKTztBQUtkTixNQUFBQSxLQUFLLEVBQUUsTUFMTztBQU1kQyxNQUFBQSxNQUFNLEVBQUU7QUFOTSxLQUFsQjtBQVNBLFdBQ0k7QUFBSyxNQUFBLEtBQUssRUFBRUYsY0FBWjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNJLDZCQUFDLHNCQUFEO0FBQVEsTUFBQSxLQUFLLEVBQUVHLFdBQWY7QUFDSSxNQUFBLE9BQU8sRUFBRSxLQUFLSyxXQURsQjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQURKLEVBSUksNkJBQUMsc0JBQUQ7QUFBUSxNQUFBLEtBQUssRUFBRUwsV0FBZjtBQUNJLE1BQUEsT0FBTyxFQUFFLEtBQUtNLGFBRGxCO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBSkosQ0FESjtBQVVIOztBQW5DaUQiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAncmVhY3QtYm9vdHN0cmFwJztcblxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgVGl0bGVCYXIgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuICAgIGNvbnN0cnVjdG9yIChwcm9wcykge1xuICAgICAgICBzdXBlciAocHJvcHMpXG5cbiAgICAgICAgdGhpcy5zdGF0ZSA9IHtcblxuICAgICAgICB9XG4gICAgfVxuXG4gICAgcmVuZGVyICgpIHtcblxuICAgICAgICBsZXQgY29udGFpbmVyU3R5bGUgPSB7XG4gICAgICAgICAgICB3aWR0aDogJzEwMCUnLFxuICAgICAgICAgICAgaGVpZ2h0OiAnMzBweCcsXG4gICAgICAgIH1cblxuICAgICAgICBsZXQgYnV0dG9uU3R5bGUgPSB7XG4gICAgICAgICAgICBib3JkZXI6ICcxcHggc29saWQgZ3JheScsXG4gICAgICAgICAgICByYWRpdXM6ICc1MCUnLFxuICAgICAgICAgICAgcG9zaXRpb246ICdhYnNvbHV0ZScsXG4gICAgICAgICAgICByaWdodDogJzBweCcsXG4gICAgICAgICAgICB3aWR0aDogJzEwcHgnLFxuICAgICAgICAgICAgaGVpZ2h0OiAnMzBweCcsXG4gICAgICAgIH1cblxuICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgPGRpdiBzdHlsZT17Y29udGFpbmVyU3R5bGV9PlxuICAgICAgICAgICAgICAgIDxCdXR0b24gc3R5bGU9e2J1dHRvblN0eWxlfVxuICAgICAgICAgICAgICAgICAgICBvbkNsaWNrPXt0aGlzLnJlbW92ZVBhbmVsfVxuICAgICAgICAgICAgICAgID54PC9CdXR0b24+XG4gICAgICAgICAgICAgICAgPEJ1dHRvbiBzdHlsZT17YnV0dG9uU3R5bGV9XG4gICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s9e3RoaXMuc29tZXRoaW5nRWxzZX1cbiAgICAgICAgICAgICAgICA+bzwvQnV0dG9uPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgIClcbiAgICB9XG59XG5cbiJdfQ==

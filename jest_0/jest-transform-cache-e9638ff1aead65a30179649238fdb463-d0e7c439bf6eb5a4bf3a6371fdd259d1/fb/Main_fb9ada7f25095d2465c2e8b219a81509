@@ -1,0 +1,71 @@
+a42770d26d398b6533edabccc7f7036e
+"use strict";
+
+var _interopRequireDefault = require("/home/noahgallant/WebInterface/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Login = _interopRequireDefault(require("./Login"));
+
+var _reactBootstrap = require("react-bootstrap");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _jsxFileName = "/home/noahgallant/WebInterface/src/components/Main.jsx";
+
+class Main extends _react.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false
+    };
+    this.login = this.login.bind(this);
+  }
+
+  login() {
+    this.setState({
+      redirect: true
+    });
+  }
+
+  render() {
+    let redirect = undefined;
+
+    if (this.state.redirect) {
+      redirect = _react.default.createElement(_reactRouterDom.Redirect, {
+        to: "/login",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        },
+        __self: this
+      });
+    }
+
+    return _react.default.createElement("div", {
+      className: "main",
+      background: "./static/background.png",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32
+      },
+      __self: this
+    }, _react.default.createElement(_reactBootstrap.Button, {
+      onClick: this.login,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 33
+      },
+      __self: this
+    }, "Login"), redirect);
+  }
+
+}
+
+exports.default = Main;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIk1haW4uanN4Il0sIm5hbWVzIjpbIk1haW4iLCJSZWFjdCIsIkNvbXBvbmVudCIsImNvbnN0cnVjdG9yIiwicHJvcHMiLCJzdGF0ZSIsInJlZGlyZWN0IiwibG9naW4iLCJiaW5kIiwic2V0U3RhdGUiLCJyZW5kZXIiLCJ1bmRlZmluZWQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFBOztBQUNBOztBQUNBOztBQUNBOzs7O0FBRWUsTUFBTUEsSUFBTixTQUFtQkMsZUFBTUMsU0FBekIsQ0FBbUM7QUFFOUNDLEVBQUFBLFdBQVcsQ0FBRUMsS0FBRixFQUFTO0FBQ2pCLFVBQU1BLEtBQU47QUFFQSxTQUFLQyxLQUFMLEdBQWE7QUFDWkMsTUFBQUEsUUFBUSxFQUFFO0FBREUsS0FBYjtBQUlBLFNBQUtDLEtBQUwsR0FBYSxLQUFLQSxLQUFMLENBQVdDLElBQVgsQ0FBZ0IsSUFBaEIsQ0FBYjtBQUNGOztBQUVERCxFQUFBQSxLQUFLLEdBQUc7QUFDSixTQUFLRSxRQUFMLENBQWM7QUFDVkgsTUFBQUEsUUFBUSxFQUFFO0FBREEsS0FBZDtBQUdIOztBQUVESSxFQUFBQSxNQUFNLEdBQUk7QUFFTixRQUFJSixRQUFRLEdBQUdLLFNBQWY7O0FBRUEsUUFBSSxLQUFLTixLQUFMLENBQVdDLFFBQWYsRUFBeUI7QUFDckJBLE1BQUFBLFFBQVEsR0FBRyw2QkFBQyx3QkFBRDtBQUFVLFFBQUEsRUFBRSxFQUFDLFFBQWI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsUUFBWDtBQUNIOztBQUNELFdBQ0k7QUFBSyxNQUFBLFNBQVMsRUFBQyxNQUFmO0FBQXNCLE1BQUEsVUFBVSxFQUFDLHlCQUFqQztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNJLDZCQUFDLHNCQUFEO0FBQVEsTUFBQSxPQUFPLEVBQUUsS0FBS0MsS0FBdEI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFESixFQUVLRCxRQUZMLENBREo7QUFNSDs7QUEvQjZDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCBMb2dpbiBmcm9tICcuL0xvZ2luJztcbmltcG9ydCB7IEJ1dHRvbiB9IGZyb20gJ3JlYWN0LWJvb3RzdHJhcCc7XG5pbXBvcnQgeyBSZWRpcmVjdCB9IGZyb20gJ3JlYWN0LXJvdXRlci1kb20nXG5cbmV4cG9ydCBkZWZhdWx0IGNsYXNzIE1haW4gZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuXG4gICAgY29uc3RydWN0b3IgKHByb3BzKSB7XG4gICAgICAgc3VwZXIocHJvcHMpO1xuXG4gICAgICAgdGhpcy5zdGF0ZSA9IHtcbiAgICAgICAgcmVkaXJlY3Q6IGZhbHNlXG4gICAgICAgfVxuXG4gICAgICAgdGhpcy5sb2dpbiA9IHRoaXMubG9naW4uYmluZCh0aGlzKTtcbiAgICB9XG5cbiAgICBsb2dpbigpIHtcbiAgICAgICAgdGhpcy5zZXRTdGF0ZSh7XG4gICAgICAgICAgICByZWRpcmVjdDogdHJ1ZVxuICAgICAgICB9KVxuICAgIH1cblxuICAgIHJlbmRlciAoKSB7XG5cbiAgICAgICAgbGV0IHJlZGlyZWN0ID0gdW5kZWZpbmVkXG5cbiAgICAgICAgaWYgKHRoaXMuc3RhdGUucmVkaXJlY3QpIHtcbiAgICAgICAgICAgIHJlZGlyZWN0ID0gPFJlZGlyZWN0IHRvPScvbG9naW4nPjwvUmVkaXJlY3Q+XG4gICAgICAgIH1cbiAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSdtYWluJyBiYWNrZ3JvdW5kPVwiLi9zdGF0aWMvYmFja2dyb3VuZC5wbmdcIj5cbiAgICAgICAgICAgICAgICA8QnV0dG9uIG9uQ2xpY2s9e3RoaXMubG9naW59PkxvZ2luPC9CdXR0b24+XG4gICAgICAgICAgICAgICAge3JlZGlyZWN0fVxuICAgICAgICAgICAgPC9kaXY+ICBcbiAgICAgICAgKVxuICAgIH1cblxufSJdfQ==
