@@ -31,7 +31,6 @@ export default class Login extends React.Component {
   
 login(e) {
     e.preventDefault();
-    alert('You are logged in');
     this.setState({
       redirect_user: true
     })
