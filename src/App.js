@@ -9,7 +9,7 @@ import './App.scss';
 function App(props) {
   return (
 
-  <div className="App" backgroundImage="./static/background.png">
+  <div className="App">
     <Route path="/" exact component={Main} />
     <Route path="/user" exact component={User} />
     <Route path="/login" exact component={Login} />

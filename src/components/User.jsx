@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles/User.scss";
 import { Navbar, Nav, NavDropdown, Button, Form, FormControl } from 'react-bootstrap';
+import Dashboard from "./Dashboard/Dashboard";
 
 
 export default class User extends React.Component {
@@ -11,11 +12,27 @@ export default class User extends React.Component {
     this.state = {
       name: 'Richard Walmsley'
     }
+
+    this.modifyUserSetting = this.modifyUserSetting.bind(this);
+  }
+
+  modifyUserSetting(setting, value) {
+    this.setState({
+      [setting]: value,
+    })
   }
 
   render () {
+    
+    let dashboardStyle = {
+      width: '100%',
+      height: '100%'    
+    }
+    
     return (
+
       <div className="User">
+        
         <Navbar bg="light" expand="lg">
           <Navbar.Brand href="#home">{this.state.name}</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -37,6 +54,12 @@ export default class User extends React.Component {
             </Form>
           </Navbar.Collapse>
         </Navbar>
+
+        <Dashboard
+          modifyUserSetting={this.modifyUserSetting}
+          style={dashboardStyle}
+        ></Dashboard>
+      
       </div>
     );
   }
