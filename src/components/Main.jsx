@@ -1,6 +1,5 @@
 import React from 'react';
 import Login from './Login';
-import UserContainer from './UserContainer';
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom'
 

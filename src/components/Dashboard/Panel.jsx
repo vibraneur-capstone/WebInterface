@@ -2,7 +2,7 @@ import React from 'react';
 import TitleBar from './TitleBar.jsx';
 import Draggable from 'react-draggable';
 import SingleBearing from './DashBoardPanels/SingleBearing.jsx';
-
+import { Resizable } from 're-resizable';
 
 export default class Panel extends React.Component {
     constructor(props) {
@@ -22,13 +22,14 @@ export default class Panel extends React.Component {
         console.warn("Removing Panel");
     }
 
-    render () {
+    render() {
 
-        let containerStyle = {
+        let draggableStyle = {
             border: '1px solid black'
         }
 
-        containerStyle = {...containerStyle, ...this.state.style
+        draggableStyle = {
+            ...draggableStyle, ...this.state.style
         }
 
         let titleStyle = {
@@ -40,19 +41,42 @@ export default class Panel extends React.Component {
             let newStyle = {
                 backgroundColor: 'red'
             }
-            containerStyle = {...containerStyle, ...newStyle}
+            draggableStyle = { ...draggableStyle, ...newStyle }
+        }
+
+        let containerStyle = {
+            width: '100%',
+            height: '100%',
         }
 
         return (
-            <Draggable onDrag={() => this.props.changeFocus(this.props.id)}>
-                <div style={containerStyle} onClick={() => this.props.changeFocus(this.props.id)}>
+
+            <Draggable onDrag={(e) => this.props.changeFocus(e, this.props.id)}>
+                <Resizable
+                    size={{ width: this.state.style.width, height: this.state.style.height }}
+                    onResizeStart={(e) => {e.stopPropagation()}}
+                    onResizeStop={(e, direction, ref, d) => {
+                        e.stopPropagation();
+                        this.setState({
+                            style: {
+                                width: this.state.style.width + d.width,
+                                height: this.state.style.height + d.height,
+                            }
+                        });
+                    }}
+                    style={draggableStyle}
+                >
+                <div style={containerStyle} onClick={(e) => this.props.changeFocus(e, this.props.id)}>
                     <TitleBar style={titleStyle}
                         removePanel={this.removePanel}
                     ></TitleBar>
                     <SingleBearing>
                     </SingleBearing>
                 </div>
-            </Draggable>
+                </Resizable>
+
+            </Draggable >
+            
         )
     }
 }

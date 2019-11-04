@@ -8,19 +8,41 @@ export default class Dashboard extends React.Component {
 
         this.state = {
             panelFocus: 'undefined',
-            nextID: 1
+            nextID: 2,
+            panels: [],
         }
         
         this.changeFocus = this.changeFocus.bind(this);
+        this.addSingleBearing = this.addSingleBearing.bind(this);
     }
 
     /*
         Changes the panel that the user is currently focusing on
         id: The id of the component now in focus
     */
-    changeFocus (id) {
+    changeFocus (e, id) {
+        if (e !== undefined) {
+            e.stopPropagation()
+        }
         this.setState({
             panelFocus: id
+        })
+    }
+
+
+    addSingleBearing(bearingID) {
+        let panels = this.state.panels
+
+        panels.push(
+            <Panel
+                id={this.state.nextID}
+                focus={this.state.panelFocus}
+                changeFocus={this.changeFocus}
+            ></Panel>
+        )
+        this.setState({
+            panels: panels,
+            nextID: this.state.nextID + 1
         })
     }
 
@@ -36,22 +58,20 @@ export default class Dashboard extends React.Component {
             bottom: '50px',
             position: 'absolute',
         }
-
-        for (let panel in this.state.panels) {
-
-        }
+        
 
         return (
-            <div style={containerStyle}>
+            <div style={containerStyle} onClick={() => {this.changeFocus(undefined, undefined)}}>
                 <Panel
                     id={1}
                     focus={this.state.panelFocus}
                     changeFocus={this.changeFocus}
                 >
                 </Panel>
-
-                <Button style={addPanelStyle}
-                    
+                {this.state.panels}
+                <Button 
+                    style={addPanelStyle}
+                    onClick={this.addSingleBearing}
                 >+</Button>
             </div>
         )
