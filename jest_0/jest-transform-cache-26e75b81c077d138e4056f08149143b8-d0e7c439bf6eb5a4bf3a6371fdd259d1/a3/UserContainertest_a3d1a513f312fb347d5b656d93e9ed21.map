@@ -1,1 +1,0 @@
-{"version":3,"sources":["UserContainer.test.jsx"],"names":["test","expect","toBe"],"mappings":";;AAAAA,IAAI,CAAC,cAAD,EAAiB,MAAM;AACvBC,EAAAA,MAAM,CAAC,CAAD,CAAN,CAAUC,IAAV,CAAe,CAAf;AACH,CAFG,CAAJ","sourcesContent":["test('testing jest', () => {\n    expect(0).toBe(0);\n})"]}
