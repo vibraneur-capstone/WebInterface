@@ -14,7 +14,7 @@ jest_0/
 *.userosscache
 *.sln.docstates
 package-lock.json
-src/components/__snapshots__/
+*/__snapshots__/
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
