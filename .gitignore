@@ -7,11 +7,14 @@
 .DS_Store
 
 # User-specific files
+node_modules/
+jest_0/
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
-
+package-lock.json
+__snapshots__/
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
