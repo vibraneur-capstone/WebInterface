@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, FormGroup, FormControl, FormLabel, Navbar, NavDropdown, Nav, Form } from "react-bootstrap";
-import "./styles/Login.scss";
+import "../styles/Login.scss";
 import { Redirect } from 'react-router-dom';
 
 
@@ -93,5 +93,4 @@ render() {
     </div>
   );
 }
-  
 }
