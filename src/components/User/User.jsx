@@ -1,8 +1,7 @@
 import React from "react";
-import "./styles/User.scss";
+import "../styles/User.scss";
 import { Navbar, Nav, NavDropdown, Button, Form, FormControl } from 'react-bootstrap';
-import Dashboard from "./Dashboard/Dashboard";
-
+import Dashboard from "../Dashboard/Dashboard";
 
 export default class User extends React.Component {
 
