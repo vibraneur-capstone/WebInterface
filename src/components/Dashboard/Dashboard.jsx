@@ -2,6 +2,7 @@ import React from 'react';
 import Panel from './Panel.jsx';
 import { Button } from 'react-bootstrap';
 import jQuery from 'jquery'; 
+import AddPanel from './DashBoardPanels/AddPanel.jsx';
 
 export default class Dashboard extends React.Component {
     constructor (props) {
@@ -14,6 +15,7 @@ export default class Dashboard extends React.Component {
         }
         
         this.changeFocus = this.changeFocus.bind(this);
+        this.addPanel = this.addPanel.bind(this);
         this.removePanel = this.removePanel.bind(this);
         this.addSingleBearing = this.addSingleBearing.bind(this);
     }
@@ -30,6 +32,16 @@ export default class Dashboard extends React.Component {
         this.setState({
             panelFocus: id
         })
+    }
+
+    addPanel( type ) {
+        switch (type) {
+            case 'Single Bearing':
+                this.addSingleBearing();
+                break;
+            case 'Bearing Dataset':
+                break;
+        }
     }
 
     removePanel(id) {
@@ -82,10 +94,15 @@ export default class Dashboard extends React.Component {
         return (
             <div style={containerStyle} onClick={() => {this.changeFocus(undefined, undefined)}}>
                 {panels}
-                <Button 
+                <AddPanel
+                    style={addPanelStyle}
+                    addPanel={this.addPanel}
+                >
+                </AddPanel>
+                {/*<Button 
                     style={addPanelStyle}
                     onClick={this.addSingleBearing}
-                >+</Button>
+                >+</Button>*/}
             </div>
         )
     }
