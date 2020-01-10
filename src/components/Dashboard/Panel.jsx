@@ -20,6 +20,7 @@ export default class Panel extends React.Component {
 
     removePanel() {
         console.warn("Removing Panel");
+        this.props.removePanel(this.props.id);
     }
 
     render() {

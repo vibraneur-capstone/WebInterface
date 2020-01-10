@@ -14,6 +14,7 @@ export default class Dashboard extends React.Component {
         }
         
         this.changeFocus = this.changeFocus.bind(this);
+        this.removePanel = this.removePanel.bind(this);
         this.addSingleBearing = this.addSingleBearing.bind(this);
     }
 
@@ -22,6 +23,7 @@ export default class Dashboard extends React.Component {
         id: The id of the component now in focus
     */
     changeFocus (e, id) {
+        console.warn("CHANGE FOCUS: ", e, id);
         if (e !== undefined) {
             e.stopPropagation()
         }
@@ -30,17 +32,19 @@ export default class Dashboard extends React.Component {
         })
     }
 
+    removePanel(id) {
+        let panels = this.state.panels;
+        let idx = panels.indexOf(id)
+        panels.splice(idx, 1);
+        this.setState({
+            panels: panels
+        })
+    }
 
-    addSingleBearing(bearingID) {
-        let panels = this.state.panels
+    addSingleBearing() {
+        let panels = this.state.panels;
+        panels.push(this.state.nextID);
 
-        panels.push(
-            <Panel
-                id={this.state.nextID}
-                focus={this.state.panelFocus}
-                changeFocus={this.changeFocus}
-            ></Panel>
-        )
         this.setState({
             panels: jQuery.extend([], panels),
             nextID: this.state.nextID + 1
@@ -48,6 +52,20 @@ export default class Dashboard extends React.Component {
     }
 
     render () {
+        let panels = []
+        console.warn("PANELS: ", this.state.panels);
+        for (let idx in this.state.panels) {
+            console.warn("IDX: ", idx);
+            panels.push (
+                <Panel
+                    id={idx}
+                    key={idx}
+                    focus={this.state.panelFocus}
+                    changeFocus={this.changeFocus}
+                    removePanel={this.removePanel}
+                ></Panel>    
+            )
+        }
 
         let containerStyle = this.props.style;
 
@@ -63,13 +81,7 @@ export default class Dashboard extends React.Component {
 
         return (
             <div style={containerStyle} onClick={() => {this.changeFocus(undefined, undefined)}}>
-                <Panel
-                    id={1}
-                    focus={this.state.panelFocus}
-                    changeFocus={this.changeFocus}
-                >
-                </Panel>
-                {this.state.panels}
+                {panels}
                 <Button 
                     style={addPanelStyle}
                     onClick={this.addSingleBearing}
