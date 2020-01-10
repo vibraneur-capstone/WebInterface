@@ -9,8 +9,11 @@ configure({adapter: new Adapter() });
 
 
 describe('Testing Login', () => {
+    let testConfig = {
+        type: 'Single Bearing'
+    }
     it ('should render correctly', () => {
-        const component = shallow(<Panel/>);
+        const component = shallow(<Panel config={testConfig}/>);
         expect(component).toMatchSnapshot();
     })
 })
