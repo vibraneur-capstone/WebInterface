@@ -9,7 +9,9 @@ export default class AddPanel extends React.Component {
         this.state = {
             types: [
                 'Single Bearing',
-                'Bearing Dataset'
+                'Bearing Dataset',
+                'Unhealthy Bearings',
+                'Bearing Coverage'
             ],
             display: false
         }
@@ -33,7 +35,7 @@ export default class AddPanel extends React.Component {
                         key={type}
                         className='panel_type_button'
                         
-                        onClick={() => this.props.addPanel(this.state.types[type])}
+                        onClick={() => {this.props.addPanel(this.state.types[type]); this.display()}}
                     >{this.state.types[type]}</Button>
                 )
             }    
