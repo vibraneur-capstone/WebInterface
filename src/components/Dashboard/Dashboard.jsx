@@ -1,6 +1,7 @@
 import React from 'react';
 import Panel from './Panel.jsx';
 import { Button } from 'react-bootstrap';
+import jQuery from 'jquery'; 
 
 export default class Dashboard extends React.Component {
     constructor (props) {
@@ -41,7 +42,7 @@ export default class Dashboard extends React.Component {
             ></Panel>
         )
         this.setState({
-            panels: panels,
+            panels: jQuery.extend([], panels),
             nextID: this.state.nextID + 1
         })
     }
