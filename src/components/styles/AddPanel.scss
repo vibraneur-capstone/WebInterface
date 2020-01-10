@@ -1,0 +1,21 @@
+.AddPanel {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    
+    .panel_button_container {
+        width:210px;
+        height:fit-content;
+        bottom: 100px;
+        position: relative;
+        right: 98px;
+    }
+    
+    .panel_type_button {
+        width: 200px;
+        height: 40px;
+        display: block!important;
+        margin: 5px;
+    }
+}
+

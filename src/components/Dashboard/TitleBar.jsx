@@ -29,10 +29,10 @@ export default class TitleBar extends React.Component {
         return (
             <div style={containerStyle}>
                 <Button style={buttonStyle}
-                    onClick={this.removePanel}
+                    onClick={this.props.removePanel}
                 >x</Button>
                 <Button style={buttonStyle}
-                    onClick={this.somethingElse}
+                    onClick={this.props.removePanel}
                 >o</Button>
             </div>
         )

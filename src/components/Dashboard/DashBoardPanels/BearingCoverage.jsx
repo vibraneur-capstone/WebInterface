@@ -13,7 +13,7 @@ export default class BearingCoverage extends React.Component {
     render () {
         return (
             <div>
-                Single Bearing
+                Bearing Coverage
             </div>
         )
     }

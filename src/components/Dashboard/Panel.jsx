@@ -1,7 +1,12 @@
 import React from 'react';
 import TitleBar from './TitleBar.jsx';
 import Draggable from 'react-draggable';
+
 import SingleBearing from './DashBoardPanels/SingleBearing.jsx';
+import BearingDatabase from './DashBoardPanels/BearingDatabase.jsx';
+import UnhealthyBearings from './DashBoardPanels/UnhealthyBearings.jsx';
+import BearingCoverage from './DashBoardPanels/BearingCoverage.jsx';
+
 import { Resizable } from 're-resizable';
 
 export default class Panel extends React.Component {
@@ -9,6 +14,12 @@ export default class Panel extends React.Component {
         super(props);
 
         this.state = {
+            panelTypes: {
+                'Single Bearing': SingleBearing,
+                'Bearing Dataset': BearingDatabase,
+                'Unhealthy Bearings': UnhealthyBearings,
+                'Bearing Coverage': BearingCoverage,
+            },
             style: {
                 height: '300px',
                 width: '300px'
@@ -20,6 +31,11 @@ export default class Panel extends React.Component {
 
     removePanel() {
         console.warn("Removing Panel");
+        this.props.removePanel(this.props.id);
+    }
+
+    choosePanel(type) {
+        
     }
 
     render() {
@@ -48,7 +64,9 @@ export default class Panel extends React.Component {
             width: '100%',
             height: '100%',
         }
-
+        console.warn("PROPS: ", this.props);
+        const TagName = this.state.panelTypes[this.props.config.type];
+        console.warn("TAGNAME: ", TagName)
         return (
 
             <Draggable onDrag={(e) => this.props.changeFocus(e, this.props.id)}>
@@ -70,8 +88,8 @@ export default class Panel extends React.Component {
                     <TitleBar style={titleStyle}
                         removePanel={this.removePanel}
                     ></TitleBar>
-                    <SingleBearing>
-                    </SingleBearing>
+                    <TagName>
+                    </TagName>
                 </div>
                 </Resizable>
 
