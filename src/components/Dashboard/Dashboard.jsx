@@ -1,6 +1,6 @@
 import React from 'react';
 import Panel from './Panel.jsx';
-import jQuery from 'jQuery';
+import jQuery from 'jquery';
 import AddPanel from './DashBoardPanels/AddPanel.jsx';
 
 export default class Dashboard extends React.Component {
