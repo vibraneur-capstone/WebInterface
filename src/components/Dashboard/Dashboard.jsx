@@ -1,7 +1,6 @@
 import React from 'react';
 import Panel from './Panel.jsx';
-import { Button } from 'react-bootstrap';
-import jQuery from 'jquery'; 
+import jQuery from 'jquery';
 import AddPanel from './DashBoardPanels/AddPanel.jsx';
 
 export default class Dashboard extends React.Component {
@@ -12,7 +11,7 @@ export default class Dashboard extends React.Component {
             panelFocus: 'undefined',
             nextID: 2,
             panels: {},
-        }
+        };
         
         this.changeFocus = this.changeFocus.bind(this);
         this.addPanel = this.addPanel.bind(this);
@@ -59,19 +58,19 @@ export default class Dashboard extends React.Component {
     }
 
     render () {
-        let panels = []
+        let panels = [];
         console.warn("PANELS: ", this.state.panels);
-        for (let key in this.state.panels) {
-            let obj = this.state.panels[key];
+        for (const key in this.state.panels) {
+            const obj = this.state.panels[key];
             panels.push (
                 <Panel
-                    id={key}
-                    key={key}
-                    config={obj}
-                    focus={this.state.panelFocus}
-                    changeFocus={this.changeFocus}
-                    removePanel={this.removePanel}
-                ></Panel>    
+    id={key}
+    key={key}
+    config={obj}
+    focus={this.state.panelFocus}
+    changeFocus={this.changeFocus}
+    removePanel={this.removePanel}
+    />
             )
         }
 
@@ -84,7 +83,7 @@ export default class Dashboard extends React.Component {
             right: '50px',
             bottom: '50px',
             position: 'absolute',
-        }
+        };
         
 
         return (
