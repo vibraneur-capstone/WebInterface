@@ -23,10 +23,13 @@ export default class Panel extends React.Component {
             style: {
                 height: '300px',
                 width: '300px'
-            }
+            },
+            draggable: true,
         }
 
         this.removePanel = this.removePanel.bind(this);
+        this.toggleDraggable = this.toggleDraggable.bind(this);
+        this.choosePanel = this.choosePanel.bind(this);
     }
 
     removePanel() {
@@ -38,10 +41,17 @@ export default class Panel extends React.Component {
         
     }
 
+    toggleDraggable () {
+        this.setState({
+            draggable: !this.state.draggable
+        })
+    }
+
     render() {
 
         let draggableStyle = {
-            border: '4px solid f8f9fa'
+            border: '4px solid #f8f9fa',
+            backgroundColor: '#f8f9fa'
         }
 
         draggableStyle = {
@@ -55,7 +65,7 @@ export default class Panel extends React.Component {
 
         if (this.props.focus === this.props.id) {
             let newStyle = {
-                backgroundColor: '#f8f9fa'
+                border: '4px solid #d2d3d4'
             }
             draggableStyle = { ...draggableStyle, ...newStyle }
         }
@@ -69,7 +79,10 @@ export default class Panel extends React.Component {
         console.warn("TAGNAME: ", TagName)
         return (
 
-            <Draggable onDrag={(e) => this.props.changeFocus(e, this.props.id)}>
+            <Draggable 
+                onDrag={(e) => this.props.changeFocus(e, this.props.id)}
+                disabled={!this.state.draggable}
+            >
                 <Resizable
                     size={{ width: this.state.style.width, height: this.state.style.height }}
                     onResizeStart={(e) => {e.stopPropagation()}}
@@ -87,6 +100,7 @@ export default class Panel extends React.Component {
                 <div style={containerStyle} onClick={(e) => this.props.changeFocus(e, this.props.id)}>
                     <TitleBar style={titleStyle}
                         removePanel={this.removePanel}
+                        toggleDraggable={this.toggleDraggable}
                     ></TitleBar>
                     <TagName>
                     </TagName>

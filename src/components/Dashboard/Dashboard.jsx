@@ -64,13 +64,13 @@ export default class Dashboard extends React.Component {
             const obj = this.state.panels[key];
             panels.push (
                 <Panel
-    id={key}
-    key={key}
-    config={obj}
-    focus={this.state.panelFocus}
-    changeFocus={this.changeFocus}
-    removePanel={this.removePanel}
-    />
+                id={key}
+                key={key}
+                config={obj}
+                focus={this.state.panelFocus}
+                changeFocus={this.changeFocus}
+                removePanel={this.removePanel}
+                />
             )
         }
 
