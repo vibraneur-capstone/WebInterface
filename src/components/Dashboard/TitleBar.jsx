@@ -19,11 +19,13 @@ export default class TitleBar extends React.Component {
 
         let buttonStyle = {
             border: '1px solid gray',
-            radius: '50%',
-            position: 'absolute',
-            right: '0px',
-            width: '10px',
-            height: '30px',
+            'border-radius': '50%',
+            position: 'relative',
+            float: 'right',
+            top: '5px',
+            right: '5px',
+            width: '25px',
+            height: '25px',
         }
 
         return (
@@ -32,7 +34,7 @@ export default class TitleBar extends React.Component {
                     onClick={this.props.removePanel}
                 >x</Button>
                 <Button style={buttonStyle}
-                    onClick={this.props.removePanel}
+                    onClick={this.props.toggleDraggable}
                 >o</Button>
             </div>
         )
