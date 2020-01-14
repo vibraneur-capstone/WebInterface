@@ -50,7 +50,6 @@ export default class Panel extends React.Component {
     render() {
 
         let draggableStyle = {
-            border: '4px solid #f8f9fa',
             backgroundColor: '#f8f9fa'
         }
 
@@ -65,7 +64,6 @@ export default class Panel extends React.Component {
 
         if (this.props.focus === this.props.id) {
             let newStyle = {
-                border: '4px solid #d2d3d4'
             }
             draggableStyle = { ...draggableStyle, ...newStyle }
         }
@@ -97,7 +95,7 @@ export default class Panel extends React.Component {
                     }}
                     style={draggableStyle}
                 >
-                <div style={containerStyle} onClick={(e) => this.props.changeFocus(e, this.props.id)}>
+                <div style={containerStyle} className='panelContainer' onClick={(e) => this.props.changeFocus(e, this.props.id)}>
                     <TitleBar style={titleStyle}
                         removePanel={this.removePanel}
                         toggleDraggable={this.toggleDraggable}
