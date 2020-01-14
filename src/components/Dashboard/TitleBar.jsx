@@ -38,7 +38,7 @@ export default class TitleBar extends React.Component {
                     onClick={this.props.toggleDraggable}
                 ></Button>
                 <Button style={buttonStyle}
-                    onClick={this.props.toggleDraggable}
+                    onClick={this.props.toggleMaximize}
                 ></Button>
             </div>
         )
