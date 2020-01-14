@@ -69,6 +69,11 @@ export default class Panel extends React.Component {
     render() {
 
         let draggableStyle = {
+
+    render() {
+
+        let draggableStyle = {
+            border: '4px solid #f8f9fa',
             backgroundColor: '#f8f9fa'
         }
 
@@ -83,6 +88,7 @@ export default class Panel extends React.Component {
 
         if (this.props.focus === this.props.id) {
             let newStyle = {
+                border: '4px solid #d2d3d4'
             }
             draggableStyle = { ...draggableStyle, ...newStyle }
         }
@@ -119,6 +125,7 @@ export default class Panel extends React.Component {
                 onStop={(e, draggable) => this.saveState(draggable)}
                 disabled={!this.state.draggable}
                 position={position}
+                disabled={!this.state.draggable}
             >
                 <Resizable
                     enable={resizePermissions}
