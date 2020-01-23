@@ -22,3 +22,25 @@ describe('Testing Change Focus', () => {
         expect(component.state('panelFocus')).toBe(10)
     })
 })
+
+describe('Test Panel Add and Remove',() => {
+
+    const component = shallow(<Dashboard/>)
+    const instance = component.instance();
+
+
+    it ('should add a panel', () => {
+        let nextID = component.state('nextID') + 1;
+        instance.addPanel('Single Bearing');
+        expect(component.state('nextID')).toBe(nextID);
+        let panels = component.state('panels')
+        expect(Object.keys(panels).length).toBe(1);
+    })
+
+    it ('should add a panel and then successfully remove it', () => {
+        instance.removePanel(2);
+        let panels = component.state('panels');
+        expect(Object.keys(panels).length).toBe(0);
+    })
+
+})

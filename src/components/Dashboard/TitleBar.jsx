@@ -24,18 +24,22 @@ export default class TitleBar extends React.Component {
             float: 'right',
             top: '5px',
             right: '5px',
-            width: '25px',
-            height: '25px',
+            width: '17px',
+            height: '17px',
+            padding: '0px',
         }
 
         return (
             <div style={containerStyle}>
                 <Button style={buttonStyle}
                     onClick={this.props.removePanel}
-                >x</Button>
+                ></Button>
                 <Button style={buttonStyle}
                     onClick={this.props.toggleDraggable}
-                >o</Button>
+                ></Button>
+                <Button style={buttonStyle}
+                    onClick={this.props.toggleMaximize}
+                ></Button>
             </div>
         )
     }
