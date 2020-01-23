@@ -18,13 +18,13 @@ describe('Testing displaying Panel Types', () => {
     it ('should toggle showing the panel types on and off', () => {
         const component = shallow(<AddPanel/>);
         const instance = component.instance();
-        let initialState = instance.state('display');
+        let initialState = component.state('display');
         expect(initialState).toBe(false);
         instance.display();
-        let newState = instance.state('display');
+        let newState = component.state('display');
         expect(newState).toBe(true);
         instance.display();
-        let finalState = instance.state('display');
+        let finalState = component.state('display');
         expect(finalState).toBe(false);
     })
 })
