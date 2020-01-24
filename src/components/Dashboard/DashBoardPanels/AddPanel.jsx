@@ -29,7 +29,6 @@ export default class AddPanel extends React.Component {
         let buttons = [];
         if (this.state.display) {
             for (let type in this.state.types) {
-                console.warn("TYPE: ", type)
                 buttons.push(
                     <Button
                         key={type}
