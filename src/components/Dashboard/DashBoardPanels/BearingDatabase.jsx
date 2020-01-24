@@ -96,6 +96,20 @@ export default class BearingDatabase extends React.Component {
             
             table = <FilterableTable
                 data={sensors}
+                fields={
+                    [{
+                        name: 'id',
+                        displayName: "ID",
+                        inputFilterable: true,
+                        sortable: true
+                    },
+                    {
+                        name: 'status',
+                        displayName: "Status",
+                        inputFilterable: true,
+                        sortable: false,
+                    }]
+                }
             ></FilterableTable>
         }
         

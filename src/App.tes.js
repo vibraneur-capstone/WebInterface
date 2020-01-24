@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+jest.unmock('react-plotly.js');
+
 import App from './App';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';

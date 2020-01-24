@@ -137,7 +137,9 @@ export default class Panel extends React.Component {
                         toggleDraggable={this.toggleDraggable}
                         toggleMaximize={this.toggleMaximize}
                     ></TitleBar>
-                    <TagName>
+                    <TagName
+                        style={{width: '100%', height: 'calc(100% - 30px)'}}
+                    >
                     </TagName>
                 </div>
                 </Resizable>

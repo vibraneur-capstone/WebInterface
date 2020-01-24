@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-
-import Dashboard from './Dashboard';
+jest.unmock('react-plotly.js');
+import Dashboard from './Dashboard.jsx';
 
 
 configure({adapter: new Adapter() });
