@@ -24,11 +24,13 @@ export default class Panel extends React.Component {
                 height: '300px',
                 width: '300px'
             },
+            maximized: false,
             draggable: true,
         }
 
         this.removePanel = this.removePanel.bind(this);
         this.toggleDraggable = this.toggleDraggable.bind(this);
+        this.toggleMaximize = this.toggleMaximize.bind(this);
         this.choosePanel = this.choosePanel.bind(this);
     }
 
@@ -47,10 +49,26 @@ export default class Panel extends React.Component {
         })
     }
 
+    toggleMaximize () {
+        this.setState({
+            maximized: !this.state.maximized
+        })
+        this.toggleDraggable()
+    }
+
+    saveState(state) {
+        console.warn("ON STOP: ", state.lastX, state.lastY);
+        this.setState({
+            offset: {
+                x: state.lastX,
+                y: state.lastY,
+            }
+        })
+    }
+
     render() {
 
         let draggableStyle = {
-            border: '4px solid #f8f9fa',
             backgroundColor: '#f8f9fa'
         }
 
@@ -59,13 +77,15 @@ export default class Panel extends React.Component {
         }
 
         let titleStyle = {
-            border: '1px solid f8f9fa',
+            border: '1px solid #f8f9fa',
             width: '100%',
         }
 
         if (this.props.focus === this.props.id) {
             let newStyle = {
-                border: '4px solid #d2d3d4'
+==== BASE ====
+                backgroundColor: '#f8f9fa'
+==== BASE ====
             }
             draggableStyle = { ...draggableStyle, ...newStyle }
         }
@@ -77,14 +97,35 @@ export default class Panel extends React.Component {
         console.warn("PROPS: ", this.props);
         const TagName = this.state.panelTypes[this.props.config.type];
         console.warn("TAGNAME: ", TagName)
+
+        let size;
+        let position;
+        let resizePermissions = undefined;
+        if (this.state.maximized) {
+            size = {
+                height: '100%',
+                width: '100%',
+            }
+            position = {
+                x: 0,
+                y: 0,
+            }
+            resizePermissions = { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }
+        } else {
+            size = { width: this.state.style.width, height: this.state.style.height }
+            position = this.state.lastState
+        }
         return (
 
             <Draggable 
                 onDrag={(e) => this.props.changeFocus(e, this.props.id)}
+                onStop={(e, draggable) => this.saveState(draggable)}
                 disabled={!this.state.draggable}
+                position={position}
             >
                 <Resizable
-                    size={{ width: this.state.style.width, height: this.state.style.height }}
+                    enable={resizePermissions}
+                    size={size}
                     onResizeStart={(e) => {e.stopPropagation()}}
                     onResizeStop={(e, direction, ref, d) => {
                         e.stopPropagation();
@@ -97,10 +138,11 @@ export default class Panel extends React.Component {
                     }}
                     style={draggableStyle}
                 >
-                <div style={containerStyle} onClick={(e) => this.props.changeFocus(e, this.props.id)}>
+                <div style={containerStyle} className='panelContainer' onClick={(e) => this.props.changeFocus(e, this.props.id)}>
                     <TitleBar style={titleStyle}
                         removePanel={this.removePanel}
                         toggleDraggable={this.toggleDraggable}
+                        toggleMaximize={this.toggleMaximize}
                     ></TitleBar>
                     <TagName>
                     </TagName>
