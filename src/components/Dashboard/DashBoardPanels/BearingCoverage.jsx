@@ -4,6 +4,10 @@ import Plot from 'react-plotly.js';
 export default class BearingCoverage extends React.Component {
     constructor(props) {
         super(props);
+        
+        this.state = {
+            
+        }
     }
 
     render() {
