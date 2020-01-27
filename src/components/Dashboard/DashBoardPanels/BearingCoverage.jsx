@@ -17,9 +17,12 @@ export default class BearingCoverage extends React.Component {
                     data={[{
                         values: [19, 26, 55],
                         labels: ['Residential', 'Non-Residential', 'Utility'],
+                        textinfo: "label+percent",
+                        textposition: "inside",
+                        hole: .3,
                         type: 'pie'
                     }]}
-                    layout={{autosize: true,  showlegend: false, margin: {l: 10, r: 10, b: 10, t: 10}}}
+                    layout={{ autosize: true,  showlegend: false, margin: {l: 10, r: 10, b: 10, t: 10}}}
                     
                 ></Plot>
             </div>
