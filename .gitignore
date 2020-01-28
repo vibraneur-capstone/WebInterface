@@ -9,6 +9,7 @@
 # User-specific files
 node_modules/
 jest_0/
+coverage/
 *.suo
 *.user
 *.userosscache
