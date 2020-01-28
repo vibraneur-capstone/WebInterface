@@ -10,6 +10,7 @@
 node_modules/
 jest_0/
 coverage/
+build
 *.suo
 *.user
 *.userosscache
@@ -335,6 +336,3 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
-
-coverage
-build
