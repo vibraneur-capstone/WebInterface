@@ -9,6 +9,8 @@
 # User-specific files
 node_modules/
 jest_0/
+coverage/
+build
 *.suo
 *.user
 *.userosscache

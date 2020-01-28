@@ -35,7 +35,6 @@ export default class Panel extends React.Component {
     }
 
     removePanel() {
-        console.warn("Removing Panel");
         this.props.removePanel(this.props.id);
     }
 
@@ -57,7 +56,6 @@ export default class Panel extends React.Component {
     }
 
     saveState(state) {
-        console.warn("ON STOP: ", state.lastX, state.lastY);
         this.setState({
             offset: {
                 x: state.lastX,
@@ -91,10 +89,8 @@ export default class Panel extends React.Component {
             width: '100%',
             height: '100%',
         }
-        console.warn("PROPS: ", this.props);
         const TagName = this.state.panelTypes[this.props.config.type];
-        console.warn("TAGNAME: ", TagName)
-
+        
         let size;
         let position;
         let resizePermissions = undefined;
@@ -141,7 +137,9 @@ export default class Panel extends React.Component {
                         toggleDraggable={this.toggleDraggable}
                         toggleMaximize={this.toggleMaximize}
                     ></TitleBar>
-                    <TagName>
+                    <TagName
+                        style={{width: '100%', height: 'calc(100% - 30px)'}}
+                    >
                     </TagName>
                 </div>
                 </Resizable>

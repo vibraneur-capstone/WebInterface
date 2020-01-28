@@ -24,7 +24,6 @@ export default class Dashboard extends React.Component {
         id: The id of the component now in focus
     */
     changeFocus (e, id) {
-        console.warn("CHANGE FOCUS: ", e, id);
         if (e !== undefined) {
             e.stopPropagation()
         }
@@ -44,13 +43,11 @@ export default class Dashboard extends React.Component {
     }
 
     addPanel(type) {
-        console.warn("TYPE: ", type)
         let panels = jQuery.extend({}, this.state.panels);
 
         panels[this.state.nextID] = {
             type: type
         }
-        console.warn("PANELS: ", panels)
         this.setState({
             panels: panels,
             nextID: this.state.nextID + 1
@@ -59,7 +56,6 @@ export default class Dashboard extends React.Component {
 
     render () {
         let panels = [];
-        console.warn("PANELS: ", this.state.panels);
         for (const key in this.state.panels) {
             const obj = this.state.panels[key];
             panels.push (
