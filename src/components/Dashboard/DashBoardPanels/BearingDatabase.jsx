@@ -23,31 +23,28 @@ export default class BearingDatabase extends React.Component {
         //let url = 'https://sensor.vibraneur.com/inventory/v1/org/ford-mortor/machine/modling-machine/sensors?status=ONLINE'
 
         // Create mock response for testing
-        let test = {
-            "sensorList": [
-                {
-                    "id": 'b14567',
-                    "status": 'ONLINE'
-                },
-                {
-                    "id": 'b14568',
-                    "status": 'OFFLINE'
-                },
-                {
-                    "id": 'b14569',
-                    "status": 'DECOMMISSIONED'
-                },
-                {
-                    "id": 'b14570',
-                    "status": 'ONLINE'
-                },
-                {
-                    "id": 'b14571',
-                    "status": 'ONLINE'
-                },
-            ],
-            "count": 5
-        }
+        let test = [
+            {
+                "id": 'b14567',
+                "status": 'ONLINE'
+            },
+            {
+                "id": 'b14568',
+                "status": 'OFFLINE'
+            },
+            {
+                "id": 'b14569',
+                "status": 'DECOMMISSIONED'
+            },
+            {
+                "id": 'b14570',
+                "status": 'ONLINE'
+            },
+            {
+                "id": 'b14571',
+                "status": 'ONLINE'
+            },
+        ]
 
         this.updateSensors('sensors', test);
 
