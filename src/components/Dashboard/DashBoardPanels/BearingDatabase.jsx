@@ -20,10 +20,11 @@ export default class BearingDatabase extends React.Component {
     }
 
     getSensors() {
-        //let url = 'https://sensor.vibraneur.com/inventory/v1/org/ford-mortor/machine/modling-machine/sensors?status=ONLINE'
-
+        let url = 'https://sensor.vibraneur.com/inventory/v1/org/husky/sensors?status=ONLINE'
+        this.sendRequest(url);
+    
         // Create mock response for testing
-        let test = [
+        /*let test = [
             {
                 "id": 'b14567',
                 "status": 'ONLINE'
@@ -47,8 +48,7 @@ export default class BearingDatabase extends React.Component {
         ]
 
         this.updateSensors('sensors', test);
-
-        //this.sendRequest(url);
+        */
     }
 
     updateSensors(id, value) {
@@ -89,7 +89,7 @@ export default class BearingDatabase extends React.Component {
 
         let table;
         if (this.state.sensors !== undefined) {
-            let sensors = this.state.sensors.sensorList;
+            let sensors = this.state.sensors;
             
             table = <FilterableTable
                 data={sensors}
