@@ -10,6 +10,10 @@ export default class BearingCoverage extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.props.setTitle('Coverage')
+    }
+
     render() {
         return (
             <div style={{width: '100%', height: 'calc(100% - 30px)' }}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import FilterableTable from 'react-filterable-table';
 
@@ -17,14 +18,15 @@ export default class BearingDatabase extends React.Component {
 
     componentDidMount() {
         this.getSensors();
+        this.props.setTitle('Sensors')
     }
 
     getSensors() {
-        let url = 'https://sensor.vibraneur.com/inventory/v1/org/husky/sensors?status=ONLINE'
-        this.sendRequest(url);
+        //let url = 'https://sensor.vibraneur.com/inventory/v1/org/husky/sensors?status=ONLINE'
+        //this.sendRequest(url);
     
         // Create mock response for testing
-        /*let test = [
+        let test = [
             {
                 "id": 'b14567',
                 "status": 'ONLINE'
@@ -47,8 +49,23 @@ export default class BearingDatabase extends React.Component {
             },
         ]
 
+        for (let sensor in test) {
+            console.warn("SENSOR: ", sensor);
+            console.warn("SENSOR OBJ: ", test[sensor]);
+            console.warn("SENSOR ID: ", test[sensor].id);
+            let sensor_obj = test[sensor];
+            if (sensor_obj !== undefined) {
+                console.warn("ID EXISTS: ", sensor_obj.id);
+                let id = sensor_obj.id
+                sensor_obj.id = <Button onClick={ () => this.props.addPanel('Single Bearing', {'id': id})}>{id}</Button>
+            }
+
+            console.warn("SENSOR OBJ: ", sensor_obj)
+            test[sensor] = sensor_obj;
+        }
+
         this.updateSensors('sensors', test);
-        */
+        //*/
     }
 
     updateSensors(id, value) {
@@ -98,13 +115,15 @@ export default class BearingDatabase extends React.Component {
                         name: 'id',
                         displayName: "ID",
                         inputFilterable: true,
-                        sortable: true
+                        sortable: true,
+                        emptyDisplay: '--'
                     },
                     {
                         name: 'status',
                         displayName: "Status",
                         inputFilterable: true,
-                        sortable: false,
+                        sortable: true,
+                        emptyDisplay: '--'
                     }]
                 }
             ></FilterableTable>

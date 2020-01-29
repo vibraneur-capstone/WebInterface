@@ -17,3 +17,15 @@ describe('Testing Login', () => {
         expect(component).toMatchSnapshot();
     })
 })
+
+describe('Test setTitle()', () => {
+    let testConfig = {
+        type: 'Single Bearing'
+    }
+    const component = shallow(<Panel config={testConfig}/>)
+
+    expect(component.state('panelTitle')).toBe(undefined);
+    let instance = component.instance();
+    instance.setTitle('Coverage');
+    expect(component.state('panelTitle')).toBe('Coverage');
+})

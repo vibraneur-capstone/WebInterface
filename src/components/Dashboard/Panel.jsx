@@ -31,15 +31,11 @@ export default class Panel extends React.Component {
         this.removePanel = this.removePanel.bind(this);
         this.toggleDraggable = this.toggleDraggable.bind(this);
         this.toggleMaximize = this.toggleMaximize.bind(this);
-        this.choosePanel = this.choosePanel.bind(this);
+        this.setTitle = this.setTitle.bind(this);
     }
 
     removePanel() {
         this.props.removePanel(this.props.id);
-    }
-
-    choosePanel(type) {
-        
     }
 
     toggleDraggable () {
@@ -61,6 +57,12 @@ export default class Panel extends React.Component {
                 x: state.lastX,
                 y: state.lastY,
             }
+        })
+    }
+
+    setTitle(title) {
+        this.setState({
+            panelTitle: title
         })
     }
 
@@ -89,7 +91,7 @@ export default class Panel extends React.Component {
             width: '100%',
             height: '100%',
         }
-        const TagName = this.state.panelTypes[this.props.config.type];
+        const Content = this.state.panelTypes[this.props.config.type];
         
         let size;
         let position;
@@ -136,11 +138,15 @@ export default class Panel extends React.Component {
                         removePanel={this.removePanel}
                         toggleDraggable={this.toggleDraggable}
                         toggleMaximize={this.toggleMaximize}
+                        title={this.state.panelTitle}
                     ></TitleBar>
-                    <TagName
+                    <Content
                         style={{width: '100%', height: 'calc(100% - 30px)'}}
+                        config={this.props.config}
+                        setTitle={this.setTitle}
+                        addPanel={this.props.addPanel}
                     >
-                    </TagName>
+                    </Content>
                 </div>
                 </Resizable>
 

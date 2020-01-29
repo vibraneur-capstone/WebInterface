@@ -31,6 +31,7 @@ export default class TitleBar extends React.Component {
 
         return (
             <div style={containerStyle}>
+                <h5 style={{float: 'left', 'padding-left': '10px'}}>{this.props.title}</h5>
                 <Button style={buttonStyle}
                     onClick={this.props.removePanel}
                 ></Button>

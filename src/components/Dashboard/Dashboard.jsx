@@ -42,12 +42,17 @@ export default class Dashboard extends React.Component {
         })
     }
 
-    addPanel(type) {
+    addPanel(type, config) {
         let panels = jQuery.extend({}, this.state.panels);
 
         panels[this.state.nextID] = {
-            type: type
+            type: type,
         }
+
+        if (config !== undefined) {
+            panels[this.state.nextID] = {...panels[this.state.nextID], ...config}
+        }
+
         this.setState({
             panels: panels,
             nextID: this.state.nextID + 1
@@ -65,6 +70,7 @@ export default class Dashboard extends React.Component {
                 config={obj}
                 focus={this.state.panelFocus}
                 changeFocus={this.changeFocus}
+                addPanel={this.addPanel}
                 removePanel={this.removePanel}
                 />
             )

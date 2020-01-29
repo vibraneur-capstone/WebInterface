@@ -6,10 +6,11 @@ import BearingCoverage from './BearingCoverage';
 
 
 configure({adapter: new Adapter() });
+let func = function () {};
 
 describe('Testing Login', () => {
     it ('should render correctly', () => {
-        const component = shallow(<BearingCoverage/>);
+        const component = shallow(<BearingCoverage setTitle={func}/>);
         expect(component).toMatchSnapshot();
     })
 })

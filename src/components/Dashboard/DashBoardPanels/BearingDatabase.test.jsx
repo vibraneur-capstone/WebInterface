@@ -7,17 +7,18 @@ import BearingDatabase from './BearingDatabase';
 
 
 configure({adapter: new Adapter() });
+let func = function () {};
 
 describe('Testing Login', () => {
     it ('should render correctly', () => {
-        const component = shallow(<BearingDatabase/>);
+        const component = shallow(<BearingDatabase setTitle={func}/>);
         expect(component).toMatchSnapshot();
     })
 })
 
 describe('Testing updateSensors()', () => {
     it ('Should store the the provided sensors in state', () => {
-        const component = shallow(<BearingDatabase></BearingDatabase>);
+        const component = shallow(<BearingDatabase setTitle={func}></BearingDatabase>);
         const instance = component.instance();
         let test = {
             "sensorList": [

@@ -6,8 +6,20 @@ export default class SingleBearing extends React.Component {
         super(props);
 
         this.state = {
-
+            id: "b1453645"
         }
+    }
+
+    componentDidMount() {
+        if ('config' in this.props) {
+            let config = this.props.config;
+            if ('id' in config) {
+                this.props.setTitle(config.id);
+            }
+        } else {
+            this.props.setTitle(this.state.id);
+        }
+        
     }
 
     render () {
