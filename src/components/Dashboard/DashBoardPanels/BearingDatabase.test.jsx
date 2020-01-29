@@ -16,6 +16,7 @@ describe('Testing Login', () => {
     })
 })
 
+/*
 describe('Testing updateSensors()', () => {
     it ('Should store the the provided sensors in state', () => {
         const component = shallow(<BearingDatabase setTitle={func}></BearingDatabase>);
@@ -48,4 +49,4 @@ describe('Testing updateSensors()', () => {
         instance.updateSensors('sensors', test)
         expect(component.state('sensors')).toBe(test)
     })
-})
+})*/

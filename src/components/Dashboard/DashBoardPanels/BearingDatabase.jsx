@@ -22,11 +22,11 @@ export default class BearingDatabase extends React.Component {
     }
 
     getSensors() {
-        //let url = 'https://sensor.vibraneur.com/inventory/v1/org/husky/sensors?status=ONLINE'
-        //this.sendRequest(url);
+        let url = 'https://sensor.vibraneur.com/inventory/v1/org/husky/sensors?status=ONLINE'
+        this.sendRequest(url, this.updateSensors);
     
         // Create mock response for testing
-        let test = [
+        /*let test = [
             {
                 "id": 'b14567',
                 "status": 'ONLINE'
@@ -49,20 +49,7 @@ export default class BearingDatabase extends React.Component {
             },
         ]
 
-        for (let sensor in test) {
-            console.warn("SENSOR: ", sensor);
-            console.warn("SENSOR OBJ: ", test[sensor]);
-            console.warn("SENSOR ID: ", test[sensor].id);
-            let sensor_obj = test[sensor];
-            if (sensor_obj !== undefined) {
-                console.warn("ID EXISTS: ", sensor_obj.id);
-                let id = sensor_obj.id
-                sensor_obj.id = <Button onClick={ () => this.props.addPanel('Single Bearing', {'id': id})}>{id}</Button>
-            }
-
-            console.warn("SENSOR OBJ: ", sensor_obj)
-            test[sensor] = sensor_obj;
-        }
+        
 
         this.updateSensors('sensors', test);
         //*/
@@ -70,6 +57,22 @@ export default class BearingDatabase extends React.Component {
 
     updateSensors(id, value) {
         if (id === 'sensors') {
+
+            for (let sensor in value) {
+                console.warn("SENSOR: ", sensor);
+                console.warn("SENSOR OBJ: ", value[sensor]);
+                console.warn("SENSOR ID: ", value[sensor].id);
+                let sensor_obj = value[sensor];
+                if (sensor_obj !== undefined) {
+                    console.warn("ID EXISTS: ", sensor_obj.id);
+                    let id = sensor_obj.id
+                    sensor_obj.id = <Button onClick={ () => this.props.addPanel('Single Bearing', {'id': id})}>{id}</Button>
+                }
+    
+                console.warn("SENSOR OBJ: ", sensor_obj)
+                value[sensor] = sensor_obj;
+            }
+
             this.setState({
                 sensors: value
             })
@@ -88,7 +91,7 @@ export default class BearingDatabase extends React.Component {
             console.warn("Data: ", response.data);
             // Check to make sure the data has actually been returned
             if (response.data !== undefined) {
-                let sensors = response.data.sensorList;
+                let sensors = response.data;
                 if (sensors === undefined) {
                     console.warn("Empty Response");
                     return;
@@ -119,7 +122,7 @@ export default class BearingDatabase extends React.Component {
                         emptyDisplay: '--'
                     },
                     {
-                        name: 'status',
+                        name: 'sensor_status',
                         displayName: "Status",
                         inputFilterable: true,
                         sortable: true,

@@ -6,10 +6,11 @@ import SingleBearing from './SingleBearing.jsx';
 
 
 configure({adapter: new Adapter() });
+let func = function () {};
 
 describe('Testing Login', () => {
     it ('should render correctly', () => {
-        const component = shallow(<SingleBearing/>);
+        const component = shallow(<SingleBearing setTitle={func}/>);
         expect(component).toMatchSnapshot();
     })
 })
