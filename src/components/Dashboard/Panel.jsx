@@ -22,9 +22,15 @@ export default class Panel extends React.Component {
             },
             style: {
                 height: '300px',
-                width: '300px'
+                width: '700px'
             },
+            offset: {
+                x: 0,
+                y: 0,
+            },
+            lastState: undefined,
             maximized: false,
+            reset: false,
             draggable: true,
         }
 
@@ -52,12 +58,15 @@ export default class Panel extends React.Component {
     }
 
     saveState(state) {
-        this.setState({
-            offset: {
-                x: state.lastX,
-                y: state.lastY,
-            }
-        })
+        if (!this.state.maximized) {
+            this.setState({
+                offset: {
+                    x: state.lastX,
+                    y: state.lastY,
+                }
+            })
+        }
+        
     }
 
     setTitle(title) {
@@ -108,7 +117,7 @@ export default class Panel extends React.Component {
             resizePermissions = { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }
         } else {
             size = { width: this.state.style.width, height: this.state.style.height }
-            position = this.state.lastState
+            position = this.state.offset
         }
         return (
 
@@ -124,7 +133,18 @@ export default class Panel extends React.Component {
                     onResizeStart={(e) => {e.stopPropagation()}}
                     onResizeStop={(e, direction, ref, d) => {
                         e.stopPropagation();
+                        console.warn("E: ", e);
+                        console.warn("DIRECTION: ", direction);
+                        console.warn("REF: ", ref);
+                        console.warn("D: ", d);
+                        if (direction === 'topLeft' || direction === 'topRight') {
+                            console.warn("POSITION CHANGE REQUIRED")
+                        }
                         this.setState({
+                            offset: {
+                                x: this.state.offset.x,// - d.width,
+                                y: this.state.offset.y// - d.height,
+                            },
                             style: {
                                 width: this.state.style.width + d.width,
                                 height: this.state.style.height + d.height,

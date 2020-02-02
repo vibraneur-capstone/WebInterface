@@ -22,7 +22,7 @@ export default class BearingDatabase extends React.Component {
     }
 
     getSensors() {
-        let url = 'https://sensor.vibraneur.com/inventory/v1/org/husky/sensors?status=ONLINE'
+        let url = 'https://sensor.vibraneur.com/inventory/v1/husky/sensors?status=ONLINE'
         this.sendRequest(url, this.updateSensors);
     
         // Create mock response for testing
@@ -91,7 +91,7 @@ export default class BearingDatabase extends React.Component {
             console.warn("Data: ", response.data);
             // Check to make sure the data has actually been returned
             if (response.data !== undefined) {
-                let sensors = response.data;
+                let sensors = response.data.sensors;
                 if (sensors === undefined) {
                     console.warn("Empty Response");
                     return;
@@ -112,6 +112,7 @@ export default class BearingDatabase extends React.Component {
             let sensors = this.state.sensors;
             
             table = <FilterableTable
+                className='sensor_table'
                 data={sensors}
                 fields={
                     [{
@@ -134,7 +135,7 @@ export default class BearingDatabase extends React.Component {
         
 
         return (
-            <div>
+            <div style={{width: '100%', height: 'calc(100% - 30px)' }}>
                 {table}
             </div>
         )
