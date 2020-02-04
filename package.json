@@ -18,6 +18,7 @@
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-draggable": "^4.2.0",
+    "react-filter-search": "^1.0.9",
     "react-filterable-table": "^0.3.434",
     "react-plotly.js": "^2.4.0",
     "react-router": "^5.1.2",

@@ -14,7 +14,7 @@ export default class Toolbar extends React.Component {
         return (
             <div className='toolbar'>
                 <Navbar bg="light" expand="lg">
-                    <Navbar.Brand href="#home">{this.props.user}</Navbar.Brand>
+                    <Navbar.Brand onClick={this.props.toggleSettings} href="#home">{this.props.user}</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
