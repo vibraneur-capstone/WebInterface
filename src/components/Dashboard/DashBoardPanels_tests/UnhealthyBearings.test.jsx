@@ -2,14 +2,14 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import SingleBearing from './SingleBearing.jsx';
+import UnhealthyBearings from '../DashBoardPanels/UnhealthyBearings.jsx';
 
 
 configure({adapter: new Adapter() });
 
 describe('Testing Login', () => {
     it ('should render correctly', () => {
-        const component = shallow(<SingleBearing/>);
+        const component = shallow(<UnhealthyBearings/>);
         expect(component).toMatchSnapshot();
     })
 })

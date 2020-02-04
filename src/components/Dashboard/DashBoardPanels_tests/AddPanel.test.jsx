@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import AddPanel from './AddPanel.jsx';
+import AddPanel from '../DashBoardPanels/AddPanel.jsx';
 
 
 configure({adapter: new Adapter() });

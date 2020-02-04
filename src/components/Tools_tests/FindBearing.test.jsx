@@ -2,14 +2,14 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import UnhealthyBearings from './UnhealthyBearings';
+import FindBearing from '../Tools/FindBearing.jsx';
 
 
 configure({adapter: new Adapter() });
 
-describe('Testing Login', () => {
+describe('Testing Icon Render', () => {
     it ('should render correctly', () => {
-        const component = shallow(<UnhealthyBearings/>);
+        const component = shallow(<FindBearing/>);
         expect(component).toMatchSnapshot();
     })
 })

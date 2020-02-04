@@ -6,6 +6,7 @@ import SingleBearing from './DashBoardPanels/SingleBearing.jsx';
 import BearingDatabase from './DashBoardPanels/BearingDatabase.jsx';
 import UnhealthyBearings from './DashBoardPanels/UnhealthyBearings.jsx';
 import BearingCoverage from './DashBoardPanels/BearingCoverage.jsx';
+import BearingCount from './DashBoardPanels/BearingCount.jsx';
 
 import { Resizable } from 're-resizable';
 
@@ -19,27 +20,30 @@ export default class Panel extends React.Component {
                 'Bearing Dataset': BearingDatabase,
                 'Unhealthy Bearings': UnhealthyBearings,
                 'Bearing Coverage': BearingCoverage,
+                'Bearing Count': BearingCount,
             },
             style: {
                 height: '300px',
-                width: '300px'
+                width: '700px'
             },
+            offset: {
+                x: 0,
+                y: 0,
+            },
+            lastState: undefined,
             maximized: false,
+            reset: false,
             draggable: true,
         }
 
         this.removePanel = this.removePanel.bind(this);
         this.toggleDraggable = this.toggleDraggable.bind(this);
         this.toggleMaximize = this.toggleMaximize.bind(this);
-        this.choosePanel = this.choosePanel.bind(this);
+        this.setTitle = this.setTitle.bind(this);
     }
 
     removePanel() {
         this.props.removePanel(this.props.id);
-    }
-
-    choosePanel(type) {
-        
     }
 
     toggleDraggable () {
@@ -56,11 +60,20 @@ export default class Panel extends React.Component {
     }
 
     saveState(state) {
+        if (!this.state.maximized) {
+            this.setState({
+                offset: {
+                    x: state.lastX,
+                    y: state.lastY,
+                }
+            })
+        }
+        
+    }
+
+    setTitle(title) {
         this.setState({
-            offset: {
-                x: state.lastX,
-                y: state.lastY,
-            }
+            panelTitle: title
         })
     }
 
@@ -89,7 +102,7 @@ export default class Panel extends React.Component {
             width: '100%',
             height: '100%',
         }
-        const TagName = this.state.panelTypes[this.props.config.type];
+        const Content = this.state.panelTypes[this.props.config.type];
         
         let size;
         let position;
@@ -106,7 +119,7 @@ export default class Panel extends React.Component {
             resizePermissions = { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }
         } else {
             size = { width: this.state.style.width, height: this.state.style.height }
-            position = this.state.lastState
+            position = this.state.offset
         }
         return (
 
@@ -122,7 +135,18 @@ export default class Panel extends React.Component {
                     onResizeStart={(e) => {e.stopPropagation()}}
                     onResizeStop={(e, direction, ref, d) => {
                         e.stopPropagation();
+                        console.warn("E: ", e);
+                        console.warn("DIRECTION: ", direction);
+                        console.warn("REF: ", ref);
+                        console.warn("D: ", d);
+                        if (direction === 'topLeft' || direction === 'topRight') {
+                            console.warn("POSITION CHANGE REQUIRED")
+                        }
                         this.setState({
+                            offset: {
+                                x: this.state.offset.x,// - d.width,
+                                y: this.state.offset.y// - d.height,
+                            },
                             style: {
                                 width: this.state.style.width + d.width,
                                 height: this.state.style.height + d.height,
@@ -136,11 +160,15 @@ export default class Panel extends React.Component {
                         removePanel={this.removePanel}
                         toggleDraggable={this.toggleDraggable}
                         toggleMaximize={this.toggleMaximize}
+                        title={this.state.panelTitle}
                     ></TitleBar>
-                    <TagName
+                    <Content
                         style={{width: '100%', height: 'calc(100% - 30px)'}}
+                        config={this.props.config}
+                        setTitle={this.setTitle}
+                        addPanel={this.props.addPanel}
                     >
-                    </TagName>
+                    </Content>
                 </div>
                 </Resizable>
 
