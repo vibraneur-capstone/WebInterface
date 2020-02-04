@@ -21,7 +21,7 @@ export default class BearingCoverage extends React.Component {
     }
 
     getCoverage() {
-        let url = 'https://sensor.vibraneur.com/inventory/v1/husky/sensors/count'
+        let url = 'https://sensor.vibraneur.com/inventory/v1/husky/bearing/count'
         this.sendRequest(url, this.updateCoverage);
     }
 

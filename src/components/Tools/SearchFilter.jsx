@@ -53,7 +53,7 @@ export default class SearchFilter extends React.Component {
         axios.get(url).then(function (response) {
             // Check to make sure the data has actually been returned
             if (response.data !== undefined) {
-                let sensors = response.data.sensors;
+                let sensors = response.data.bearingList;
                 if (sensors === undefined) {
                     return;
                 } else {
@@ -87,7 +87,7 @@ export default class SearchFilter extends React.Component {
     />
 
         let content;
-        if (this.state.value === undefined) {
+        if (this.state.value === '') {
             content = [input]
         } else {
             content = [input, results];

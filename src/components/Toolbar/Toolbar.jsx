@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Button, Form, FormControl } from 'react-bootstrap';
-import FindBearing from '../../Tools/FindBearing.jsx';
+import FindBearing from '../Tools/FindBearing.jsx';
 
 export default class Toolbar extends React.Component {
     constructor(props) {

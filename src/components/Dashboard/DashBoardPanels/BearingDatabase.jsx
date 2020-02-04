@@ -21,10 +21,18 @@ export default class BearingDatabase extends React.Component {
         this.props.setTitle('Sensors')
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.sensors !== nextState.sensors) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     getSensors() {
-        let url = 'https://sensor.vibraneur.com/inventory/v1/husky/bearings/?status=ALL'
+        let url = 'https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=ALL'
         this.sendRequest(url, this.updateSensors);
-    
+
         // Create mock response for testing
         /*let test = [
             {
@@ -57,25 +65,20 @@ export default class BearingDatabase extends React.Component {
 
     updateSensors(id, value) {
         if (id === 'sensors') {
-
             for (let sensor in value) {
-                console.warn("SENSOR: ", sensor);
-                console.warn("SENSOR OBJ: ", value[sensor]);
-                console.warn("SENSOR ID: ", value[sensor].id);
-                let sensor_obj = value[sensor];
+                let sensor_obj = value[sensor]
                 if (sensor_obj !== undefined) {
-                    console.warn("ID EXISTS: ", sensor_obj.id);
                     let id = sensor_obj.id
-                    sensor_obj.id = <Button onClick={ () => this.props.addPanel('Single Bearing', {'id': id})}>{id}</Button>
+                    sensor_obj.id = <Button onClick={() => this.props.addPanel('Single Bearing', { 'id': id })}>{id}</Button>
                 }
-    
-                console.warn("SENSOR OBJ: ", sensor_obj)
+
                 value[sensor] = sensor_obj;
             }
 
             this.setState({
                 sensors: value
             })
+
         } else {
             throw new Error('Invalid Parameter')
         }
@@ -91,7 +94,7 @@ export default class BearingDatabase extends React.Component {
             console.warn("Data: ", response.data);
             // Check to make sure the data has actually been returned
             if (response.data !== undefined) {
-                let sensors = response.data.sensors;
+                let sensors = response.data.bearingList;
                 if (sensors === undefined) {
                     console.warn("Empty Response");
                     return;
@@ -110,7 +113,7 @@ export default class BearingDatabase extends React.Component {
         let table;
         if (this.state.sensors !== undefined) {
             let sensors = this.state.sensors;
-            
+
             table = <FilterableTable
                 className='sensor_table'
                 data={sensors}
@@ -123,7 +126,7 @@ export default class BearingDatabase extends React.Component {
                         emptyDisplay: '--'
                     },
                     {
-                        name: 'sensor_status',
+                        name: 'status',
                         displayName: "Status",
                         inputFilterable: true,
                         sortable: true,
@@ -132,10 +135,10 @@ export default class BearingDatabase extends React.Component {
                 }
             ></FilterableTable>
         }
-        
+
 
         return (
-            <div style={{width: '100%', height: 'calc(100% - 30px)' }}>
+            <div style={{ width: '100%', height: 'calc(100% - 30px)' }}>
                 {table}
             </div>
         )
