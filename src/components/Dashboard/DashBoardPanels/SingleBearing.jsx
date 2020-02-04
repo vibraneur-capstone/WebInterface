@@ -1,6 +1,6 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import FindBearing from './FindBearing.jsx'
+import FindBearing from '../../Tools/FindBearing.jsx';
 export default class SingleBearing extends React.Component {
     constructor(props) {
         super(props);

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import SingleBearing from './SingleBearing.jsx';
+import SingleBearing from '../DashBoardPanels/SingleBearing.jsx';
 
 
 configure({adapter: new Adapter() });

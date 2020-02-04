@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import FilterResults from 'react-filter-search';
 import { Button } from 'react-bootstrap';
+
 export default class SearchFilter extends React.Component {
     constructor(props) {
         super(props);
@@ -66,25 +67,35 @@ export default class SearchFilter extends React.Component {
     }
 
     render() {
+        let input = <input type="text" value={this.state.value} placeholder={'search'} onChange={this.handleChange} />
+                
+        let results = <FilterResults
+        value={this.state.value}
+        data={this.state.data}
+        renderResults={results => (
+            <div>
+                {results.map(el => (
+                    <Button
+                        onClick={() => this.props.setBearing(el.id)}
+                    >
+                        <span>{el.id}</span>
+                        <span>{el.status}</span>
+                    </Button>
+                ))}
+            </div>
+        )}
+    />
+
+        let content;
+        if (this.state.value === undefined) {
+            content = [input]
+        } else {
+            content = [input, results];
+        }
+
         return (
             <div>
-                <input type="text" value={this.state.value} onChange={this.handleChange} />
-                <FilterResults
-                    value={this.state.value}
-                    data={this.state.data}
-                    renderResults={results => (
-                        <div>
-                            {results.map(el => (
-                                <Button
-                                    onClick={() => this.props.setBearing(el.id)}
-                                >
-                                    <span>{el.id}</span>
-                                    <span>{el.status}</span>
-                                </Button>
-                            ))}
-                        </div>
-                    )}
-                />
+                {content}        
             </div>
         );
     }

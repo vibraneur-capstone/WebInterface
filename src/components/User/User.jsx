@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/User.scss";
 
 import Dashboard from "../Dashboard/Dashboard";
-import Toolbar from "../Toolbar/Toolbar";
+import Toolbar from "../Toolbar/Toolbar.jsx";
 import UserSettings from './UserSetting.jsx';
 export default class User extends React.Component {
 

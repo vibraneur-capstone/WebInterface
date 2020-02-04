@@ -6,6 +6,7 @@ import SingleBearing from './DashBoardPanels/SingleBearing.jsx';
 import BearingDatabase from './DashBoardPanels/BearingDatabase.jsx';
 import UnhealthyBearings from './DashBoardPanels/UnhealthyBearings.jsx';
 import BearingCoverage from './DashBoardPanels/BearingCoverage.jsx';
+import BearingCount from './DashBoardPanels/BearingCount.jsx';
 
 import { Resizable } from 're-resizable';
 
@@ -19,6 +20,7 @@ export default class Panel extends React.Component {
                 'Bearing Dataset': BearingDatabase,
                 'Unhealthy Bearings': UnhealthyBearings,
                 'Bearing Coverage': BearingCoverage,
+                'Bearing Count': BearingCount,
             },
             style: {
                 height: '300px',

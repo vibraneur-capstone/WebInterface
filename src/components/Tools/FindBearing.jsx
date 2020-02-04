@@ -8,7 +8,7 @@ export default class FindBearing extends React.Component {
             <div>
                 <SearchFilter
                     setBearing={this.props.changeBearing}
-                    dataSource='https://sensor.vibraneur.com/inventory/v1/husky/sensors?status=ONLINE'
+                    dataSource='https://sensor.vibraneur.com/inventory/v1/husky/bearings'
                 ></SearchFilter>
             </div>
         )

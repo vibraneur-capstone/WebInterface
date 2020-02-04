@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import BearingDatabase from './BearingDatabase';
+import BearingDatabase from '../DashBoardPanels/BearingDatabase.jsx';
 
 
 configure({adapter: new Adapter() });

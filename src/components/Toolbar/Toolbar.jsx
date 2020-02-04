@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Button, Form, FormControl } from 'react-bootstrap';
+import FindBearing from '../../Tools/FindBearing.jsx';
 
 export default class Toolbar extends React.Component {
     constructor(props) {
@@ -8,6 +9,12 @@ export default class Toolbar extends React.Component {
             enableSearch: false,
             enableDropdowns: false
         }
+        
+        this.launchSingleBearing = this.launchSingleBearing.bind(this);
+    }
+
+    launchSingleBearing() {
+
     }
 
     render() {
@@ -15,6 +22,7 @@ export default class Toolbar extends React.Component {
             <div className='toolbar'>
                 <Navbar bg="light" expand="lg">
                     <Navbar.Brand onClick={this.props.toggleSettings} href="#home">{this.props.user}</Navbar.Brand>
+                    {/* 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
@@ -28,11 +36,16 @@ export default class Toolbar extends React.Component {
                                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
-                        <Form inline>
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                            <Button variant="outline-success">Search</Button>
-                        </Form>
+                        
                     </Navbar.Collapse>
+                    */}
+                    <Form inline>
+                            <FindBearing
+                                changeBearing={this.launchSingleBearing}
+                            ></FindBearing>
+                            {/*<FormControl type="text" placeholder="Search" className="mr-sm-2" />*/}
+                            {/*<Button variant="outline-success">Search</Button>*/}
+                    </Form>
                 </Navbar>
             </div>
         )

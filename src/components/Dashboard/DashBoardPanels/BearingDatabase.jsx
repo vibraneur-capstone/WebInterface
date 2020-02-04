@@ -22,7 +22,7 @@ export default class BearingDatabase extends React.Component {
     }
 
     getSensors() {
-        let url = 'https://sensor.vibraneur.com/inventory/v1/husky/sensors?status=ONLINE'
+        let url = 'https://sensor.vibraneur.com/inventory/v1/husky/bearings/?status=ALL'
         this.sendRequest(url, this.updateSensors);
     
         // Create mock response for testing

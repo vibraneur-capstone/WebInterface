@@ -2,15 +2,14 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import BearingCoverage from './BearingCoverage';
+import UnhealthyBearings from '../DashBoardPanels/UnhealthyBearings.jsx';
 
 
 configure({adapter: new Adapter() });
-let func = function () {};
 
 describe('Testing Login', () => {
     it ('should render correctly', () => {
-        const component = shallow(<BearingCoverage setTitle={func}/>);
+        const component = shallow(<UnhealthyBearings/>);
         expect(component).toMatchSnapshot();
     })
 })
