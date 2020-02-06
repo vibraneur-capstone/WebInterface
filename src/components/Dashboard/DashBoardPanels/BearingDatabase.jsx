@@ -30,7 +30,11 @@ export default class BearingDatabase extends React.Component {
     }
 
     getSensors() {
-        let url = 'https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=ALL'
+        let status = 'ALL';
+        if ('status' in this.props) {
+            status = this.props.status;
+        }
+        let url = 'https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=' + status;
         this.sendRequest(url, this.updateSensors);
 
         // Create mock response for testing
