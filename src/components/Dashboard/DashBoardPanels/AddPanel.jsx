@@ -12,7 +12,8 @@ export default class AddPanel extends React.Component {
                 'Bearing Dataset',
                 'Unhealthy Bearings',
                 'Bearing Coverage',
-                'Bearing Count'
+                'Bearing Count',
+                'Add Component'
             ],
             display: false
         }

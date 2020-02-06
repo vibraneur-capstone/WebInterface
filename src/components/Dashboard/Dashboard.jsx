@@ -7,6 +7,14 @@ export default class Dashboard extends React.Component {
     constructor (props) {
         super (props);
 
+        if ('config' in this.props) {
+            this.state = {
+                panels: this.props.config.panels,
+                nextID: this.props.config.panels.length + 1,
+                panelFocus: 'undefined',
+            }
+        }
+
         this.state = {
             panelFocus: 'undefined',
             nextID: 2,

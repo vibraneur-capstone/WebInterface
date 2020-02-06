@@ -69,7 +69,7 @@ export default class BearingDatabase extends React.Component {
                 let sensor_obj = value[sensor]
                 if (sensor_obj !== undefined) {
                     let id = sensor_obj.id
-                    sensor_obj.id = <Button onClick={() => this.props.addPanel('Single Bearing', { 'id': id })}>{id}</Button>
+                    sensor_obj.id = <Button className='databaseID' onClick={() => this.props.addPanel('Single Bearing', { 'id': id })}>{id}</Button>
                 }
 
                 value[sensor] = sensor_obj;
@@ -138,7 +138,7 @@ export default class BearingDatabase extends React.Component {
 
 
         return (
-            <div style={{ width: '100%', height: 'calc(100% - 30px)' }}>
+            <div className='BearingDatabase' style={{ width: '100%', height: 'calc(100% - 30px)' }}>
                 {table}
             </div>
         )

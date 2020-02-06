@@ -9,31 +9,57 @@ import BearingCoverage from './DashBoardPanels/BearingCoverage.jsx';
 import BearingCount from './DashBoardPanels/BearingCount.jsx';
 
 import { Resizable } from 're-resizable';
+import AddComponent from './DashBoardPanels/AddComponent.jsx';
 
 export default class Panel extends React.Component {
     constructor(props) {
         super(props);
+        let panelTypes = {
+            'Single Bearing': SingleBearing,
+            'Bearing Dataset': BearingDatabase,
+            'Unhealthy Bearings': UnhealthyBearings,
+            'Bearing Coverage': BearingCoverage,
+            'Bearing Count': BearingCount,
+            'Add Component': AddComponent,
+        };
+
+        let style = {
+            height: '300px',
+            width: '700px'
+        };
+        let offset = {
+            x: 0,
+            y: 0,
+        };
+        let maximized = false;
+        let draggable = true;
+        if ('config' in this.props) {
+            if ('size' in this.props.config) {
+                style = this.props.config.size;
+            }
+
+            if ('position' in this.props.config) {
+                offset = this.props.config.position;
+            }
+
+            if ('maximized' in this.props.config) {
+                maximized = this.props.config.maximized;
+            }
+
+            if ('draggable' in this.props.config) {
+                draggable = this.props.config.draggable;
+            }  
+        }
 
         this.state = {
-            panelTypes: {
-                'Single Bearing': SingleBearing,
-                'Bearing Dataset': BearingDatabase,
-                'Unhealthy Bearings': UnhealthyBearings,
-                'Bearing Coverage': BearingCoverage,
-                'Bearing Count': BearingCount,
-            },
-            style: {
-                height: '300px',
-                width: '700px'
-            },
-            offset: {
-                x: 0,
-                y: 0,
-            },
+            panelTypes: panelTypes,
             lastState: undefined,
-            maximized: false,
-            reset: false,
-            draggable: true,
+            reset: undefined,
+            style: style,
+            offset:offset,
+            maximized: maximized,
+            draggable: draggable
+            
         }
 
         this.removePanel = this.removePanel.bind(this);
@@ -164,7 +190,7 @@ export default class Panel extends React.Component {
                     ></TitleBar>
                     <Content
                         style={{width: '100%', height: 'calc(100% - 30px)'}}
-                        config={this.props.config}
+                        config={this.props.config.config}
                         setTitle={this.setTitle}
                         addPanel={this.props.addPanel}
                     >
