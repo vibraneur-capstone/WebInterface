@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import SearchFilter from '../../Tools/SearchFilter';
 
 export default class AddComponent extends React.Component{
     constructor(props) {
@@ -32,19 +33,29 @@ export default class AddComponent extends React.Component{
         })
     }
 
-    updateTagName(e) {
-        console.warn("updateTagName(E): ", e);
+    updateTagName(idx, name) {
+        let tags = this.state.tags;
+        tags.tagNames[idx] = name;
+
+        this.setState({
+            tags: tags
+        })
     }
 
-    updateTagValue(e) {
-        console.warn("updateTagValue(E): ", e);
+    updateTagValue(idx, value) {
+        let tags = this.state.tags;
+        tags.tagValues[idx] = value;
+        
+        this.setState({
+            tags: tags
+        })
     }
 
     render() {
 
         let tags = [
-            <div className='add_idTag'>
-                    <h4 className='inline'>ID</h4>
+            <div className='add_generalTag'>
+                    <div className='inline'>ID</div>
                     <h4 className='inline'> : </h4>
                     <input className='inline inputBox'></input>
             </div>    
@@ -53,19 +64,21 @@ export default class AddComponent extends React.Component{
         for (let tag in this.state.tags.tagNames) {
             console.warn("TAG:", tag);
             tags.push(<div className='add_generalTag'>
-                <input className='inline'></input>
+                <input onChange={(e) => this.updateTagName(tag, e.target.value)} className='inline'></input>
                 <h4 className='inline'> : </h4>
-                <input className='inline'></input>
+                <input onChange={(e) => this.updateTagValue(tag, e.target.value)} className='inline'></input>
             </div>)
         }
         
 
         return (
             <div style={{width: '100%', height: 'calc(100% - 30px)' }}>
-                {tags}
-                <Button onClick={this.addUserTag}>Add Tag</Button>
-
-                <h4>Attach Sensor</h4>
+                <div className='tagContainer'>
+                    {tags}
+                    <Button onClick={this.addUserTag}>Add Tag</Button>
+                    <div>Attach Sensor:</div>
+                    <SearchFilter></SearchFilter>
+                </div>
             </div>
         )
     }
