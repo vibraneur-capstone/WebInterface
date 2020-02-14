@@ -7,11 +7,27 @@ import Dashboard from './Dashboard';
 
 configure({adapter: new Adapter() });
 
-describe('Testing Login', () => {
+describe('Testing Component Rendering', () => {
     it ('should render correctly', () => {
         const component = shallow(<Dashboard/>);
         expect(component).toMatchSnapshot();
     })
+
+    let config = {
+        panels: [{
+        size: {height: '300px', width: '700px'},
+        position: { x: 0, y: 0},
+        maximized: false,
+        draggable: true,
+        type: 'Single Bearing'
+        }]
+    }
+
+    it ('should load with config settings', () => {
+        const component = shallow(<Dashboard config={config}/>);
+        expect(component).toMatchSnapshot();
+    })
+
 })
 
 describe('Testing Change Focus', () => {

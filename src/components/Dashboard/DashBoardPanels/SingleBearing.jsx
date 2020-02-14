@@ -6,8 +6,8 @@ export default class SingleBearing extends React.Component {
         super(props);
 
         this.state = {
-            id: "b1453645",
-            search: false
+            id: undefined,
+            search: true,
         }
 
         this.changeBearing = this.changeBearing.bind(this);
@@ -16,16 +16,13 @@ export default class SingleBearing extends React.Component {
     componentDidMount() {
         if ('config' in this.props) {
             let config = this.props.config;
-            if ('id' in config) {
+            if (config !== undefined && 'id' in config) {
                 this.props.setTitle(config.id);
-            } else {
-                // We have to search for the bearing from user input
                 this.setState({
-                    search: true,
+                    search: false
                 })
             }
         }
-
     }
 
     changeBearing (bearing_id) {

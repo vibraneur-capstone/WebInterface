@@ -75,6 +75,7 @@ export default class User extends React.Component {
         <Dashboard
           modifyUserSetting={this.modifyUserSetting}
           style={dashboardStyle}
+          /*config={{panels: [{ type: 'Single Bearing', size: {height: '300px', width: '700px'}, position: {x: 100, y: 100}, maximized: false, draggable: true}]}}*/
         ></Dashboard>
       
       </div>

@@ -17,8 +17,20 @@ export default class BearingDatabase extends React.Component {
     }
 
     componentDidMount() {
+        if ('config' in this.props) {
+            let config = this.props.config;
+            if (config !== undefined && 'id' in config) {
+                this.props.setTitle(config.id);
+            } else {
+                // We have to search for the bearing from user input
+                this.setState({
+                    search: true,
+                })
+            }
+        } else {
+            this.props.setTitle('Sensors')
+        }
         this.getSensors();
-        this.props.setTitle('Sensors')
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -36,35 +48,6 @@ export default class BearingDatabase extends React.Component {
         }
         let url = 'https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=' + status;
         this.sendRequest(url, this.updateSensors);
-
-        // Create mock response for testing
-        /*let test = [
-            {
-                "id": 'b14567',
-                "status": 'ONLINE'
-            },
-            {
-                "id": 'b14568',
-                "status": 'OFFLINE'
-            },
-            {
-                "id": 'b14569',
-                "status": 'DECOMMISSIONED'
-            },
-            {
-                "id": 'b14570',
-                "status": 'ONLINE'
-            },
-            {
-                "id": 'b14571',
-                "status": 'ONLINE'
-            },
-        ]
-
-        
-
-        this.updateSensors('sensors', test);
-        //*/
     }
 
     updateSensors(id, value) {

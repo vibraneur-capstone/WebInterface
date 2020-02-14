@@ -8,18 +8,20 @@ export default class Dashboard extends React.Component {
         super (props);
 
         if ('config' in this.props) {
+            console.warn("this.props.config: ", this.props.config);
             this.state = {
                 panels: this.props.config.panels,
                 nextID: this.props.config.panels.length + 1,
                 panelFocus: 'undefined',
             }
+        } else {
+            this.state = {
+                panelFocus: 'undefined',
+                nextID: 2,
+                panels: {},
+            };    
         }
 
-        this.state = {
-            panelFocus: 'undefined',
-            nextID: 2,
-            panels: {},
-        };
         
         this.changeFocus = this.changeFocus.bind(this);
         this.addPanel = this.addPanel.bind(this);
@@ -73,13 +75,13 @@ export default class Dashboard extends React.Component {
             const obj = this.state.panels[key];
             panels.push (
                 <Panel
-                id={key}
-                key={key}
-                config={obj}
-                focus={this.state.panelFocus}
-                changeFocus={this.changeFocus}
-                addPanel={this.addPanel}
-                removePanel={this.removePanel}
+                    id={key}
+                    key={key}
+                    config={obj}
+                    focus={this.state.panelFocus}
+                    changeFocus={this.changeFocus}
+                    addPanel={this.addPanel}
+                    removePanel={this.removePanel}
                 />
             )
         }

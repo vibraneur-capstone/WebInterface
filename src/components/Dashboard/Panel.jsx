@@ -7,9 +7,10 @@ import BearingDatabase from './DashBoardPanels/BearingDatabase.jsx';
 import UnhealthyBearings from './DashBoardPanels/UnhealthyBearings.jsx';
 import BearingCoverage from './DashBoardPanels/BearingCoverage.jsx';
 import BearingCount from './DashBoardPanels/BearingCount.jsx';
+import AddBearing from './DashBoardPanels/AddBearing.jsx';
+import AddSensor from './DashBoardPanels/AddSensor.jsx';
 
 import { Resizable } from 're-resizable';
-import AddComponent from './DashBoardPanels/AddComponent.jsx';
 
 export default class Panel extends React.Component {
     constructor(props) {
@@ -20,12 +21,13 @@ export default class Panel extends React.Component {
             'Unhealthy Bearings': UnhealthyBearings,
             'Bearing Coverage': BearingCoverage,
             'Bearing Count': BearingCount,
-            'Add Component': AddComponent,
+            'Add Bearing': AddBearing,
+            'Add Sensor': AddSensor,
         };
 
         let style = {
             height: '300px',
-            width: '700px'
+            width: '450px'
         };
         let offset = {
             x: 0,
