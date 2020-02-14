@@ -4,6 +4,8 @@ import "../styles/User.scss";
 import Dashboard from "../Dashboard/Dashboard";
 import Toolbar from "../Toolbar/Toolbar.jsx";
 import UserSettings from './UserSetting.jsx';
+import Search from '../Toolbar/Search.jsx';
+
 export default class User extends React.Component {
 
   constructor(props) {
@@ -71,6 +73,8 @@ export default class User extends React.Component {
           user={this.state.name}
           toggleSettings={this.toggleSettings}
         ></Toolbar>
+        <Search>
+        </Search>
         {settings}
         <Dashboard
           modifyUserSetting={this.modifyUserSetting}

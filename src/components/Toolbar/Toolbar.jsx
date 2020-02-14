@@ -10,11 +10,6 @@ export default class Toolbar extends React.Component {
             enableDropdowns: false
         }
         
-        this.launchSingleBearing = this.launchSingleBearing.bind(this);
-    }
-
-    launchSingleBearing() {
-
     }
 
     render() {
@@ -39,13 +34,6 @@ export default class Toolbar extends React.Component {
                         
                     </Navbar.Collapse>
                     */}
-                    <Form inline>
-                            <FindBearing
-                                changeBearing={this.launchSingleBearing}
-                            ></FindBearing>
-                            {/*<FormControl type="text" placeholder="Search" className="mr-sm-2" />*/}
-                            {/*<Button variant="outline-success">Search</Button>*/}
-                    </Form>
                 </Navbar>
             </div>
         )

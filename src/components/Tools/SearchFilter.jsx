@@ -72,18 +72,7 @@ export default class SearchFilter extends React.Component {
         let results = <FilterResults
         value={this.state.value}
         data={this.state.data}
-        renderResults={results => (
-            <div>
-                {results.map(el => (
-                    <Button
-                        onClick={() => this.props.setBearing(el.id)}
-                    >
-                        <span>{el.id}</span>
-                        <span>{el.status}</span>
-                    </Button>
-                ))}
-            </div>
-        )}
+        renderResults={this.props.renderResults}
     />
 
         let content;
