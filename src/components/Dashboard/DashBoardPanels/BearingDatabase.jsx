@@ -125,7 +125,7 @@ export default class BearingDatabase extends React.Component {
 
 
         return (
-            <div className='BearingDatabase' style={{ width: '100%', height: 'calc(100% - 30px)' }}>
+            <div className='inside_panel BearingDatabase'>
                 {table}
             </div>
         )

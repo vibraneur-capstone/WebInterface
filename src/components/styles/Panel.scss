@@ -10,6 +10,12 @@
     box-shadow: 0px 0px 8px 1px #cccecf;
 }
 
+.inside_panel {
+    height: calc(100% - 30px);
+    width: 100%;
+    overflow:scroll;
+}
+
 .react-draggable {
     position: absolute!important;
 }

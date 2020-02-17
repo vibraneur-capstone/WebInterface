@@ -51,7 +51,7 @@ export default class SingleBearing extends React.Component {
             ></Plot>
         }
         return (
-            <div style={{ width: '100%', height: 'calc(100% - 30px)' }}>
+            <div className='inside_panel'>
                 {content}
             </div>
         )

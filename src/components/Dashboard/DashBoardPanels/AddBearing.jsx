@@ -16,6 +16,8 @@ export default class AddComponent extends React.Component{
         this.addUserTag = this.addUserTag.bind(this);
         this.updateTagName = this.updateTagName.bind(this);
         this.updateTagValue = this.updateTagValue.bind(this);
+        this.addBearing = this.addBearing.bind(this);
+        this.results = this.results.bind(this);
     }
 
     componentDidMount() {
@@ -64,36 +66,73 @@ export default class AddComponent extends React.Component{
         })
     }
 
+    addBearing() {
+        console.warn("TAGS: ", this.state.tags);
+    }
+
+    results (results) {
+        return <div>
+            {results.map(el => (
+                <Button
+                    onClick={() => this.props.setBearing(el.id)}
+                    className='searchButton'
+                >
+                    <span>{el.tags.name}</span>
+                    
+                </Button>
+            ))}
+        </div> 
+    }
+
     render() {
 
         let tags = [
-            <div className='add_generalTag'>
-                    <div className='inline'>ID</div>
+            <tr className='add_generalTag'>
+                <td>
+                    <div style={{float: 'left', padding: '8px 5px 8px 5px'}} className='inline'>ID</div>
+                </td>
+                <td>
                     <h4 className='inline'> : </h4>
+                </td>
+                <td>
                     <input className='inline inputBox'></input>
-            </div>    
+                </td>
+            </tr>    
         ]
         
         for (let tag in this.state.tags.tagNames) {
             console.warn("TAG:", tag);
-            tags.push(<div className='add_generalTag'>
-                <input onChange={(e) => this.updateTagName(tag, e.target.value)} className='inline'></input>
-                <h4 className='inline'> : </h4>
-                <input onChange={(e) => this.updateTagValue(tag, e.target.value)} className='inline'></input>
-            </div>)
+            tags.push(<tr className='add_generalTag'>
+                <td>
+                    <input onChange={(e) => this.updateTagName(tag, e.target.value)} className='inline'></input>
+                </td>
+                <td>
+                    <h4 className='inline'> : </h4>
+                </td>
+                <td>
+                    <input onChange={(e) => this.updateTagValue(tag, e.target.value)} className='inline'></input>
+                </td>
+                
+            </tr>)
         }
         
 
         return (
-            <div style={{width: '100%', height: 'calc(100% - 30px)' }}>
+            <div className='inside_panel' style={{ width: '100%', height: 'calc(100% - 30px)' }}>
                 <div className='tagContainer'>
-                    {tags}
+                    <table style={{width: '345px'}}>
+                        {tags}
+                    </table>
                     <Button onClick={this.addUserTag}>Add Tag</Button>
                     <div>Attach Sensor:</div>
                     <SearchFilter
+                        renderResults={this.results}
                         setBearing={this.props.changeBearing}
                         dataSource='https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=ALL'
                     ></SearchFilter>
+                    <Button
+                        onClick={this.addBearing}
+                    ></Button>
                 </div>
             </div>
         )

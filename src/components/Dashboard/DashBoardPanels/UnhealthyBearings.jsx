@@ -29,13 +29,16 @@ export default class UnhealthyBearings extends React.Component {
 
     render () {
         return (
-            <BearingDatabase
-                style={this.props.style}
-                config={this.props.config}
-                setTitle={this.props.setTitle}
-                addPanel={this.props.addPanel}
-                status='ALARM'
-            ></BearingDatabase>
+            <div className='inside_panel'>
+                <BearingDatabase
+                    style={this.props.style}
+                    config={this.props.config}
+                    setTitle={this.props.setTitle}
+                    addPanel={this.props.addPanel}
+                    status='ALARM'
+                ></BearingDatabase>
+            </div>
+            
         )
     }
 }

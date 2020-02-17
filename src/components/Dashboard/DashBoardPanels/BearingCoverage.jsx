@@ -81,7 +81,7 @@ export default class BearingCoverage extends React.Component {
 
     render() {
         return (
-            <div style={{width: '100%', height: 'calc(100% - 30px)' }}>
+            <div className='inside_panel'>
                 <Plot style={{width: '100%', height: '100%'}}
                     data={[{
                         values: this.state.label_vals,
