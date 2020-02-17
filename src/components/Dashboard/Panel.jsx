@@ -31,7 +31,7 @@ export default class Panel extends React.Component {
         };
         let offset = {
             x: 0,
-            y: 0,
+            y: 57,
         };
         let maximized = false;
         let draggable = true;
@@ -116,18 +116,11 @@ export default class Panel extends React.Component {
         //let draggableStyle = this.state.style;
 
         let titleStyle = {
-            border: '1px solid #f8f9fa',
             width: '100%',
+            height: '30px',
+            'background-color': '#246e89',
         }
 
-        if (this.props.focus === this.props.id) {
-            //console.warn("PANEL IN FOCUS:", this.props.focus);
-            /*let newStyle = {
-                'z-index': 1
-            }*/
-            //draggableStyle['z-index'] = 1 //{ ...draggableStyle, ...newStyle }
-            //console.warn("draggableStyle: ", draggableStyle);
-        }
         let containerStyle = {
             width: '100%',
             height: '100%',
@@ -139,12 +132,12 @@ export default class Panel extends React.Component {
         let resizePermissions = undefined;
         if (this.state.maximized) {
             size = {
-                height: '100%',
+                height: 'calc(100% - 57px)',
                 width: '100%',
             }
             position = {
                 x: 0,
-                y: 0,
+                y: 57,
             }
             resizePermissions = { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }
         } else {
@@ -190,7 +183,8 @@ export default class Panel extends React.Component {
                     style={test_style}
                 >
                 <div style={containerStyle} className='panelContainer' onClick={(e) => this.props.changeFocus(e, this.props.id)}>
-                    <TitleBar style={titleStyle}
+                    <TitleBar 
+                        style={titleStyle}
                         removePanel={this.removePanel}
                         toggleDraggable={this.toggleDraggable}
                         toggleMaximize={this.toggleMaximize}
@@ -198,6 +192,7 @@ export default class Panel extends React.Component {
                     ></TitleBar>
                     <Content
                         style={{width: '100%', height: 'calc(100% - 30px)'}}
+                        onClick={(e) => e.stopPropagation()}
                         config={this.props.config.config}
                         setTitle={this.setTitle}
                         addPanel={this.props.addPanel}

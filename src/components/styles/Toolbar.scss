@@ -5,6 +5,7 @@
 
 .toolbar {
     display: block;
-    width: 75%;
+    width: calc(100% - 230px);
     float: left;
+    background-color: #246e89;
 }

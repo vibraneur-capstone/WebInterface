@@ -113,6 +113,9 @@ export default class AddComponent extends React.Component{
                 <td>
                     <input onChange={(e) => this.updateTagValue(tag, e.target.value)} className='inline'></input>
                 </td>
+                <td>
+
+                </td>
                 
             </tr>)
         }
@@ -134,7 +137,7 @@ export default class AddComponent extends React.Component{
                     <Button
                         style={{ height: '38px'}}
                         onClick={this.addBearing}
-                    >Add Bearing</Button>
+                    >Add/Update Bearing</Button>
                 </div>
             </div>
         )

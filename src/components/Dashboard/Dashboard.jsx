@@ -94,6 +94,7 @@ export default class Dashboard extends React.Component {
             borderRadius: '50%',
             right: '50px',
             bottom: '50px',
+            'z-index': 2,
             position: 'absolute',
         };
         

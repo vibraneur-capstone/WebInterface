@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faWindowMaximize, faThumbtack } from '@fortawesome/free-solid-svg-icons'
 
 export default class TitleBar extends React.Component {
     constructor (props) {
@@ -13,12 +14,12 @@ export default class TitleBar extends React.Component {
     render () {
 
         let containerStyle = {
-            width: '100%',
-            height: '30px',
+            
         }
 
+        containerStyle = { ...containerStyle, ...this.props.style};
+
         let buttonStyle = {
-            border: '1px solid gray',
             'border-radius': '50%',
             position: 'relative',
             float: 'right',
@@ -26,21 +27,38 @@ export default class TitleBar extends React.Component {
             right: '5px',
             width: '17px',
             height: '17px',
-            padding: '0px',
+            padding: '2px',
+        }
+
+        let titleStyle = {
+            float: 'left',
+            'padding-left': '10px',
+            color: '#bae7e0',
+        }
+
+        let iconStyle = {
+            'font-size': '12px',
+            'top': '-7px',
         }
 
         return (
             <div style={containerStyle}>
-                <h5 style={{float: 'left', 'padding-left': '10px'}}>{this.props.title}</h5>
-                <Button style={buttonStyle}
+                <h5 style={titleStyle}>{this.props.title}</h5>
+                <button 
+                    className='button_invert'
+                    style={buttonStyle}
                     onClick={this.props.removePanel}
-                ></Button>
-                <Button style={buttonStyle}
+                ><FontAwesomeIcon style={iconStyle} icon={faTimes}/></button>
+                <button 
+                    className='button_invert'
+                    style={buttonStyle}
                     onClick={this.props.toggleDraggable}
-                ></Button>
-                <Button style={buttonStyle}
+                ><FontAwesomeIcon style={iconStyle} icon={faThumbtack}/></button>
+                <button 
+                    className='button_invert'
+                    style={buttonStyle}
                     onClick={this.props.toggleMaximize}
-                ></Button>
+                ><FontAwesomeIcon style={iconStyle} icon={faWindowMaximize}/></button>
             </div>
         )
     }

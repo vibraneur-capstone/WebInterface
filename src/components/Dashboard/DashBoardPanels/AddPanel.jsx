@@ -33,12 +33,11 @@ export default class AddPanel extends React.Component {
         if (this.state.display) {
             for (let type in this.state.types) {
                 buttons.push(
-                    <Button
+                    <button
                         key={type}
-                        className='panel_type_button'
-                        
+                        className='button panel_type_button'
                         onClick={() => {this.props.addPanel(this.state.types[type]); this.display()}}
-                    >{this.state.types[type]}</Button>
+                    >{this.state.types[type]}</button>
                 )
             }    
         }
@@ -48,10 +47,11 @@ export default class AddPanel extends React.Component {
                 <div className='panel_button_container'>
                     {buttons}
                 </div>
-                <Button 
+                <button 
+                    className='button'
                     style={this.props.style}
                     onClick={this.display}
-                >+</Button>
+                >+</button>
             </div>
         )
     }

@@ -48,7 +48,8 @@ export default class User extends React.Component {
     let dashboardStyle = {
       width: this.state.dashBoardWidth,
       height: 'calc(100% - 57px)',
-      float: 'right'
+      float: 'right',
+      display: 'contents',
     }
 
     let settingsStyle = {

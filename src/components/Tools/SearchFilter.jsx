@@ -67,11 +67,10 @@ export default class SearchFilter extends React.Component {
     }
 
     render() {
-        let input = <input type="text" value={this.state.value} placeholder={'search'} onChange={this.handleChange} />
+        let input = <input style={{margin: '10px', float: 'right'}} type="text" value={this.state.value} placeholder={'search'} onChange={this.handleChange} />
                 
-        let results = <div style={{width: '100%', height: '100%'}}>
+        let results = <div style={{width: '100%', height: '100%', 'overflow-y': 'scroll', 'overflow-x': 'hidden', 'background-color': '#246e89', padding: '8px'}}>
             <FilterResults
-                style={{height: '100%', overflow: 'scroll'}}
                 value={this.state.value}
                 data={this.state.data}
                 renderResults={this.props.renderResults}
@@ -86,7 +85,7 @@ export default class SearchFilter extends React.Component {
         }
 
         return (
-            <div style={{ float: 'left', width: '215px', height: '200px'}}>
+            <div style={{ float: 'left', width: '100%', 'max-height': '200px'}}>
                 {content}        
             </div>
         );
