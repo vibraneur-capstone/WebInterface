@@ -27,7 +27,7 @@ export default class Panel extends React.Component {
 
         let style = {
             height: '300px',
-            width: '450px'
+            width: '650px'
         };
         let offset = {
             x: 0,
@@ -107,13 +107,13 @@ export default class Panel extends React.Component {
 
     render() {
 
-        let draggableStyle = {
+        /*let draggableStyle = {
             backgroundColor: '#f8f9fa'
-        }
-
+        }  
         draggableStyle = {
             ...draggableStyle, ...this.state.style
-        }
+        }*/
+        //let draggableStyle = this.state.style;
 
         let titleStyle = {
             border: '1px solid #f8f9fa',
@@ -121,11 +121,13 @@ export default class Panel extends React.Component {
         }
 
         if (this.props.focus === this.props.id) {
-            let newStyle = {
-            }
-            draggableStyle = { ...draggableStyle, ...newStyle }
+            //console.warn("PANEL IN FOCUS:", this.props.focus);
+            /*let newStyle = {
+                'z-index': 1
+            }*/
+            //draggableStyle['z-index'] = 1 //{ ...draggableStyle, ...newStyle }
+            //console.warn("draggableStyle: ", draggableStyle);
         }
-
         let containerStyle = {
             width: '100%',
             height: '100%',
@@ -149,6 +151,14 @@ export default class Panel extends React.Component {
             size = { width: this.state.style.width, height: this.state.style.height }
             position = this.state.offset
         }
+
+        let test_style = undefined;
+        if (this.props.id !== this.props.focus) {
+            test_style = { backgroundColor: '#f8f9fa'}
+        } else {
+            test_style = {backgroundColor: '#f8f9fa', 'z-index': '1'}
+        }
+        
         return (
 
             <Draggable 
@@ -160,13 +170,9 @@ export default class Panel extends React.Component {
                 <Resizable
                     enable={resizePermissions}
                     size={size}
-                    onResizeStart={(e) => {e.stopPropagation()}}
+                    onResizeStart={(e) => {e.stopPropagation(); this.props.changeFocus(undefined, this.props.id)}}
                     onResizeStop={(e, direction, ref, d) => {
                         e.stopPropagation();
-                        console.warn("E: ", e);
-                        console.warn("DIRECTION: ", direction);
-                        console.warn("REF: ", ref);
-                        console.warn("D: ", d);
                         if (direction === 'topLeft' || direction === 'topRight') {
                             console.warn("POSITION CHANGE REQUIRED")
                         }
@@ -181,7 +187,7 @@ export default class Panel extends React.Component {
                             }
                         });
                     }}
-                    style={draggableStyle}
+                    style={test_style}
                 >
                 <div style={containerStyle} className='panelContainer' onClick={(e) => this.props.changeFocus(e, this.props.id)}>
                     <TitleBar style={titleStyle}

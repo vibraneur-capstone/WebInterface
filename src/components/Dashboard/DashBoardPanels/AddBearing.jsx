@@ -31,9 +31,10 @@ export default class AddComponent extends React.Component{
                 this.setState({
                     search: true,
                 })
+                this.props.setTitle('Bearing Stats');
             }
         } else {
-            this.props.setTitle('Add New Bearing')
+            this.props.setTitle('Bearing Stats');
         }
     }
 
@@ -131,8 +132,9 @@ export default class AddComponent extends React.Component{
                         dataSource='https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=ALL'
                     ></SearchFilter>
                     <Button
+                        style={{ height: '38px'}}
                         onClick={this.addBearing}
-                    ></Button>
+                    >Add Bearing</Button>
                 </div>
             </div>
         )

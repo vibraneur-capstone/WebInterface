@@ -88,7 +88,7 @@ export default class Dashboard extends React.Component {
 
         let containerStyle = this.props.style;
 
-        let addPanelStyle = {
+        let addPanelStyle = { 
             width: '50px',
             height: '50px',
             borderRadius: '50%',
