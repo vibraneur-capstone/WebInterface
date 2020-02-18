@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import SearchFilter from '../../Tools/SearchFilter';
+import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class AddComponent extends React.Component{
     constructor(props) {
@@ -74,13 +76,13 @@ export default class AddComponent extends React.Component{
     results (results) {
         return <div>
             {results.map(el => (
-                <Button
+                <button
                     onClick={() => this.props.setBearing(el.id)}
-                    className='searchButton'
+                    className='button searchButton'
                 >
                     <span>{el.tags.name}</span>
                     
-                </Button>
+                </button>
             ))}
         </div> 
     }
@@ -96,7 +98,7 @@ export default class AddComponent extends React.Component{
                     <h4 className='inline'> : </h4>
                 </td>
                 <td>
-                    <input className='inline inputBox'></input>
+                    <input className='input'></input>
                 </td>
             </tr>    
         ]
@@ -105,16 +107,21 @@ export default class AddComponent extends React.Component{
             console.warn("TAG:", tag);
             tags.push(<tr className='add_generalTag'>
                 <td>
-                    <input onChange={(e) => this.updateTagName(tag, e.target.value)} className='inline'></input>
+                    <input className='input' onChange={(e) => this.updateTagName(tag, e.target.value)} className='inline'></input>
                 </td>
                 <td>
                     <h4 className='inline'> : </h4>
                 </td>
                 <td>
-                    <input onChange={(e) => this.updateTagValue(tag, e.target.value)} className='inline'></input>
+                    <input className='input' onChange={(e) => this.updateTagValue(tag, e.target.value)} className='inline'></input>
                 </td>
                 <td>
-
+                    <button
+                        style={{
+                            color: '#d7263d',
+                            border: '0px'
+                        }}
+                    ><FontAwesomeIcon icon={faMinusCircle}></FontAwesomeIcon></button>
                 </td>
                 
             </tr>)
@@ -124,20 +131,28 @@ export default class AddComponent extends React.Component{
         return (
             <div className='inside_panel' style={{ width: '100%', height: 'calc(100% - 30px)' }}>
                 <div className='tagContainer'>
-                    <table style={{width: '345px'}}>
+                    <table
+                        style={{width: '345px'}}
+                    >
                         {tags}
                     </table>
-                    <Button onClick={this.addUserTag}>Add Tag</Button>
+                    <button 
+                        className='button'
+                        onClick={this.addUserTag}
+                    >
+                        Add Tag
+                    </button>
                     <div>Attach Sensor:</div>
                     <SearchFilter
                         renderResults={this.results}
                         setBearing={this.props.changeBearing}
                         dataSource='https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=ALL'
                     ></SearchFilter>
-                    <Button
+                    <button
+                        className='button'
                         style={{ height: '38px'}}
                         onClick={this.addBearing}
-                    >Add/Update Bearing</Button>
+                    >Add/Update Bearing</button>
                 </div>
             </div>
         )

@@ -55,8 +55,8 @@ export default class User extends React.Component {
     let settingsStyle = {
       width: '30%',
       height: 'calc(100% - 57px)',
-      'background-color': '#f8f9fa',
-      'border-right': '5px solid black',
+      'background-color': '#607b7d',
+      'border-right': '5px solid #246e89',
       float: 'left',
     }
     

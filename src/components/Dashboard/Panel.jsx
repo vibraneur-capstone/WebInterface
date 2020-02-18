@@ -157,6 +157,7 @@ export default class Panel extends React.Component {
             <Draggable 
                 onDrag={(e) => this.props.changeFocus(e, this.props.id)}
                 onStop={(e, draggable) => this.saveState(draggable)}
+                grid={[5,5]}
                 disabled={!this.state.draggable}
                 position={position}
             >

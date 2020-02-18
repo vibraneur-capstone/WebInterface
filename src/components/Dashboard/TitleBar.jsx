@@ -3,14 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faWindowMaximize, faThumbtack } from '@fortawesome/free-solid-svg-icons'
 
 export default class TitleBar extends React.Component {
-    constructor (props) {
-        super (props)
-
-        this.state = {
-
-        }
-    }
-
+    
     render () {
 
         let containerStyle = {
@@ -28,17 +21,19 @@ export default class TitleBar extends React.Component {
             width: '17px',
             height: '17px',
             padding: '2px',
+            'margin-left': '3px'
         }
 
         let titleStyle = {
             float: 'left',
             'padding-left': '10px',
-            color: '#bae7e0',
+            color: '#e0e0e0',
         }
 
         let iconStyle = {
             'font-size': '12px',
             'top': '-7px',
+            'position': 'relative',
         }
 
         return (
