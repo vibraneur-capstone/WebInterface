@@ -103,6 +103,7 @@ export default class Dashboard extends React.Component {
             <div style={containerStyle} onClick={() => {this.changeFocus(undefined, undefined)}}>
                 {panels}
                 <AddPanel
+                    colours={this.props.colours}
                     style={addPanelStyle}
                     addPanel={this.addPanel}
                 >

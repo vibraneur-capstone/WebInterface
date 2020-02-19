@@ -14,9 +14,9 @@ export default class Toolbar extends React.Component {
 
     render() {
         return (
-            <div className='toolbar'>
+            <div style={{'background-color': this.props.colours.primary}} className='toolbar'>
                 <Navbar expand="lg">
-                    <Navbar.Brand style={{color: '#e0e0e0'}} onClick={this.props.toggleSettings} href="#home">{this.props.user}</Navbar.Brand>
+                    <Navbar.Brand style={{color: this.props.colours.secondary}} onClick={this.props.toggleSettings} href="#home">{this.props.user}</Navbar.Brand>
                     {/* 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

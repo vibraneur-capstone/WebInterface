@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import SearchFilter from '../../Tools/SearchFilter';
-import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import TagRow from './TagRow.jsx';
 
 export default class AddComponent extends React.Component{
     constructor(props) {
@@ -10,12 +9,15 @@ export default class AddComponent extends React.Component{
 
         this.state = {
             tags: {
-                tagNames: [],
-                tagValues: []
-            }
+                tagIdx: [],
+                tagNames: {},
+                tagValues: {}
+            },
+            nextIdx: 1,
         }
 
         this.addUserTag = this.addUserTag.bind(this);
+        this.removeUserTag = this.removeUserTag.bind(this);
         this.updateTagName = this.updateTagName.bind(this);
         this.updateTagValue = this.updateTagValue.bind(this);
         this.addBearing = this.addBearing.bind(this);
@@ -43,9 +45,28 @@ export default class AddComponent extends React.Component{
     addUserTag() {
         console.warn("ADDING USER TAG")
         let new_tags = this.state.tags;
-        new_tags.tagNames.push('')
-        new_tags.tagValues.push(undefined);
+        new_tags.tagIdx.push(this.state.nextIdx);
+        new_tags.tagNames[this.state.nextIdx] = '';
+        new_tags.tagValues[this.state.nextIdx] = undefined;
 
+        this.setState({
+            tags: new_tags,
+            nextIdx: this.state.nextIdx + 1
+        })
+    }
+
+    removeUserTag(id) {
+        console.warn("REMOVING USER TAG");
+        let new_tags = this.state.tags;
+        let tag_idx = new_tags.tagIdx.indexOf(id);
+        console.warn("TAG IDX: ", tag_idx);
+        new_tags.tagIdx.splice(tag_idx, 1);
+        let tagNames = new_tags.tagNames;
+        let tagValues = new_tags.tagValues;
+        delete tagNames[tag_idx];
+        delete tagValues[tag_idx];
+        new_tags.tagNames = tagNames;
+        new_tags.tagValues = tagValues;
         this.setState({
             tags: new_tags
         })
@@ -103,28 +124,21 @@ export default class AddComponent extends React.Component{
             </tr>    
         ]
         
-        for (let tag in this.state.tags.tagNames) {
-            console.warn("TAG:", tag);
-            tags.push(<tr className='add_generalTag'>
-                <td>
-                    <input className='input' onChange={(e) => this.updateTagName(tag, e.target.value)} className='inline'></input>
-                </td>
-                <td>
-                    <h4 className='inline'> : </h4>
-                </td>
-                <td>
-                    <input className='input' onChange={(e) => this.updateTagValue(tag, e.target.value)} className='inline'></input>
-                </td>
-                <td>
-                    <button
-                        style={{
-                            color: '#d7263d',
-                            border: '0px'
-                        }}
-                    ><FontAwesomeIcon icon={faMinusCircle}></FontAwesomeIcon></button>
-                </td>
-                
-            </tr>)
+        for (let tag in this.state.tags.tagIdx) {
+            tag = this.state.tags.tagIdx[tag];
+            console.warn("TAG: ", tag)
+            
+            tags.push(<TagRow
+                id={tag}
+                key={tag}
+                updateTagName={this.updateTagName}
+                updateTagValue={this.updateTagValue}
+                removeUserTag={this.removeUserTag}
+                tag={tag}
+            >
+
+            </TagRow>
+            )
         }
         
 

@@ -164,6 +164,7 @@ export default class Panel extends React.Component {
                 <Resizable
                     enable={resizePermissions}
                     size={size}
+                    grid={[5,5]}
                     onResizeStart={(e) => {e.stopPropagation(); this.props.changeFocus(undefined, this.props.id)}}
                     onResizeStop={(e, direction, ref, d) => {
                         e.stopPropagation();
