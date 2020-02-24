@@ -56,9 +56,14 @@ export default class SingleBearing extends React.Component {
         } else {
 
             let leftArrow = <button
+                className='panelFlipLeft'
                 onClick={this.leftClick}
             ></button>;
-            let rightArrow = undefined;
+            let rightArrow = <button
+                className='panelFlipRight'
+                onClick={this.rightClick}
+            >
+            </button>;
             content = <BearingGraph></BearingGraph>
             /*content = <Plot style={{ width: '100%', height: '100%' }}
                 data={[{
@@ -69,6 +74,7 @@ export default class SingleBearing extends React.Component {
                 layout={{ autosize: true, showlegend: false, margin: { l: 10, r: 10, b: 10, t: 10 } }}
 
             ></Plot>*/
+            content = [leftArrow, content, rightArrow];
         }
         return (
             <div className='inside_panel'>
