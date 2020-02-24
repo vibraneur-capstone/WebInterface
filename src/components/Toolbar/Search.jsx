@@ -18,9 +18,15 @@ export default class Search extends React.Component {
     }
 
     render () {
+
+        let style = {
+            'background-color': this.props.colours.primary
+        }
+
         return (
-            <div className='searchInBar'>
+            <div style={style} className='searchInBar'>
                 <SearchFilter
+                    colours={this.props.colours}
                     renderResults={this.results}
                     setBearing={this.props.changeBearing}
                     dataSource='https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=ALL'

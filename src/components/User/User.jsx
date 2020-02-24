@@ -74,7 +74,6 @@ export default class User extends React.Component {
         modifyUserSetting={this.modifyUserSetting}
         style={settingsStyle}
         colours={this.state.colours}
-        modifyUserSetting={this.modifyUserSetting}
       ></UserSettings>
     }
 
@@ -87,7 +86,9 @@ export default class User extends React.Component {
           user={this.state.name}
           toggleSettings={this.toggleSettings}
         ></Toolbar>
-        <Search>
+        <Search
+          colours={this.state.colours}
+        >
         </Search>
         {settings}
         <Dashboard

@@ -27,7 +27,7 @@ export default class TitleBar extends React.Component {
         let titleStyle = {
             float: 'left',
             'padding-left': '10px',
-            color: '#e0e0e0',
+            color: this.props.colours.secondary,
         }
 
         let iconStyle = {

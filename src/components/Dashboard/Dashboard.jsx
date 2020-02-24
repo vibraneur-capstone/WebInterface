@@ -78,6 +78,7 @@ export default class Dashboard extends React.Component {
                     id={key}
                     key={key}
                     config={obj}
+                    colours={this.props.colours}
                     focus={this.state.panelFocus}
                     changeFocus={this.changeFocus}
                     addPanel={this.addPanel}

@@ -118,12 +118,13 @@ export default class Panel extends React.Component {
         let titleStyle = {
             width: '100%',
             height: '30px',
-            'background-color': '#246e89',
+            'background-color': this.props.colours.primary,
         }
 
         let containerStyle = {
             width: '100%',
             height: '100%',
+            border: '4px solid ' + this.props.colours.primary
         }
         const Content = this.state.panelTypes[this.props.config.type];
         
@@ -187,6 +188,7 @@ export default class Panel extends React.Component {
                 <div style={containerStyle} className='panelContainer' onClick={(e) => this.props.changeFocus(e, this.props.id)}>
                     <TitleBar 
                         style={titleStyle}
+                        colours={this.props.colours}
                         removePanel={this.removePanel}
                         toggleDraggable={this.toggleDraggable}
                         toggleMaximize={this.toggleMaximize}

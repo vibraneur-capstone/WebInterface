@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import FilterResults from 'react-filter-search';
-import { Button } from 'react-bootstrap';
 
 export default class SearchFilter extends React.Component {
     constructor(props) {

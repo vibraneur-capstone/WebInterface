@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import SearchFilter from '../../Tools/SearchFilter';
 import TagRow from './TagRow.jsx';
 
@@ -9,11 +8,11 @@ export default class AddComponent extends React.Component{
 
         this.state = {
             tags: {
-                tagIdx: [],
+                tagIdx: [1],
                 tagNames: {},
                 tagValues: {}
             },
-            nextIdx: 1,
+            nextIdx: 2,
         }
 
         this.addUserTag = this.addUserTag.bind(this);
@@ -73,6 +72,11 @@ export default class AddComponent extends React.Component{
     }
 
     updateTagName(idx, name) {
+        console.warn("IDX: ", idx);
+        console.warn("CHECK IDX: ", this.state.tags.tagIdx[this.state.tags.tagIdx.length - 1])
+        if (idx === this.state.tags.tagIdx[this.state.tags.tagIdx.length - 1]) {
+            this.addUserTag();
+        }
         let tags = this.state.tags;
         tags.tagNames[idx] = name;
 
@@ -150,12 +154,12 @@ export default class AddComponent extends React.Component{
                     >
                         {tags}
                     </table>
-                    <button 
+                    {/*<button 
                         className='button'
                         onClick={this.addUserTag}
                     >
                         Add Tag
-                    </button>
+                    </button>*/}
                     <div>Attach Sensor:</div>
                     <SearchFilter
                         renderResults={this.results}

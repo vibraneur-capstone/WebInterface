@@ -1,6 +1,6 @@
 import React from 'react';
 import { SwatchesPicker } from 'react-color';
-
+//import Swatches from '../Tools/ColorPicker/Swatches.js';
 export default class UserSettings extends React.Component {
 
     constructor (props) {
@@ -37,7 +37,8 @@ export default class UserSettings extends React.Component {
   render() {
     return (<div style={this.props.style}>
         <h2>Pick Colours:</h2>
-        <SwatchesPicker onChange={this.handleChange} style={{margin: '15px'}} onChange={ this.handleChange } />;
+        <SwatchesPicker style={{margin: '15px'}} onChange={ this.handleChange } />;
+        
     </div>)
   }
 }

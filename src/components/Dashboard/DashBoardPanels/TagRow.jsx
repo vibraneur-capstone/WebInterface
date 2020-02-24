@@ -8,13 +8,13 @@ export default class TagRow extends React.Component {
         return (
             <tr id={this.props.tag} className='add_generalTag'>
                 <td>
-                    <input className='input' onChange={(e) => this.props.updateTagName(this.props.tag, e.target.value)} className='inline'></input>
+                    <input className='input' onChange={(e) => this.props.updateTagName(this.props.tag, e.target.value)}></input>
                 </td>
                 <td>
                     <h4 className='inline'> : </h4>
                 </td>
                 <td>
-                    <input className='input' onChange={(e) => this.props.updateTagValue(this.props.tag, e.target.value)} className='inline'></input>
+                    <input className='input' onChange={(e) => this.props.updateTagValue(this.props.tag, e.target.value)}></input>
                 </td>
                 <td>
                     <button

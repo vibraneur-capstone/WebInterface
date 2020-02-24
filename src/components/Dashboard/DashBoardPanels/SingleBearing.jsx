@@ -1,16 +1,22 @@
 import React from 'react';
-import Plot from 'react-plotly.js';
 import FindBearing from '../../Tools/FindBearing.jsx';
+import BearingGraph from './SingleBearing/BearingGraph';
+import BearingStats from './SingleBearing/BearingStats';
+
 export default class SingleBearing extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             id: undefined,
-            search: true,
+            search: false, //true,
+            type: 1,
+            types: [BearingGraph, BearingStats]
         }
 
         this.changeBearing = this.changeBearing.bind(this);
+        this.leftClick = this.leftClick.bind(this);
+        this.rightClick = this.rightClick.bind(this);
     }
 
     componentDidMount() {
@@ -33,6 +39,14 @@ export default class SingleBearing extends React.Component {
         })
     }
 
+    leftClick () {
+
+    }
+
+    rightClick () {
+
+    }
+
     render() {
 
         let content;
@@ -40,7 +54,13 @@ export default class SingleBearing extends React.Component {
         if (this.state.search) {
             content = <FindBearing changeBearing={this.changeBearing}></FindBearing>
         } else {
-            content = <Plot style={{ width: '100%', height: '100%' }}
+
+            let leftArrow = <button
+                onClick={this.leftClick}
+            ></button>;
+            let rightArrow = undefined;
+            content = <BearingGraph></BearingGraph>
+            /*content = <Plot style={{ width: '100%', height: '100%' }}
                 data={[{
                     x: [1, 2, 3, 4],
                     y: [10, 15, 13, 17],
@@ -48,7 +68,7 @@ export default class SingleBearing extends React.Component {
                 }]}
                 layout={{ autosize: true, showlegend: false, margin: { l: 10, r: 10, b: 10, t: 10 } }}
 
-            ></Plot>
+            ></Plot>*/
         }
         return (
             <div className='inside_panel'>
