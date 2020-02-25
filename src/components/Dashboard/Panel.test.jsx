@@ -10,12 +10,18 @@ var testConfig = {
     type: 'Single Bearing'
 }
 
+var colours = {
+    primary: '#246e89',
+    secondary: '#e0e0e0',
+    warning: 'rgb(215, 38, 61)',
+  }
+
 describe('Testing Login', () => {
     let testConfig = {
         type: 'Single Bearing'
     }
     it ('should render correctly', () => {
-        const component = shallow(<Panel config={testConfig}/>);
+        const component = shallow(<Panel colours={colours} config={testConfig}/>);
         expect(component).toMatchSnapshot();
     })
 })
@@ -24,7 +30,7 @@ describe('Test setTitle()', () => {
     let testConfig = {
         type: 'Single Bearing'
     }
-    const component = shallow(<Panel config={testConfig}/>)
+    const component = shallow(<Panel colours={colours} config={testConfig}/>)
 
     expect(component.state('panelTitle')).toBe(undefined);
     let instance = component.instance();
@@ -36,7 +42,7 @@ describe('Test removePanel()', () => {
     let removePanel = function () {return true};
 
     it ('should unmount the component', () => {
-        const component = shallow(<Panel config={testConfig} removePanel={removePanel}/>)
+        const component = shallow(<Panel colours={colours} config={testConfig} removePanel={removePanel}/>)
         const instance = component.instance();
         instance.removePanel();
     })
@@ -44,7 +50,7 @@ describe('Test removePanel()', () => {
 
 describe('Test toggleMaximize()', () => {
     it ('should ', () => {
-        const component = shallow(<Panel config={testConfig}/>)
+        const component = shallow(<Panel colours={colours} config={testConfig}/>)
         const instance = component.instance();
 
         instance.toggleMaximize();
@@ -53,7 +59,7 @@ describe('Test toggleMaximize()', () => {
 
 describe('Test toggleDraggable()', () => {
     it ('should ', () => {
-        const component = shallow(<Panel config={testConfig}/>)
+        const component = shallow(<Panel colours={colours} config={testConfig}/>)
         const instance = component.instance();
 
         instance.toggleDraggable();
@@ -62,7 +68,7 @@ describe('Test toggleDraggable()', () => {
 
 describe('Test saveState()', () => {
     it ('should ', () => {
-        const component = shallow(<Panel config={testConfig}/>)
+        const component = shallow(<Panel colours={colours} config={testConfig}/>)
         const instance = component.instance();
 
         //instance.saveState();

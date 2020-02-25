@@ -2,6 +2,8 @@ import React from 'react';
 import FindBearing from '../../Tools/FindBearing.jsx';
 import BearingGraph from './SingleBearing/BearingGraph';
 import BearingStats from './SingleBearing/BearingStats';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 export default class SingleBearing extends React.Component {
     constructor(props) {
@@ -9,7 +11,7 @@ export default class SingleBearing extends React.Component {
 
         this.state = {
             id: undefined,
-            search: false, //true,
+            search: true,
             type: 1,
             types: [BearingGraph, BearingStats]
         }
@@ -55,16 +57,33 @@ export default class SingleBearing extends React.Component {
             content = <FindBearing changeBearing={this.changeBearing}></FindBearing>
         } else {
 
+            //Styling for left and right toggle buttons
+            let buttonStyle = {
+                width: '10%',
+                'font-size': '25px',
+                'background-color': 'inherit', 
+                border: '0px'
+            }
+
             let leftArrow = <button
+                style={buttonStyle}
                 className='panelFlipLeft'
                 onClick={this.leftClick}
-            ></button>;
+            >
+                <FontAwesomeIcon icon={faChevronLeft}/>
+            </button>;
             let rightArrow = <button
+                style={buttonStyle}
                 className='panelFlipRight'
                 onClick={this.rightClick}
             >
+                <FontAwesomeIcon icon={faChevronRight}/>
             </button>;
-            content = <BearingGraph></BearingGraph>
+            content = <div>
+                <BearingGraph
+                
+                ></BearingGraph>
+            </div>
             /*content = <Plot style={{ width: '100%', height: '100%' }}
                 data={[{
                     x: [1, 2, 3, 4],
@@ -74,7 +93,13 @@ export default class SingleBearing extends React.Component {
                 layout={{ autosize: true, showlegend: false, margin: { l: 10, r: 10, b: 10, t: 10 } }}
 
             ></Plot>*/
-            content = [leftArrow, content, rightArrow];
+            content = <table style={{width: '100%'}}>
+                <tr style={{width: '100%'}}>
+                    <td style={{width: '5%'}}>{leftArrow}</td>
+                    <td style={{width: '90%'}}>{content}</td>
+                    <td style={{width: '5%'}}>{rightArrow}</td>
+                </tr>
+            </table>
         }
         return (
             <div className='inside_panel'>
