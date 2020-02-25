@@ -1,6 +1,5 @@
 import React from 'react';
-import { Navbar, Form, } from 'react-bootstrap';
-import FindBearing from '../Tools/FindBearing.jsx';
+import { Navbar } from 'react-bootstrap';
 
 export default class Toolbar extends React.Component {
     constructor(props) {
@@ -10,18 +9,13 @@ export default class Toolbar extends React.Component {
             enableDropdowns: false
         }
         
-        this.launchSingleBearing = this.launchSingleBearing.bind(this);
-    }
-
-    launchSingleBearing() {
-
     }
 
     render() {
         return (
-            <div className='toolbar'>
-                <Navbar bg="light" expand="lg">
-                    <Navbar.Brand onClick={this.props.toggleSettings} href="#home">{this.props.user}</Navbar.Brand>
+            <div style={{'background-color': this.props.colours.primary}} className='toolbar'>
+                <Navbar expand="lg">
+                    <Navbar.Brand style={{color: this.props.colours.secondary}} onClick={this.props.toggleSettings} href="#home">{this.props.user}</Navbar.Brand>
                     {/* 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -39,13 +33,6 @@ export default class Toolbar extends React.Component {
                         
                     </Navbar.Collapse>
                     */}
-                    <Form inline>
-                            <FindBearing
-                                changeBearing={this.launchSingleBearing}
-                            ></FindBearing>
-                            {/*<FormControl type="text" placeholder="Search" className="mr-sm-2" />*/}
-                            {/*<Button variant="outline-success">Search</Button>*/}
-                    </Form>
                 </Navbar>
             </div>
         )

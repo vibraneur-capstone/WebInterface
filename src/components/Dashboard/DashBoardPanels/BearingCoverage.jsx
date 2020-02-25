@@ -16,7 +16,19 @@ export default class BearingCoverage extends React.Component {
     }
 
     componentDidMount() {
-        this.props.setTitle('Coverage')
+        if ('config' in this.props) {
+            let config = this.props.config;
+            if (config !== undefined && 'id' in config) {
+                this.props.setTitle(config.id);
+            } else {
+                // We have to search for the bearing from user input
+                this.setState({
+                    search: true,
+                })
+            }
+        } else {
+            this.props.setTitle('Coverage')
+        }
         this.getCoverage();
     }
 
@@ -69,7 +81,7 @@ export default class BearingCoverage extends React.Component {
 
     render() {
         return (
-            <div style={{width: '100%', height: 'calc(100% - 30px)' }}>
+            <div className='inside_panel'>
                 <Plot style={{width: '100%', height: '100%'}}
                     data={[{
                         values: this.state.label_vals,

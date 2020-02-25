@@ -48,6 +48,11 @@ render() {
       
       <Toolbar
         user='Vibraneur'
+        colours={{
+          primary: '#246e89',
+          secondary: '#e0e0e0',
+          warning: 'rgb(215, 38, 61)',
+        }}
       ></Toolbar>
       
       <form >

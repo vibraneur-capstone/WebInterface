@@ -14,4 +14,46 @@
 
 .User {
   height: 100%;
+  background-color: #e0e0e0;
+}
+
+.button:hover {
+  background-color: #e0e0e0;
+  color: #246e89;
+}
+.button:active {
+  background-color: #246e89;
+  color: #e0e0e0;
+}
+
+.button {
+  background-color: #246e89;
+  color: #e0e0e0;
+  border: 1px solid #246e89;
+}
+
+.button_invert:hover {
+  background-color: #246e89;
+  color: #e0e0e0;
+  border: 1px solid #e0e0e0;
+}
+.button_invert:active {
+  background-color: #e0e0e0;
+  color: #246e89
+}
+
+.button_invert {
+  background-color: #e0e0e0;
+  color: #246e89;
+  border: 1px solid #e0e0e0;
+}
+
+.input {
+  border: 1px solid #e0e0e0;
+border-radius: 5px;
+}
+
+.input:focus {
+  border: 1px solid #e0e0e0;
+border-radius: 5px;
 }

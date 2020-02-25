@@ -1,0 +1,18 @@
+.searchInBar {
+    display: block;
+    float: right;
+    width: 230px;
+    min-height: 56px;
+    background-color: #246e89;
+}
+
+.searchButton {
+    width: 210px;
+    background-color: #246e89!important;
+    color: #bae7e0;
+}
+
+.searchButton:hover {
+    background-color: #bae7e0!important;
+    color: #246e89!important;
+}

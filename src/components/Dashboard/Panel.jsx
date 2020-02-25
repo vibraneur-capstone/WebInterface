@@ -7,9 +7,10 @@ import BearingDatabase from './DashBoardPanels/BearingDatabase.jsx';
 import UnhealthyBearings from './DashBoardPanels/UnhealthyBearings.jsx';
 import BearingCoverage from './DashBoardPanels/BearingCoverage.jsx';
 import BearingCount from './DashBoardPanels/BearingCount.jsx';
+import AddBearing from './DashBoardPanels/AddBearing.jsx';
+import AddSensor from './DashBoardPanels/AddSensor.jsx';
 
 import { Resizable } from 're-resizable';
-import AddComponent from './DashBoardPanels/AddComponent.jsx';
 
 export default class Panel extends React.Component {
     constructor(props) {
@@ -20,16 +21,17 @@ export default class Panel extends React.Component {
             'Unhealthy Bearings': UnhealthyBearings,
             'Bearing Coverage': BearingCoverage,
             'Bearing Count': BearingCount,
-            'Add Component': AddComponent,
+            'Add Bearing': AddBearing,
+            'Add Sensor': AddSensor,
         };
 
         let style = {
             height: '300px',
-            width: '700px'
+            width: '650px'
         };
         let offset = {
             x: 0,
-            y: 0,
+            y: 57,
         };
         let maximized = false;
         let draggable = true;
@@ -105,28 +107,24 @@ export default class Panel extends React.Component {
 
     render() {
 
-        let draggableStyle = {
+        /*let draggableStyle = {
             backgroundColor: '#f8f9fa'
-        }
-
+        }  
         draggableStyle = {
             ...draggableStyle, ...this.state.style
-        }
+        }*/
+        //let draggableStyle = this.state.style;
 
         let titleStyle = {
-            border: '1px solid #f8f9fa',
             width: '100%',
-        }
-
-        if (this.props.focus === this.props.id) {
-            let newStyle = {
-            }
-            draggableStyle = { ...draggableStyle, ...newStyle }
+            height: '30px',
+            'background-color': this.props.colours.primary,
         }
 
         let containerStyle = {
             width: '100%',
             height: '100%',
+            border: '4px solid ' + this.props.colours.primary
         }
         const Content = this.state.panelTypes[this.props.config.type];
         
@@ -135,36 +133,42 @@ export default class Panel extends React.Component {
         let resizePermissions = undefined;
         if (this.state.maximized) {
             size = {
-                height: '100%',
+                height: 'calc(100% - 57px)',
                 width: '100%',
             }
             position = {
                 x: 0,
-                y: 0,
+                y: 57,
             }
             resizePermissions = { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }
         } else {
             size = { width: this.state.style.width, height: this.state.style.height }
             position = this.state.offset
         }
+
+        let test_style = undefined;
+        if (this.props.id !== this.props.focus) {
+            test_style = { backgroundColor: '#f8f9fa'}
+        } else {
+            test_style = {backgroundColor: '#f8f9fa', 'z-index': '1'}
+        }
+        
         return (
 
             <Draggable 
                 onDrag={(e) => this.props.changeFocus(e, this.props.id)}
                 onStop={(e, draggable) => this.saveState(draggable)}
+                grid={[5,5]}
                 disabled={!this.state.draggable}
                 position={position}
             >
                 <Resizable
                     enable={resizePermissions}
                     size={size}
-                    onResizeStart={(e) => {e.stopPropagation()}}
+                    grid={[5,5]}
+                    onResizeStart={(e) => {e.stopPropagation(); this.props.changeFocus(undefined, this.props.id)}}
                     onResizeStop={(e, direction, ref, d) => {
                         e.stopPropagation();
-                        console.warn("E: ", e);
-                        console.warn("DIRECTION: ", direction);
-                        console.warn("REF: ", ref);
-                        console.warn("D: ", d);
                         if (direction === 'topLeft' || direction === 'topRight') {
                             console.warn("POSITION CHANGE REQUIRED")
                         }
@@ -179,10 +183,12 @@ export default class Panel extends React.Component {
                             }
                         });
                     }}
-                    style={draggableStyle}
+                    style={test_style}
                 >
                 <div style={containerStyle} className='panelContainer' onClick={(e) => this.props.changeFocus(e, this.props.id)}>
-                    <TitleBar style={titleStyle}
+                    <TitleBar 
+                        style={titleStyle}
+                        colours={this.props.colours}
                         removePanel={this.removePanel}
                         toggleDraggable={this.toggleDraggable}
                         toggleMaximize={this.toggleMaximize}
@@ -190,6 +196,7 @@ export default class Panel extends React.Component {
                     ></TitleBar>
                     <Content
                         style={{width: '100%', height: 'calc(100% - 30px)'}}
+                        onClick={(e) => e.stopPropagation()}
                         config={this.props.config.config}
                         setTitle={this.setTitle}
                         addPanel={this.props.addPanel}

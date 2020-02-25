@@ -4,6 +4,8 @@ import "../styles/User.scss";
 import Dashboard from "../Dashboard/Dashboard";
 import Toolbar from "../Toolbar/Toolbar.jsx";
 import UserSettings from './UserSetting.jsx';
+import Search from '../Toolbar/Search.jsx';
+
 export default class User extends React.Component {
 
   constructor(props) {
@@ -12,7 +14,12 @@ export default class User extends React.Component {
     this.state = {
       name: 'Richard Walmsley',
       settings: false,
-      dashBoardWidth: '100%'
+      dashBoardWidth: '100%',
+      colours: {
+        primary: '#246e89',
+        secondary: '#e0e0e0',
+        warning: 'rgb(215, 38, 61)',
+      }
     }
 
     this.modifyUserSetting = this.modifyUserSetting.bind(this);
@@ -46,35 +53,49 @@ export default class User extends React.Component {
     let dashboardStyle = {
       width: this.state.dashBoardWidth,
       height: 'calc(100% - 57px)',
-      float: 'right'
+      float: 'right',
+      display: 'contents',
     }
 
     let settingsStyle = {
-      width: '30%',
+      width: '375px',
       height: 'calc(100% - 57px)',
-      'background-color': '#f8f9fa',
-      'border-right': '5px solid black',
+      'background-color': '#607b7d',
+      'border-right': '5px solid #246e89',
       float: 'left',
+      overflow: 'scroll',
+      padding: '15px'
     }
     
     let settings = undefined;
 
     if (this.state.settings) {
-      settings = <UserSettings modifyUserSetting={this.modifyUserSetting} style={settingsStyle}></UserSettings>
+      settings = <UserSettings 
+        modifyUserSetting={this.modifyUserSetting}
+        style={settingsStyle}
+        colours={this.state.colours}
+      ></UserSettings>
     }
 
     return (
 
-      <div className="User">
+      <div style={{'background-color': this.state.colours.secondary}} className="User">
         
         <Toolbar
+          colours={this.state.colours}
           user={this.state.name}
           toggleSettings={this.toggleSettings}
         ></Toolbar>
+        <Search
+          colours={this.state.colours}
+        >
+        </Search>
         {settings}
         <Dashboard
+          colours={this.state.colours}
           modifyUserSetting={this.modifyUserSetting}
           style={dashboardStyle}
+          /*config={{panels: [{ type: 'Single Bearing', size: {height: '300px', width: '700px'}, position: {x: 100, y: 100}, maximized: false, draggable: true}]}}*/
         ></Dashboard>
       
       </div>

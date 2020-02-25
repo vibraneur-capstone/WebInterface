@@ -1,8 +1,8 @@
 import React from 'react';
-
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import TitleBar from './TitleBar.jsx';
+
+import Search from './Search.jsx';
 
 
 configure({adapter: new Adapter() });
@@ -13,9 +13,9 @@ var colours = {
     warning: 'rgb(215, 38, 61)',
 }
 
-describe('Testing TitleBar', () => {
+describe('Testing Component Render', () => {
     it ('should render correctly', () => {
-        const component = shallow(<TitleBar colours={colours}/>);
+            const component = shallow(<Search colours={colours}/>);
         expect(component).toMatchSnapshot();
     })
 })
