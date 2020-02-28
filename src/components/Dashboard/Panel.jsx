@@ -200,6 +200,8 @@ export default class Panel extends React.Component {
                         config={this.props.config.config}
                         setTitle={this.setTitle}
                         addPanel={this.props.addPanel}
+                        colours={this.props.colours}
+                        organization={this.props.organization}
                     >
                     </Content>
                 </div>

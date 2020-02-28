@@ -70,6 +70,7 @@ export default class SearchFilter extends React.Component {
                 
         let results = <div style={{width: '100%', height: '100%', 'overflow-y': 'scroll', 'overflow-x': 'hidden', 'background-color': '#246e89', padding: '8px'}}>
             <FilterResults
+                colours={this.props.colours}
                 value={this.state.value}
                 data={this.state.data}
                 renderResults={this.props.renderResults}

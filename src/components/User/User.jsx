@@ -19,7 +19,8 @@ export default class User extends React.Component {
         primary: '#246e89',
         secondary: '#e0e0e0',
         warning: 'rgb(215, 38, 61)',
-      }
+      },
+      organization: 'Husky'
     }
 
     this.modifyUserSetting = this.modifyUserSetting.bind(this);
@@ -84,10 +85,12 @@ export default class User extends React.Component {
         <Toolbar
           colours={this.state.colours}
           user={this.state.name}
+          organization={this.state.organization}
           toggleSettings={this.toggleSettings}
         ></Toolbar>
         <Search
           colours={this.state.colours}
+          organization={this.state.organization}
         >
         </Search>
         {settings}
@@ -95,6 +98,7 @@ export default class User extends React.Component {
           colours={this.state.colours}
           modifyUserSetting={this.modifyUserSetting}
           style={dashboardStyle}
+          organization={this.state.organization}
           /*config={{panels: [{ type: 'Single Bearing', size: {height: '300px', width: '700px'}, position: {x: 100, y: 100}, maximized: false, draggable: true}]}}*/
         ></Dashboard>
       

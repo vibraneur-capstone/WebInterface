@@ -74,7 +74,7 @@ export default class SingleBearing extends React.Component {
         let content;
 
         if (this.state.search) {
-            content = <FindBearing changeBearing={this.changeBearing}></FindBearing>
+            content = <FindBearing organization={this.props.organization} colours={this.props.colours} changeBearing={this.changeBearing}></FindBearing>
         } else {
 
             //Styling for left and right toggle buttons

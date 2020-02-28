@@ -83,6 +83,7 @@ export default class Dashboard extends React.Component {
                     changeFocus={this.changeFocus}
                     addPanel={this.addPanel}
                     removePanel={this.removePanel}
+                    organization={this.props.organization}
                 />
             )
         }
