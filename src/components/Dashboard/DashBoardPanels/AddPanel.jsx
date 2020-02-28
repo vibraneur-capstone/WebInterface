@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../Tools/Button.jsx';
 
 export default class AddPanel extends React.Component {
 
@@ -90,12 +91,14 @@ export default class AddPanel extends React.Component {
         if (this.state.display) {
             for (let type in this.state.types) {
                 buttons.push(
-                    <button
+                    <Button
                         //style={colourStyle}
                         key={type}
-                        className='button panel_type_button'
+                        colours={this.props.colours}
+                        classes='button panel_type_button'
                         onClick={() => { this.props.addPanel(this.state.types[type]); this.display() }}
-                    >{this.state.types[type]}</button>
+                        contents={this.state.types[type]}
+                    ></Button>
                 )
             }
         }
@@ -107,13 +110,19 @@ export default class AddPanel extends React.Component {
                 <div className='panel_button_container'>
                     {buttons}
                 </div>
-                <button
+                <Button
+                    style={this.props.style}
+                    colours={this.props.colours}
+                    onClick={this.display}
+                    contents={'+'}
+                ></Button>
+                {/*<button
                     //className='button'
                     style={style}
                     onMouseEnter={this.mouseEnter}
                     onMouseLeave={this.mouseLeave}
                     onClick={this.display}
-                >+</button>
+                >+</button>*/}
             </div>
         )
     }
