@@ -10,7 +10,7 @@ export default class BearingStats extends React.Component {
     render () {
         return (
             <div>
-                
+                Bearing Stats
             </div>
         )
     }

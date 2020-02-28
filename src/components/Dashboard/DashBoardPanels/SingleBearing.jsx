@@ -2,6 +2,9 @@ import React from 'react';
 import FindBearing from '../../Tools/FindBearing.jsx';
 import BearingGraph from './SingleBearing/BearingGraph';
 import BearingStats from './SingleBearing/BearingStats';
+import DSPProducts from './SingleBearing/DSPProducts';
+import RULDisplay from './SingleBearing/RULDisplay';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,8 +15,9 @@ export default class SingleBearing extends React.Component {
         this.state = {
             id: undefined,
             search: true,
-            type: 1,
-            types: [BearingGraph, BearingStats]
+            type: 0,
+            types: [BearingGraph, BearingStats, DSPProducts, RULDisplay],
+            title: ''
         }
 
         this.changeBearing = this.changeBearing.bind(this);
@@ -42,11 +46,27 @@ export default class SingleBearing extends React.Component {
     }
 
     leftClick () {
-
+        if (this.state.type === 0) {
+            this.setState({
+                type: this.state.types.length - 1
+            })
+        } else {
+            this.setState({
+                type: this.state.type - 1
+            })
+        }
     }
 
     rightClick () {
-
+        if (this.state.type === this.state.types.length - 1) {
+            this.setState({
+                type: 0
+            })
+        } else {
+            this.setState({
+                type: this.state.type + 1
+            })
+        }
     }
 
     render() {
@@ -79,10 +99,11 @@ export default class SingleBearing extends React.Component {
             >
                 <FontAwesomeIcon icon={faChevronRight}/>
             </button>;
+            let Component = this.state.types[this.state.type]
             content = <div>
-                <BearingGraph
+                <Component
                 
-                ></BearingGraph>
+                ></Component>
             </div>
             /*content = <Plot style={{ width: '100%', height: '100%' }}
                 data={[{
@@ -96,8 +117,13 @@ export default class SingleBearing extends React.Component {
             content = <table style={{width: '100%'}}>
                 <tr style={{width: '100%'}}>
                     <td style={{width: '5%'}}>{leftArrow}</td>
-                    <td style={{width: '90%'}}>{content}</td>
+                    <td style={{width: '90%'}}>{this.state.title}</td>
                     <td style={{width: '5%'}}>{rightArrow}</td>
+                </tr>
+                <tr>
+                    <td>
+                    <td style={{width: '90%'}}>{content}</td>
+                    </td>
                 </tr>
             </table>
         }
