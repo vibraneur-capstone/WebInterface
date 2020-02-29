@@ -77,8 +77,6 @@ export default class BearingDatabase extends React.Component {
     */
     sendRequest(url, callback) {
         axios.get(url).then(function (response) {
-            console.warn("Response: ", response);
-            console.warn("Data: ", response.data);
             // Check to make sure the data has actually been returned
             if (response.data !== undefined) {
                 let sensors = response.data.bearingList;

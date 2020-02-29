@@ -8,7 +8,6 @@ export default class Dashboard extends React.Component {
         super (props);
 
         if ('config' in this.props) {
-            console.warn("this.props.config: ", this.props.config);
             this.state = {
                 panels: this.props.config.panels,
                 nextID: this.props.config.panels.length + 1,

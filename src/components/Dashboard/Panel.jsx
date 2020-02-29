@@ -159,18 +159,19 @@ export default class Panel extends React.Component {
                 onDrag={(e) => this.props.changeFocus(e, this.props.id)}
                 onStop={(e, draggable) => this.saveState(draggable)}
                 grid={[5,5]}
+                bounds={{top: 56}}
                 disabled={!this.state.draggable}
                 position={position}
             >
                 <Resizable
                     enable={resizePermissions}
+                    
                     size={size}
                     grid={[5,5]}
                     onResizeStart={(e) => {e.stopPropagation(); this.props.changeFocus(undefined, this.props.id)}}
                     onResizeStop={(e, direction, ref, d) => {
                         e.stopPropagation();
                         if (direction === 'topLeft' || direction === 'topRight') {
-                            console.warn("POSITION CHANGE REQUIRED")
                         }
                         this.setState({
                             offset: {
