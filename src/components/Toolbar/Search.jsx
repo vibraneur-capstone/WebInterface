@@ -1,17 +1,24 @@
 import React from 'react';
 import SearchFilter from '../Tools/SearchFilter.jsx';
-import { Button } from 'react-bootstrap';
+import Button from '../Tools/Button.jsx';
 export default class Search extends React.Component {
+
+    constructor (props) {
+        super(props);
+
+        this.results = this.results.bind(this);
+    }
 
     results (results) {
         return <div>
             {results.map(el => (
                 <Button
                     onClick={() => this.props.setBearing(el.id)}
-                    className='searchButton'
+                    colours={this.props.colours}
+                    organization={this.props.organization}
+                    classes='searchButton'
+                    contents={<span>{el.tags.name}</span>}
                 >
-                    <span>{el.tags.name}</span>
-                    
                 </Button>
             ))}
         </div> 
@@ -26,10 +33,9 @@ export default class Search extends React.Component {
         return (
             <div style={style} className='searchInBar'>
                 <SearchFilter
-                    colours={this.props.colours}
                     renderResults={this.results}
                     setBearing={this.props.changeBearing}
-                    dataSource='https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=ALL'
+                    dataSource={'https://sensor.vibraneur.com/inventory/v1/' + this.props.organization + '/bearings?status=ALL'}
                 ></SearchFilter>
             </div>
                 

@@ -8,7 +8,7 @@ export default class RULDisplay extends React.Component {
     render () {
         return (
             <div>
-                
+                RUL Display
             </div>
         )
     }

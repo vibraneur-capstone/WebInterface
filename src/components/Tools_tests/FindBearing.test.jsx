@@ -7,9 +7,13 @@ import FindBearing from '../Tools/FindBearing.jsx';
 
 configure({adapter: new Adapter() });
 
+let colours = {
+
+}
+
 describe('Testing Icon Render', () => {
     it ('should render correctly', () => {
-        const component = shallow(<FindBearing/>);
+        const component = shallow(<FindBearing colours={colours} organization={'Husky'}/>);
         expect(component).toMatchSnapshot();
     })
 })

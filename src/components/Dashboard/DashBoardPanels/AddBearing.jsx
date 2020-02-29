@@ -1,6 +1,8 @@
 import React from 'react';
 import SearchFilter from '../../Tools/SearchFilter';
+import Button from '../../Tools/Button.jsx';
 import TagRow from './TagRow.jsx';
+
 
 export default class AddComponent extends React.Component{
     constructor(props) {
@@ -166,11 +168,12 @@ export default class AddComponent extends React.Component{
                         setBearing={this.props.changeBearing}
                         dataSource='https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=ALL'
                     ></SearchFilter>
-                    <button
-                        className='button'
+                    <Button
                         style={{ height: '38px'}}
                         onClick={this.addBearing}
-                    >Add/Update Bearing</button>
+                        colours={this.props.colours}
+                        contents={'Add/Update Bearing'}
+                    ></Button>
                 </div>
             </div>
         )

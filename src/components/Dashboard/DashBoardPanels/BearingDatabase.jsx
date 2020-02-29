@@ -46,7 +46,7 @@ export default class BearingDatabase extends React.Component {
         if ('status' in this.props) {
             status = this.props.status;
         }
-        let url = 'https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=' + status;
+        let url = 'https://sensor.vibraneur.com/inventory/v1/' + this.props.organization + '/bearings?status=' + status;
         this.sendRequest(url, this.updateSensors);
     }
 
