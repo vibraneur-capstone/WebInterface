@@ -14,14 +14,12 @@ export default class Button extends React.Component {
     }
 
     mouseEnter() {
-        console.warn("MOUSE ENTER")
         this.setState({
             buttonState: 'hover'
         })
     }
 
     mouseLeave() {
-        console.warn("MOUSE LEAVE")
         this.setState({
             buttonState: 'normal'
         })

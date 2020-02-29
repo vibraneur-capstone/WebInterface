@@ -34,14 +34,12 @@ export default class AddPanel extends React.Component {
     }
 
     mouseEnter() {
-        console.warn("MOUSE ENTER")
         this.setState({
             buttonState: 'hover'
         })
     }
 
     mouseLeave() {
-        console.warn("MOUSE LEAVE")
         this.setState({
             buttonState: 'normal'
         })
@@ -60,7 +58,6 @@ export default class AddPanel extends React.Component {
 
         switch (this.state.buttonState) {
             case 'active':
-                console.warn("ACTIVE SWITCH")
                 mainColourStyle = {
                     'background-color': this.props.colours.primary,
                     'color': this.props.colours.secondary,
@@ -69,7 +66,6 @@ export default class AddPanel extends React.Component {
                 break;
 
             case 'hover':
-                console.warn("HOVER SWITCH")
                 mainColourStyle = {
                     'background-color': this.props.colours.secondary,
                     'color': this.props.colours.primary,

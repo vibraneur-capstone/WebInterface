@@ -18,9 +18,11 @@ export default class User extends React.Component {
       colours: {
         primary: '#246e89',
         secondary: '#e0e0e0',
+        background: '#e0e0e0',
         warning: 'rgb(215, 38, 61)',
       },
-      organization: 'Husky'
+      organization: 'Husky',
+      config: {panels: [{ type: 'Single Bearing', size: {height: '300px', width: '700px'}, position: {x: 100, y: 100}, maximized: false, draggable: true}]}
     }
 
     this.modifyUserSetting = this.modifyUserSetting.bind(this);
@@ -34,7 +36,6 @@ export default class User extends React.Component {
   }
 
   toggleSettings() {
-    console.warn("TOGGLING SETTINGS")
     if (!this.state.settings) {
       this.setState({
         dashBoardWidth: '70%'
@@ -61,8 +62,8 @@ export default class User extends React.Component {
     let settingsStyle = {
       width: '375px',
       height: 'calc(100% - 57px)',
-      'background-color': '#607b7d',
-      'border-right': '5px solid #246e89',
+      'background-color': this.state.colours.secondary,
+      'border-right': '5px solid ' + this.state.colours.primary,
       float: 'left',
       overflow: 'scroll',
       padding: '15px'
@@ -80,7 +81,7 @@ export default class User extends React.Component {
 
     return (
 
-      <div style={{'background-color': this.state.colours.secondary}} className="User">
+      <div style={{'background-color': this.state.colours.background}} className="User">
         
         <Toolbar
           colours={this.state.colours}
@@ -99,7 +100,7 @@ export default class User extends React.Component {
           modifyUserSetting={this.modifyUserSetting}
           style={dashboardStyle}
           organization={this.state.organization}
-          /*config={{panels: [{ type: 'Single Bearing', size: {height: '300px', width: '700px'}, position: {x: 100, y: 100}, maximized: false, draggable: true}]}}*/
+          config={this.state.config}
         ></Dashboard>
       
       </div>

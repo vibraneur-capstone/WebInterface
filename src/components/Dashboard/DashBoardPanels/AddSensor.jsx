@@ -42,7 +42,6 @@ export default class AddComponent extends React.Component{
     }
 
     addUserTag() {
-        console.warn("ADDING USER TAG")
         let new_tags = this.state.tags;
         new_tags.tagIdx.push(this.state.nextIdx);
         new_tags.tagNames[this.state.nextIdx] = '';
@@ -55,10 +54,8 @@ export default class AddComponent extends React.Component{
     }
 
     removeUserTag(id) {
-        console.warn("REMOVING USER TAG");
         let new_tags = this.state.tags;
         let tag_idx = new_tags.tagIdx.indexOf(id);
-        console.warn("TAG IDX: ", tag_idx);
         new_tags.tagIdx.splice(tag_idx, 1);
         let tagNames = new_tags.tagNames;
         let tagValues = new_tags.tagValues;
@@ -72,8 +69,6 @@ export default class AddComponent extends React.Component{
     }
 
     updateTagName(idx, name) {
-        console.warn("IDX: ", idx);
-        console.warn("CHECK IDX: ", this.state.tags.tagIdx[this.state.tags.tagIdx.length - 1])
         if (idx === this.state.tags.tagIdx[this.state.tags.tagIdx.length - 1]) {
             this.addUserTag();
         }
@@ -130,7 +125,6 @@ export default class AddComponent extends React.Component{
         
         for (let tag in this.state.tags.tagIdx) {
             tag = this.state.tags.tagIdx[tag];
-            console.warn("TAG: ", tag)
             
             tags.push(<TagRow
                 id={tag}

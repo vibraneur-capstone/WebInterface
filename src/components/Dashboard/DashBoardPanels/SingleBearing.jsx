@@ -74,7 +74,7 @@ export default class SingleBearing extends React.Component {
         let content;
 
         if (this.state.search) {
-            content = <FindBearing organization={this.props.organization} colours={this.props.colours} changeBearing={this.changeBearing}></FindBearing>
+            content = <FindBearing organization={this.props.organization} colours={this.props.colours} setBearing={this.changeBearing}></FindBearing>
         } else {
 
             //Styling for left and right toggle buttons
@@ -114,16 +114,16 @@ export default class SingleBearing extends React.Component {
                 layout={{ autosize: true, showlegend: false, margin: { l: 10, r: 10, b: 10, t: 10 } }}
 
             ></Plot>*/
-            content = <table style={{width: '100%'}}>
-                <tr style={{width: '100%'}}>
+            content = <table style={{width: '100%', height: '100%'}}>
+                <tr style={{width: '100%', height: '5%'}}>
                     <td style={{width: '5%'}}>{leftArrow}</td>
                     <td style={{width: '90%'}}>{this.state.title}</td>
                     <td style={{width: '5%'}}>{rightArrow}</td>
                 </tr>
-                <tr>
-                    <td>
+                <tr style={{ width: '100%', height: '90%'}}>
+                    <td></td>
                     <td style={{width: '90%'}}>{content}</td>
-                    </td>
+                    <td></td>
                 </tr>
             </table>
         }
