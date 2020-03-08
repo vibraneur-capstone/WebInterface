@@ -2,7 +2,7 @@ import React from 'react';
 import SearchFilter from '../../Tools/SearchFilter';
 import Button from '../../Tools/Button.jsx';
 import TagRow from './TagRow.jsx';
-
+import axios from 'axios';
 
 export default class AddComponent extends React.Component{
     constructor(props) {
@@ -92,7 +92,22 @@ export default class AddComponent extends React.Component{
     }
 
     addBearing() {
-        console.warn("TAGS: ", this.state.tags);
+
+        // Format the tags
+        let formatted = {}
+        for (let tag in this.state.tags.tagNames) {
+            console.warn("TAG: ", tag);
+            console.warn("TAG NAME: ", this.state.tags.tagNames[tag]);
+            if (this.state.tags.tagNames[tag] !== "") {
+                formatted[this.state.tags.tagNames[tag]] = this.state.tags.tagValues[tag];
+            }
+        }
+        console.warn("FORMATTED: ", formatted);
+        console.warn("SENDING ADD BEARING REQUEST")
+        axios.post('https://sensor.vibraneur.com/inventory/v1/bearing', {
+            "tags": formatted,
+              "sensorId": []
+        });
     }
 
     results (results) {
@@ -160,7 +175,7 @@ export default class AddComponent extends React.Component{
                     <SearchFilter
                         renderResults={this.results}
                         setBearing={this.props.changeBearing}
-                        dataSource='https://sensor.vibraneur.com/inventory/v1/husky/bearings?status=ALL'
+                        dataSource='https://sensor.vibraneur.com/inventory/v1/Husky/bearings?status=ALL'
                     ></SearchFilter>
                     <Button
                         style={{ height: '38px'}}

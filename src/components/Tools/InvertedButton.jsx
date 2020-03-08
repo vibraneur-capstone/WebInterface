@@ -38,7 +38,7 @@ export default class InvertedButton extends React.Component {
         switch (this.state.buttonState) {
             case 'active':
                 colourStyle = {
-                    'background-color': this.props.colours.secondary,
+                    'backgroundColor': this.props.colours.secondary,
                     'color': this.props.colours.primary,
                     'border': '1px solid ' + this.props.colours.secondary,
                 }
@@ -46,7 +46,7 @@ export default class InvertedButton extends React.Component {
 
             case 'hover':
                 colourStyle = {
-                    'background-color': this.props.colours.primary,
+                    'backgroundColor': this.props.colours.primary,
                     'color': this.props.colours.secondary,
                     'border': '1px solid ' + this.props.colours.secondary,
                 }
@@ -54,7 +54,7 @@ export default class InvertedButton extends React.Component {
 
             case 'normal':
                 colourStyle = {
-                    'background-color': this.props.colours.secondary,
+                    'backgroundColor': this.props.colours.secondary,
                     'color': this.props.colours.primary,
                     'border': '1px solid ' + this.props.colours.secondary,
                 }

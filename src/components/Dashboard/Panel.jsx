@@ -118,7 +118,7 @@ export default class Panel extends React.Component {
         let titleStyle = {
             width: '100%',
             height: '30px',
-            'background-color': this.props.colours.primary,
+            'backgroundColor': this.props.colours.primary,
         }
 
         let containerStyle = {
@@ -150,7 +150,7 @@ export default class Panel extends React.Component {
         if (this.props.id !== this.props.focus) {
             test_style = { backgroundColor: '#f8f9fa'}
         } else {
-            test_style = {backgroundColor: '#f8f9fa', 'z-index': '1'}
+            test_style = {backgroundColor: '#f8f9fa', 'zIndex': '1'}
         }
         
         return (

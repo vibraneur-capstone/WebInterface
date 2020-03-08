@@ -13,6 +13,7 @@ export default class Search extends React.Component {
         return <div>
             {results.map(el => (
                 <Button
+                    key={el.id}
                     onClick={() => this.props.setBearing(el.id)}
                     colours={this.props.colours}
                     organization={this.props.organization}
@@ -27,7 +28,7 @@ export default class Search extends React.Component {
     render () {
 
         let style = {
-            'background-color': this.props.colours.primary
+            'backgroundColor': this.props.colours.primary
         }
 
         return (

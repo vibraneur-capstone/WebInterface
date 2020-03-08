@@ -59,7 +59,7 @@ export default class AddPanel extends React.Component {
         switch (this.state.buttonState) {
             case 'active':
                 mainColourStyle = {
-                    'background-color': this.props.colours.primary,
+                    'backgroundColor': this.props.colours.primary,
                     'color': this.props.colours.secondary,
                     'border': '1px solid ' + this.props.colours.primary,
                 }
@@ -67,7 +67,7 @@ export default class AddPanel extends React.Component {
 
             case 'hover':
                 mainColourStyle = {
-                    'background-color': this.props.colours.secondary,
+                    'backgroundColor': this.props.colours.secondary,
                     'color': this.props.colours.primary,
                     'border': '1px solid ' + this.props.colours.primary,
                 }
@@ -75,7 +75,7 @@ export default class AddPanel extends React.Component {
 
             case 'normal':
                 mainColourStyle = {
-                    'background-color': this.props.colours.primary,
+                    'backgroundColor': this.props.colours.primary,
                     'color': this.props.colours.secondary,
                     'border': '1px solid ' + this.props.colours.primary,
                 }

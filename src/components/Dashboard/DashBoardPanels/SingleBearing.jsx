@@ -80,8 +80,8 @@ export default class SingleBearing extends React.Component {
             //Styling for left and right toggle buttons
             let buttonStyle = {
                 width: '10%',
-                'font-size': '25px',
-                'background-color': 'inherit', 
+                'fontSize': '25px',
+                'backgroundColor': 'inherit', 
                 border: '0px'
             }
 
@@ -102,7 +102,8 @@ export default class SingleBearing extends React.Component {
             let Component = this.state.types[this.state.type]
             content = <div>
                 <Component
-                
+                    colours={this.props.colours}
+                    id={this.state.id}
                 ></Component>
             </div>
             /*content = <Plot style={{ width: '100%', height: '100%' }}
@@ -115,16 +116,18 @@ export default class SingleBearing extends React.Component {
 
             ></Plot>*/
             content = <table style={{width: '100%', height: '100%'}}>
-                <tr style={{width: '100%', height: '5%'}}>
-                    <td style={{width: '5%'}}>{leftArrow}</td>
-                    <td style={{width: '90%'}}>{this.state.title}</td>
-                    <td style={{width: '5%'}}>{rightArrow}</td>
-                </tr>
-                <tr style={{ width: '100%', height: '90%'}}>
-                    <td></td>
-                    <td style={{width: '90%'}}>{content}</td>
-                    <td></td>
-                </tr>
+                <tbody>
+                    <tr style={{width: '100%', height: '5%'}}>
+                        <td style={{width: '5%'}}>{leftArrow}</td>
+                        <td style={{width: '90%'}}>{this.state.title}</td>
+                        <td style={{width: '5%'}}>{rightArrow}</td>
+                    </tr>
+                    <tr style={{ width: '100%', height: '90%'}}>
+                        <td></td>
+                        <td style={{width: '90%'}}>{content}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
             </table>
         }
         return (
