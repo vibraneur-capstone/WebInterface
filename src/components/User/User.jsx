@@ -88,9 +88,9 @@ export default class User extends React.Component {
     }
 
     return (
-
+      
       <div style={{'backgroundColor': this.state.colours.background}} className="User">
-        
+
         <Toolbar
           colours={this.state.colours}
           user={this.state.name}

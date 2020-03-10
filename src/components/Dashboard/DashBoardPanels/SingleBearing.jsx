@@ -83,7 +83,6 @@ export default class SingleBearing extends React.Component {
                 <div style={{float: 'left', padding: '15px'}}>Select Bearing:</div>
                 <FindBearing organization={this.props.organization} colours={this.props.colours} setBearing={this.changeBearing}></FindBearing>
             </div>
-            
         } else {
 
             //Styling for left and right toggle buttons
@@ -151,6 +150,7 @@ export default class SingleBearing extends React.Component {
                     position: 'relative'
                 }}>{rightArrow}</div>
             </div>
+
 
         }
         return (

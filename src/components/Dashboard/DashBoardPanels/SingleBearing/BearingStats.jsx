@@ -4,7 +4,7 @@ import axios from 'axios';
 export default class BearingStats extends React.Component {
     constructor (props) {
         super(props);
-
+      
         this.state = {
             settings: {}
         }
@@ -23,6 +23,7 @@ export default class BearingStats extends React.Component {
         this.setState({
             settings: settings
         })
+
     }
 
     sendRequest(url, callback) {
@@ -30,7 +31,7 @@ export default class BearingStats extends React.Component {
             // Check to make sure the data has actually been returned
             if (response.data !== undefined) {
                 let data = response.data;
-                console.warn("DATA: ", data);
+
                 if (data === undefined) {
                     console.warn("Empty Response");
                     return;
@@ -45,11 +46,10 @@ export default class BearingStats extends React.Component {
     }
 
     render () {
-
+      
         let settings = this.state.settings;
-
-
         let settingDiv = []
+        
         if (settings !== undefined) {
             for (let [key, value]of Object.entries(settings)) {
                 let string = key + ' : ' + value;

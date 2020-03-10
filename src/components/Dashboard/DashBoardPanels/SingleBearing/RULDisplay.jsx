@@ -3,6 +3,7 @@ import Plot from 'react-plotly.js';
 import EndDatePull from './EndDatePull.jsx';
 import StartDatePull from './StartDatePull.jsx';
 
+
 export default class RULDisplay extends React.Component {
     constructor (props) {
         super (props);
@@ -40,7 +41,6 @@ export default class RULDisplay extends React.Component {
                 </tr> 
                 </tbody>
             </table>
-                
         )
     }
 }
