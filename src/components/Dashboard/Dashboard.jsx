@@ -95,7 +95,7 @@ export default class Dashboard extends React.Component {
             borderRadius: '50%',
             right: '50px',
             bottom: '50px',
-            'z-index': 2,
+            'zIndex': 2,
             position: 'absolute',
         };
         
@@ -104,8 +104,12 @@ export default class Dashboard extends React.Component {
             <div style={containerStyle} onClick={() => {this.changeFocus(undefined, undefined)}}>
                 {panels}
                 <AddPanel
+                    key={1}
+                    id={1}
                     colours={this.props.colours}
                     style={addPanelStyle}
+                    focus={this.state.panelFocus}
+                    changeFocus={this.changeFocus}
                     addPanel={this.addPanel}
                 >
                 </AddPanel>

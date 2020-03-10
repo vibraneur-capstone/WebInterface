@@ -22,16 +22,24 @@ export default class User extends React.Component {
         warning: 'rgb(215, 38, 61)',
       },
       organization: 'Husky',
-      config: {panels: [{ type: 'Single Bearing', size: {height: '300px', width: '700px'}, position: {x: 100, y: 100}, maximized: false, draggable: true}]}
+      config: {panels: [{ type: 'Bearing Dataset', size: {height: '800px', width: '700px'}, position: {x: 100, y: 100}, maximized: false, draggable: true}]}
     }
 
     this.modifyUserSetting = this.modifyUserSetting.bind(this);
     this.toggleSettings = this.toggleSettings.bind(this);
+    this.addPanel = this.addPanel.bind(this);
   }
 
   modifyUserSetting(setting, value) {
     this.setState({
       [setting]: value,
+    })
+  }
+
+  addPanel(type, config) {
+    let panels = this.state.config.panels;
+    panels.push({
+      type: type,
     })
   }
 
@@ -62,8 +70,8 @@ export default class User extends React.Component {
     let settingsStyle = {
       width: '375px',
       height: 'calc(100% - 57px)',
-      'background-color': this.state.colours.secondary,
-      'border-right': '5px solid ' + this.state.colours.primary,
+      'backgroundColor': this.state.colours.background,
+      'borderRight': '5px solid ' + this.state.colours.primary,
       float: 'left',
       overflow: 'scroll',
       padding: '15px'
@@ -80,9 +88,9 @@ export default class User extends React.Component {
     }
 
     return (
+      
+      <div style={{'backgroundColor': this.state.colours.background}} className="User">
 
-      <div style={{'background-color': this.state.colours.background}} className="User">
-        
         <Toolbar
           colours={this.state.colours}
           user={this.state.name}
@@ -92,6 +100,7 @@ export default class User extends React.Component {
         <Search
           colours={this.state.colours}
           organization={this.state.organization}
+          addPanel={this.addPanel}
         >
         </Search>
         {settings}

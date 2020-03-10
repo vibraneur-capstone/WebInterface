@@ -28,6 +28,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.1",
     "react-swatch-picker": "^1.0.6",
+    "react-vis": "^1.11.7",
     "uxcore": "^0.22.24"
   },
   "scripts": {

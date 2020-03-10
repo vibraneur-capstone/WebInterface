@@ -38,7 +38,7 @@ export default class Button extends React.Component {
         switch (this.state.buttonState) {
             case 'active':
                 colourStyle = {
-                    'background-color': this.props.colours.primary,
+                    'backgroundColor': this.props.colours.primary,
                     'color': this.props.colours.secondary,
                     'border': '1px solid ' + this.props.colours.primary,
                 }
@@ -46,7 +46,7 @@ export default class Button extends React.Component {
 
             case 'hover':
                 colourStyle = {
-                    'background-color': this.props.colours.secondary,
+                    'backgroundColor': this.props.colours.secondary,
                     'color': this.props.colours.primary,
                     'border': '1px solid ' + this.props.colours.primary,
                 }
@@ -54,7 +54,7 @@ export default class Button extends React.Component {
 
             case 'normal':
                 colourStyle = {
-                    'background-color': this.props.colours.primary,
+                    'backgroundColor': this.props.colours.primary,
                     'color': this.props.colours.secondary,
                     'border': '1px solid ' + this.props.colours.primary,
                 }
@@ -67,7 +67,7 @@ export default class Button extends React.Component {
         } else {
             style = {
                 'padding': '5px',
-                'border-radius': '5px'
+                'borderRadius': '5px'
             }
             style = { ...style, ...colourStyle};
         }

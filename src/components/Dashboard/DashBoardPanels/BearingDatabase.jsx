@@ -1,7 +1,9 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import Button from '../../Tools/Button.jsx';
 import axios from 'axios';
 import FilterableTable from 'react-filterable-table';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default class BearingDatabase extends React.Component {
     constructor(props) {
@@ -52,11 +54,22 @@ export default class BearingDatabase extends React.Component {
 
     updateSensors(id, value) {
         if (id === 'sensors') {
+            let new_sensors = [];
             for (let sensor in value) {
                 let sensor_obj = value[sensor]
                 if (sensor_obj !== undefined) {
+                    let internalID = sensor_obj.id;
+                    let status = sensor_obj.status;
+                    let tags = sensor_obj.tags;
+                    sensor_obj = tags;
+                    tags['internalID'] = internalID;
+                    tags['status'] = status;
                     let id = sensor_obj.id
-                    sensor_obj.id = <Button className='databaseID' onClick={() => this.props.addPanel('Single Bearing', { 'id': id })}>{id}</Button>
+                    sensor_obj.id = <div>
+                        <Button className='databaseID' colours={this.props.colours} contents={<FontAwesomeIcon icon={faExternalLinkAlt}/>} style={{padding: '5px', float: 'left'}} onClick={() => this.props.addPanel('Single Bearing', { 'config': {'id': internalID, 'userID': id} })}></Button>
+                        <div style={{padding: '5px', float: 'right'}}>{id}</div>
+                    </div>
+                    
                 }
 
                 value[sensor] = sensor_obj;

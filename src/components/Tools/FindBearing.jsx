@@ -14,6 +14,7 @@ export default class FindBearing extends React.Component {
         return <div>
             {results.map(el => (
                 <Button
+                    key={el.id}
                     onClick={() => this.props.setBearing(el.id)}
                     classes='searchCol'
                     colours={this.props.colours}

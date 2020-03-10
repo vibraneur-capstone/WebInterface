@@ -13,7 +13,7 @@ export default class TitleBar extends React.Component {
         containerStyle = { ...containerStyle, ...this.props.style};
 
         let buttonStyle = {
-            'border-radius': '50%',
+            'borderRadius': '50%',
             position: 'relative',
             float: 'right',
             top: '5px',
@@ -21,17 +21,17 @@ export default class TitleBar extends React.Component {
             width: '17px',
             height: '17px',
             padding: '2px',
-            'margin-left': '3px'
+            'marginLeft': '3px'
         }
 
         let titleStyle = {
             float: 'left',
-            'padding-left': '10px',
+            'paddingLeft': '10px',
             color: this.props.colours.secondary,
         }
 
         let iconStyle = {
-            'font-size': '12px',
+            'fontSize': '12px',
             'top': '-7px',
             'position': 'relative',
         }

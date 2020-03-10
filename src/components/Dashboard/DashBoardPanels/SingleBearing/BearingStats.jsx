@@ -4,16 +4,26 @@ import axios from 'axios';
 export default class BearingStats extends React.Component {
     constructor (props) {
         super(props);
+      
+        this.state = {
+            settings: {}
+        }
 
         this.sendRequest = this.sendRequest.bind(this);   
+        this.updateSettings = this.updateSettings.bind(this);
     }
 
     componentDidMount() {
-        this.sendRequest('https://sensor.vibraneur.com/inventory/v1/sensor?id=5e35e369d956e2dad90fbfda', this.updateSettings)
+        this.sendRequest('https://sensor.vibraneur.com/inventory/v1/bearing?id=' + this.props.id, this.updateSettings)
     }
 
     updateSettings (data) {
-        let settings = data.settings
+        console.warn("UPDATE SETTINGS");
+        let settings = data.tags;
+        this.setState({
+            settings: settings
+        })
+
     }
 
     sendRequest(url, callback) {
@@ -21,11 +31,12 @@ export default class BearingStats extends React.Component {
             // Check to make sure the data has actually been returned
             if (response.data !== undefined) {
                 let data = response.data;
+
                 if (data === undefined) {
                     console.warn("Empty Response");
                     return;
                 } else {
-                    callback('sensors', data);
+                    callback(data);
                 }
             }
         }).catch(function (error) {
@@ -35,21 +46,17 @@ export default class BearingStats extends React.Component {
     }
 
     render () {
-
-        let settings = {
-            Name: 1,
-            Status: 2,
-            id: 3,
-            Sensors: 4
-        }
-
+      
+        let settings = this.state.settings;
         let settingDiv = []
-        for (let [key, value]of Object.entries(settings)) {
-            let string = 'Setting' + key + ' : ' + value;
-            settingDiv.push(<div>{string}</div>)
+        
+        if (settings !== undefined) {
+            for (let [key, value]of Object.entries(settings)) {
+                let string = key + ' : ' + value;
+                settingDiv.push(<div key={key}>{string}</div>)
+            }    
         }
-
-
+        
         return (
             <div>
                 {settingDiv}
