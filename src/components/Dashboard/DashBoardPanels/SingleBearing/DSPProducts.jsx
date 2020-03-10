@@ -40,7 +40,7 @@ export default class DSPProducts extends React.Component {
 
     fetchData(startDate, endDate) {
         let self = this;
-        let url = 'https://streaming.vibraneur.com/vape-data-streaming/v1/dsp/data?sensorId=123&from=' + startDate + '&to=' + endDate;
+        let url = 'https://streaming.vibraneur.com/vape-data-streaming/v1/data/dsp?sensorId=123&from=' + startDate + '&to=' + endDate;
         axios.get(url).then(function (response) {
             // Check to make sure the data has actually been returned
             if (response.data !== undefined) {

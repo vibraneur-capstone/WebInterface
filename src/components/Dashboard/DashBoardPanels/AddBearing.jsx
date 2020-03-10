@@ -171,12 +171,13 @@ export default class AddComponent extends React.Component{
                     >
                         Add Tag
                     </button>*/}
-                    <div>Attach Sensor:</div>
+                    <div>Attach Sensor:
                     <SearchFilter
                         renderResults={this.results}
                         setBearing={this.props.changeBearing}
                         dataSource='https://sensor.vibraneur.com/inventory/v1/Husky/bearings?status=ALL'
                     ></SearchFilter>
+                    </div>
                     <Button
                         style={{ height: '38px'}}
                         onClick={this.addBearing}

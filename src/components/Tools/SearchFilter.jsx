@@ -66,7 +66,7 @@ export default class SearchFilter extends React.Component {
     }
 
     render() {
-        let input = <input key='searchQuery' style={{margin: '10px', float: 'right'}} type="text" value={this.state.value} placeholder={'search'} onChange={this.handleChange} />
+        let input = <input key='searchQuery' style={{margin: '10px', float: 'left'}} type="text" value={this.state.value} placeholder={'search'} onChange={this.handleChange} />
                 
         let results = <div style={{width: '100%', height: '100%', 'overflowY': 'scroll', 'overflowX': 'hidden', 'backgroundColor': '#246e89', padding: '8px'}}>
             <FilterResults

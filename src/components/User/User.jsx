@@ -22,7 +22,7 @@ export default class User extends React.Component {
         warning: 'rgb(215, 38, 61)',
       },
       organization: 'Husky',
-      config: {panels: [{ type: 'Single Bearing', size: {height: '300px', width: '700px'}, position: {x: 100, y: 100}, maximized: false, draggable: true}]}
+      config: {panels: [{ type: 'Bearing Dataset', size: {height: '800px', width: '700px'}, position: {x: 100, y: 100}, maximized: false, draggable: true}]}
     }
 
     this.modifyUserSetting = this.modifyUserSetting.bind(this);

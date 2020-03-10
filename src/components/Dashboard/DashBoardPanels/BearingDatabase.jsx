@@ -1,7 +1,9 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import Button from '../../Tools/Button.jsx';
 import axios from 'axios';
 import FilterableTable from 'react-filterable-table';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default class BearingDatabase extends React.Component {
     constructor(props) {
@@ -63,7 +65,11 @@ export default class BearingDatabase extends React.Component {
                     tags['internalID'] = internalID;
                     tags['status'] = status;
                     let id = sensor_obj.id
-                    sensor_obj.id = <Button className='databaseID' onClick={() => this.props.addPanel('Single Bearing', { 'config': {'id': internalID} })}>{id}</Button>
+                    sensor_obj.id = <div>
+                        <Button className='databaseID' colours={this.props.colours} contents={<FontAwesomeIcon icon={faExternalLinkAlt}/>} style={{padding: '5px', float: 'left'}} onClick={() => this.props.addPanel('Single Bearing', { 'config': {'id': internalID, 'userID': id} })}></Button>
+                        <div style={{padding: '5px', float: 'right'}}>{id}</div>
+                    </div>
+                    
                 }
 
                 value[sensor] = sensor_obj;

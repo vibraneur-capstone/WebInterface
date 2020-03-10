@@ -29,7 +29,11 @@ export default class SingleBearing extends React.Component {
         if ('config' in this.props) {
             let config = this.props.config;
             if (config !== undefined && 'id' in config) {
-                this.props.setTitle(config.id);
+                if ('userID' in config) {
+                    this.props.setTitle(config.userID);
+                } else {
+                    this.props.setTitle(config.id);
+                }
                 this.setState({
                     search: false,
                     id: config.id,
@@ -75,7 +79,11 @@ export default class SingleBearing extends React.Component {
         let content;
 
         if (this.state.search) {
-            content = <FindBearing organization={this.props.organization} colours={this.props.colours} setBearing={this.changeBearing}></FindBearing>
+            content = <div>
+                <div style={{float: 'left', padding: '15px'}}>Select Bearing:</div>
+                <FindBearing organization={this.props.organization} colours={this.props.colours} setBearing={this.changeBearing}></FindBearing>
+            </div>
+            
         } else {
 
             //Styling for left and right toggle buttons
