@@ -90,7 +90,6 @@ export default class AddComponent extends React.Component{
     }
 
     addBearing() {
-        console.warn("TAGS: ", this.state.tags);
     }
 
     results (results) {

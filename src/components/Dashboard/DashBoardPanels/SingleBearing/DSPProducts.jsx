@@ -44,7 +44,6 @@ export default class DSPProducts extends React.Component {
         axios.get(url).then(function (response) {
             // Check to make sure the data has actually been returned
             if (response.data !== undefined) {
-                console.warn("DATA: ", response.data);
                 if (response.data !== undefined) {
                     self.setState({
                         DSPData: response.data
@@ -64,19 +63,13 @@ export default class DSPProducts extends React.Component {
 
     render() {
 
-        console.warn("RENDERING: ", this.state.DSPData)
-        console.warn("DSP DATA: ", this.state.DSPData);
         let data = [];
         for (let feature in this.state.features) {
-            console.warn("FEATURE: ", feature);
-            console.warn(this.state.features[feature])
-
+            
             if (this.state.dateRange !== undefined && this.state.DSPData !== undefined) {
                 let tmp = parseFloat(feature) + 1;
-                console.warn("TEMP: ", tmp);
                 let plotNumY = 'y' + (tmp).toString();
                 let plotNumX = 'x' + (tmp).toString();
-                console.warn("PLOTNUM: ", plotNumX, plotNumY)
                 data.push(
                     {
                         x: this.state.DSPData['timestamps'],
@@ -88,9 +81,6 @@ export default class DSPProducts extends React.Component {
                     }
 
                 )
-
-                console.warn("RMS: ", this.state.DSPData.rms)
-
             }
         }
         return (
