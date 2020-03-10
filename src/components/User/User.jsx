@@ -27,11 +27,19 @@ export default class User extends React.Component {
 
     this.modifyUserSetting = this.modifyUserSetting.bind(this);
     this.toggleSettings = this.toggleSettings.bind(this);
+    this.addPanel = this.addPanel.bind(this);
   }
 
   modifyUserSetting(setting, value) {
     this.setState({
       [setting]: value,
+    })
+  }
+
+  addPanel(type, config) {
+    let panels = this.state.config.panels;
+    panels.push({
+      type: type,
     })
   }
 
@@ -92,6 +100,7 @@ export default class User extends React.Component {
         <Search
           colours={this.state.colours}
           organization={this.state.organization}
+          addPanel={this.addPanel}
         >
         </Search>
         {settings}

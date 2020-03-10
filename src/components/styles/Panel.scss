@@ -13,8 +13,8 @@
 .inside_panel {
     height: calc(100% - 30px);
     width: 100%;
-    overflow:scroll;
-    padding: 10px;
+    overflow: -moz-hidden-unscrollable;
+    padding: 0px;
 }
 
 .react-draggable {

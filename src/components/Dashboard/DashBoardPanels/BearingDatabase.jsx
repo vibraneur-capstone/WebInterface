@@ -63,7 +63,7 @@ export default class BearingDatabase extends React.Component {
                     tags['internalID'] = internalID;
                     tags['status'] = status;
                     let id = sensor_obj.id
-                    sensor_obj.id = <Button className='databaseID' onClick={() => this.props.addPanel('Single Bearing', { 'config': {'id': id} })}>{id}</Button>
+                    sensor_obj.id = <Button className='databaseID' onClick={() => this.props.addPanel('Single Bearing', { 'config': {'id': internalID} })}>{id}</Button>
                 }
 
                 value[sensor] = sensor_obj;

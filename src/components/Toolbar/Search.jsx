@@ -14,7 +14,7 @@ export default class Search extends React.Component {
             {results.map(el => (
                 <Button
                     key={el.id}
-                    onClick={() => this.props.setBearing(el.id)}
+                    onClick={() => this.props.addPanel('Single Bearing', el.id)}
                     colours={this.props.colours}
                     organization={this.props.organization}
                     classes='searchButton'

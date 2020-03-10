@@ -26,6 +26,14 @@ export default class AddPanel extends React.Component {
         this.onClick = this.onClick.bind(this);
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.focus !== this.props.focus && this.props.focus !== this.state.id) {
+            this.setState({
+                display: false,
+            })
+        }
+    }
+
     display() {
         this.onClick();
         this.setState({

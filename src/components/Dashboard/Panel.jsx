@@ -26,8 +26,8 @@ export default class Panel extends React.Component {
         };
 
         let style = {
-            height: '300px',
-            width: '650px'
+            height: '510px',
+            width: '545px'
         };
         let offset = {
             x: 0,
