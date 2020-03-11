@@ -2,7 +2,6 @@ import React from 'react';
 import Plot from 'react-plotly.js';
 import EndDatePull from './EndDatePull.jsx';
 import StartDatePull from './StartDatePull.jsx';
-import SockJS from 'sockjs-client-web';
 import SockJsClient from 'react-stomp';
 
 export default class BearingGraph extends React.Component {

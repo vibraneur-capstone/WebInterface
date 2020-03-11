@@ -52,6 +52,7 @@ export default class Panel extends React.Component {
                 draggable = this.props.config.draggable;
             }  
         }
+        this.props.changeFocus(undefined, this.props.id)
 
         this.state = {
             panelTypes: panelTypes,
