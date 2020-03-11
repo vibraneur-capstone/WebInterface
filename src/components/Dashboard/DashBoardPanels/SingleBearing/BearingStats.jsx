@@ -18,7 +18,6 @@ export default class BearingStats extends React.Component {
     }
 
     updateSettings (data) {
-        console.warn("UPDATE SETTINGS");
         let settings = data.tags;
         this.setState({
             settings: settings
