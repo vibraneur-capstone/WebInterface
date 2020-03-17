@@ -16,7 +16,7 @@ export default class SingleBearing extends React.Component {
             id: undefined,
             search: true,
             type: 0,
-            types: [BearingGraph, BearingStats, DSPProducts, RULDisplay],
+            types: [BearingStats, DSPProducts, RULDisplay],
             title: ''
         }
 
@@ -137,7 +137,7 @@ export default class SingleBearing extends React.Component {
                     position: 'relative'
                 }}>{leftArrow}</div>
                 <div style={{
-                    width: '91%',
+                    width: '92%',
                     float: 'left',
                     position: 'relative',
                     height: '100%',
