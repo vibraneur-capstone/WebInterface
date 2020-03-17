@@ -3,6 +3,8 @@ import Plot from 'react-plotly.js';
 import axios from 'axios';
 import SockJsClient from 'react-stomp';
 import TimeScale from './TimeScale.jsx';
+import jQuery from 'jquery';
+import { AreaChart, linearGradient, Area, Label, defs, stop, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 export default class DSPProducts extends React.Component {
     constructor(props) {
@@ -10,27 +12,47 @@ export default class DSPProducts extends React.Component {
 
         this.state = {
             dateRange: undefined,
-            DSPdata: { 'rms': [], 'kurtosis': [], 'crest': [], 'shape': [], timestamps: [] },
-            revision: 2,
-            features: ['rms', 'kurtosis', 'crest', 'shape'],
+            DSPdata: {
+                'raw': {
+                    'data': []
+                },
+                'rms': {
+                    'data': []
+                },
+                'kurtosis': {
+                    'data': []
+                },
+                'crest': {
+                    'data': []
+                },
+                'shape': {
+                    'data': []
+                }
+            },
+            features: ['raw', 'crest', 'shape', 'rms', 'kurtosis'],
         }
         this.fetchData = this.fetchData.bind(this);
         this.getDates = this.getDates.bind(this);
         this.updateData = this.updateData.bind(this);
-        this.updateRaw = this.updateRaw.bind(this);
-        this.updateTimeScale = this.updateTimeScale.bind(this);
+        this.handleRealTime = this.handleRealTime.bind(this);
+        this.updateLayout = this.updateLayout.bind(this);
+        this.getCurrentTime = this.getCurrentTime.bind(this);
+        this.getTimeRange = this.getTimeRange.bind(this);
     }
 
     componentDidMount() {
         let dates = this.getDates();
         this.fetchData(dates.startDate, dates.endDate);
+        //this.updateTimeScale();
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.warn("LPREVSTATE: ", prevState);
-        console.warn("THIS.STATE: ", this.state);
+        
     }
 
+    /*
+        Fetches Timestamps of available data
+    */
     getDates(bearingID) {
 
         this.setState({
@@ -46,13 +68,16 @@ export default class DSPProducts extends React.Component {
         }
     }
 
+    /*
+        Fetches HISTORICAL bearing data to display in a plot
+    */
     fetchData(startDate, endDate) {
         let self = this;
         let url = 'https://streaming.vibraneur.com/vape-data-streaming/v1/data/dsp?sensorId=123&from=' + startDate + '&to=' + endDate;
         axios.get(url).then(function (response) {
             // Check to make sure the data has actually been returned
             if (response.data !== undefined) {
-                if (response.data !== undefined) {
+                /*if (response.data !== undefined) {
                     let data = []
                     for (let feature in this.state.features) {
                         
@@ -83,7 +108,7 @@ export default class DSPProducts extends React.Component {
                     })
                     console.warn("Empty Response");
                     return;
-                }
+                }*/
             }
         }.bind(this)).catch(function (error) {
             // handle error
@@ -91,129 +116,148 @@ export default class DSPProducts extends React.Component {
         })
     }
 
-    updateData(response) {
-        console.warn("RESPONSE: ", response);
-        let DSPdata = this.state.DSPdata//jQuery.extend({}, this.state.DSPdata);
-
+    /*
+        SOLE FUNCTION WHICH CAN UPDATE PLOTLY DATA
+    
+        both for historical and real-time
+    */
+    updateData(dataType, data, timestamp) {
+        let DSPdata = jQuery.extend({}, this.state.DSPdata);
+        let newDateRange = this.getTimeRange(1, timestamp);
         for (let key in DSPdata) {
-            if (DSPdata[key].name in response) {
-                console.warn("KEY: ", key);
-                console.warn("DSPdata[key]: ", DSPdata[key])
-                DSPdata[key].x = [].concat(DSPdata[key].x).concat([response.timestamp]);
-                DSPdata[key].y = [].concat(DSPdata[key].y).concat([response[DSPdata[key].name]]);
-            } 
-        }
-        //DSPdata['timestamps'].push(response.timestamp);
 
-        this.setState({
-            DSPdata: DSPdata,
-            revision: this.state.revision + 1
-        })
-    }
-
-    updateRaw (response) {
-        console.warn("RAW RESPONSE: ", response);
-        let DSPdata = this.state.DSPdata;
-        if (this.state.features.includes('raw')) {
-            for (let data in this.state.DSPdata) {
-                console.warn("DATA: ", data);
-                console.warn("RESPONSE.data: ", response.data);
-                console.warn("response.timestamp: ", response.timestamp);
-                if (DSPdata[data].name == 'raw') {
-                    DSPdata[data].x = [].concat(DSPdata[data].x).concat([response.timestamp])
-                    DSPdata[data].y = [].concat(DSPdata[data].y).concat(response.data);
+            if (key === dataType) {
+                let value = DSPdata[key].data;
+                if (value.length !== 0) {
+                    // Remove first value
+                    
+                    while (value[0].date < newDateRange[0]) {
+                        value.splice(0, 1)
+                    }
+                    value.splice(value.length - 1, 1)
+                    // Remove last value
                 }
+                value = [{
+                    date: newDateRange[0],
+                    [key]: undefined
+                }].concat(value);
+                value.push({
+                    date: Date.parse(timestamp),
+                    [key]: data
+                })
+                value.push({
+                    date: newDateRange[1],
+                    [key]: undefined
+                })
+                DSPdata[key].data = value;
+                //value[dataType] = [].concat(value[dataType]).concat(data);
+                //value.name = [].concat(value.name).concat([this.formatDateObject(timestamp)]);
             }
-        } else {
-            let features = this.state.features;
-            features.push('raw');
-            DSPdata.push({
-                x: response.data['timestamps'],
-                                        y: response.data,
-                                        x: [response.timestamp],
-                                        xaxis: 'x5',
-                                        yaxis: 'y5',
-                                        type: 'scatter',
-                                        mode: 'lines',
-                                        name: 'raw'
-            })
-            this.setState({
-                features: features
-            })
         }
-
         this.setState({
             DSPdata: DSPdata,
-
-        })
+            dateRange: newDateRange,
+        }, () => {  })
     }
 
-    updateTimeScale (timescale) {
-        console.warn("TIMESCALE: ", timescale);
+    updateLayout() {
+        console.warn("updateLayout")
+    }
+
+    handleRealTime(response) {
+        for (let tag in response) {
+            if (this.state.features.includes(tag)) {
+                this.updateData(tag, response[tag], response.timestamp);
+            }
+        }
+    }
+
+
+    getCurrentTime() {
+        let date = new Date();
+        return date;
+    }
+
+    // Returns the time range in epoch time [start, end]
+    getTimeRange(range, endTime) {
+        endTime = new Date(endTime);
+        endTime.setMinutes(endTime.getMinutes() + 0.2);
+        let startTime = new Date(endTime);
+
+        startTime.setMinutes(endTime.getMinutes() - range);
+
+        let start = Date.parse(startTime);
+        let end = Date.parse(endTime);
+
+        return [start, end];
+    }
+
+    formatDateObject(date) {
+        date = new Date(date);
+        let formatted = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "." + date.getMilliseconds();
+        return formatted;
     }
 
     render() {
 
-        console.warn("RENDERING")
         let data = [];
-        /*for (let feature in this.state.features) {
-            console.warn("FEATURE: ", feature, this.state.features[feature])
-            if (this.state.dateRange !== undefined && this.state.DSPdata !== undefined) {
-                let tmp = parseFloat(feature) + 1;
-                let plotNumY = 'y' + (tmp).toString();
-                let plotNumX = 'x' + (tmp).toString();
-                data.push(
-                    {
-                        x: this.state.DSPdata['timestamps'],
-                        y: this.state.DSPdata[this.state.features[feature]],
-                        xaxis: plotNumX,
-                        yaxis: plotNumY,
-                        type: 'scatter',
-                        name: this.state.features[feature]
-                    }
 
-                )
-            }
-        }*/
+        let plots = [];
 
-        console.warn("REVISION: ", this.state.revision)
+
+        for (let key in this.state.DSPdata) {
+            let value = this.state.DSPdata[key].data;
+            plots.push(
+                <AreaChart
+                    key={key}
+                    //revision={this.state.revision}
+                    //data={this.state.DSPdata}
+                    //onUpdate={this.updateLayout}
+                    //layout={jQuery.extend({}, this.state.layout)}
+                    syncId='plot'
+                    width={400}
+                    height={100}
+                    data={jQuery.extend([], value)}
+                    margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+                >
+                    <def>
+                        <linearGradient
+                            x1="0" y1="0" x2="0" y2="1"
+                            type="monotone"
+                            dataKey={key}
+                            stroke="#8884d8"
+                            dot={false}
+                            isAnimationActive={false}
+                        >
+                            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                        </linearGradient>
+                    </def>
+                    <Area type="monotone" dataKey={key} stroke="#8884d8" dot={false}
+                        isAnimationActive={false} fillOpacity={1} fill="url(#colorUv)" />
+                    <CartesianGrid stroke="#ccc" />
+                    <Tooltip formatter={(value, name, props) => {
+                        
+                        return [value, name, props]
+                        }}/>
+                    <XAxis dataKey="date" type='number' domain={0} tickFormatter={this.formatDateObject} allowDataOverflow={true} />
+                    <YAxis dataKey={key} label={{ value: key, angle: -90, position: 'insideLeft' }}>
+                    </YAxis>
+                </AreaChart>
+            )
+        }
         return (
             <div>
                 {/*<StartDatePull colours={this.props.colours}></StartDatePull>*/}
-                <SockJsClient url='https://streaming.vibraneur.com/vape-data-streaming/v1/websocket' topics={['/message/dsp']}
-                    onMessage={this.updateData}
+                <SockJsClient url='https://streaming.vibraneur.com/vape-data-streaming/v1/websocket' topics={['/message/dsp/' + this.props.id]}
+                    onMessage={this.handleRealTime}
                     ref={(client) => { this.clientRef = client }} />
-                <SockJsClient url='https://streaming.vibraneur.com/vape-data-streaming/v1/websocket' topics={['/message/sensor']}
-                    onMessage={this.updateRaw}
+                <SockJsClient url='https://streaming.vibraneur.com/vape-data-streaming/v1/websocket' topics={['/message/sensor/' + this.props.id]}
+                    onMessage={this.handleRealTime}
                     ref={(client) => { this.clientRef = client }} />
 
-                <Plot style={{ width: '100%', height: '100%' }}
-                    key={'plot'}
-                    //revision={this.state.revision}
-                    data={this.state.DSPdata}
-                    layout={{
-                        grid: { rows: 5, columns: 1, pattern: 'independent' },
-                        autosize: true,
-                        showlegend: true,
-                        margin: { l: 35, r: 35, b: 35, t: 35 },
-                        legend: {
-                            x: 0,
-                            y: 1.1,
-                            traceorder: "normal",
-                            font: {
-                                family: "sans-serif",
-                                size: 12,
-                                color: "black"
-                            },
-                            opacity: 0,
-
-                            //bgcolor: "LightSteelBlue",
-
-                            orientation: "h"
-                        },
-
-                    }}
-                ></Plot>
+                {/*<Plot style={{ width: '100%', height: '100%' }}*/}
+                {plots}
+                {/*}></Plot>*/}
                 <TimeScale
                     colours={this.props.colours}
                     updateTimeScale={this.updateTimeScale}

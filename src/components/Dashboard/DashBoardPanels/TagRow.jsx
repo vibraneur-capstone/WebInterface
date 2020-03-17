@@ -5,6 +5,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default class TagRow extends React.Component {
 
     render () {
+
+        let tag;
+        if ('tag' in this.props) {
+            tag = this.props.tag;
+        }
+        let value;
+        if ('value' in this.props) {
+            value = this.props.value;
+        }
+
+        let style;
+        if (this.props.editting) {
+            style = {
+                color: '#d7263d',
+                border: '0px'
+            }
+        } else {
+            style = {
+                color: '#8d909b',
+                border: '0px'
+            }
+        }
+
         return (
             <tr id={this.props.tag} className='add_generalTag'>
                 <td>
@@ -18,10 +41,8 @@ export default class TagRow extends React.Component {
                 </td>
                 <td>
                     <button
-                        style={{
-                            color: '#d7263d',
-                            border: '0px'
-                        }}
+                        style={style}
+                        disabled={!this.props.editting}
                         onClick={() => this.props.removeUserTag(this.props.tag)}
                     ><FontAwesomeIcon icon={faMinusCircle}></FontAwesomeIcon></button>
                 </td>

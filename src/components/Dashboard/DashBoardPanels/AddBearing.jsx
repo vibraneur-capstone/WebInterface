@@ -146,9 +146,7 @@ export default class AddComponent extends React.Component{
                 updateTagValue={this.updateTagValue}
                 removeUserTag={this.removeUserTag}
                 tag={tag}
-            >
-
-            </TagRow>
+            ></TagRow>
             )
         }
         
